@@ -25,10 +25,7 @@ globalThis.rgs = {};
  * const [state, setState] = useRGS<number>("counter", 1);
  * ```
  */
-export default function useRGS<T>(
-	key: string,
-	value?: T,
-): [T, (val: SetterArgType<T>) => void] {
+export default function useRGS<T>(key: string, value?: T): [T, (val: SetterArgType<T>) => void] {
 	const setRGState = useCallback(
 		(val: SetterArgType<T>) => {
 			const rgs = globalThis.rgs[key] as React18GlobalStore;
