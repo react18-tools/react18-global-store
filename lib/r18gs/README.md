@@ -1,39 +1,84 @@
-# Fork Me React.js component
+# React18GlobalStore
 
-A simple fork me component for React.js projects!
+[![test](https://github.com/react18-tools/r18gs/actions/workflows/test.yml/badge.svg)](https://github.com/react18-tools/r18gs/actions/workflows/test.yml) [![Maintainability](https://api.codeclimate.com/v1/badges/41f10c0e6846d1e8a56b/maintainability)](https://codeclimate.com/github/react18-tools/r18gs/maintainability) [![codecov](https://codecov.io/gh/react18-tools/r18gs/graph/badge.svg)](https://codecov.io/gh/react18-tools/r18gs) [![Version](https://img.shields.io/npm/v/r18gs.svg?colorB=green)](https://www.npmjs.com/package/r18gs) [![Downloads](https://img.jsdelivr.com/img.shields.io/npm/dt/r18gs.svg)](https://www.npmjs.com/package/r18gs) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/r18gs) [![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/from-referrer/)
+
+## Motivation
+
+I have built wonderful libraries utilizing React18 features using Zustand. They worked awesome. However, when I try importing from specific folder for better tree-shaking, the libraries fail. This is because, for each import a separate zustand store is created. This actually increases the package size also.
+
+Thus, I decided to create a bare minimum, ultra-light store that creates shared state even while importing components from separate files for better treeshaking.
+
+> Will be using this library soon to fix issues with `nextjs-themes`.
+
+## Features
+
+✅ Full TypeScript Support
+
+✅ Unleash the full power of React18 Server components
+
+✅ Works with all build systems/tools/frameworks for React18
+
+✅ Doccumented with [Typedoc](https://react18-tools.github.io/r18gs) ([Docs](https://react18-tools.github.io/r18gs))
+
+✅ Next.js, Vite and Remix examples
 
 ## Install
 
 ```bash
-$ pnpm add @mayank1513/fork-me
-# or
-$ npm install @mayank1513/fork-me
-# or
-$ yarn add @mayank1513/fork-me
+$ pnpm add r18gs
 ```
 
-## Add on your page
+or
 
-```ts
-<ForkMe gitHubUrl="https://github.com/mayank1513/turborepo-template" />
-// and
-<StarMe gitHubUrl="https://github.com/mayank1513/turborepo-template" />
+```bash
+$ npm install r18gs
 ```
 
-You need to import styles for ForkMe component
+or
 
-```ts
-import "@mayank1513/fork-me/server/index.css";
+```bash
+$ yarn add r18gs
 ```
 
-## Optional parameters
+### Build
 
-```ts
-	text?: string; // replace the Fork me on GitHub text
-	width?: string | number; // if you need to adjust the width of the ribbon (length)
-	height?: string | number; // to adjust height of the ribbon
-	bgColor?: string; // background color
-	textColor?: string; // text color
+To build all apps and packages, run the following command:
+
+```
+cd r18gs
+pnpm build
 ```
 
-> This package also serves as an example to demonstrate how to build and publish `React.js` library compatible with React Server Components
+### Develop
+
+To develop all apps and packages, run the following command:
+
+```
+cd r18gs
+pnpm dev
+```
+
+## Useful Links
+
+Learn more about the power of Turborepo:
+
+- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
+- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
+- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
+- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
+- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
+- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+
+### 🤩 Don't forger to start [this repo](https://github.com/mayank1513/r18gs)!
+
+Want hands-on course for getting started with Turborepo? Check out [React and Next.js with TypeScript](https://mayank-chaudhari.vercel.app/courses/react-and-next-js-with-typescript) and [The Game of Chess with Next.js, React and TypeScrypt](https://www.udemy.com/course/game-of-chess-with-nextjs-react-and-typescrypt/?referralCode=851A28F10B254A8523FE)
+
+![Repo Stats](https://repobeats.axiom.co/api/embed/2ef1a24385037998386148afe5a98ded6006f410.svg "Repobeats analytics image")
+
+## License
+
+Licensed as MIT open source.
+
+<hr />
+
+<p align="center" style="text-align:center">with 💖 by <a href="https://mayank-chaudhari.vercel.app" target="_blank">Mayank Kumar Chaudhari</a></p>

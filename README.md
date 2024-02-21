@@ -1,6 +1,6 @@
 # React18GlobalStore
 
-[![test](https://github.com/react18-tools/r18gs/actions/workflows/test.yml/badge.svg)](https://github.com/react18-tools/r18gs/actions/workflows/test.yml) [![Maintainability](https://api.codeclimate.com/v1/badges/aa896ec14c570f3bb274/maintainability)](https://codeclimate.com/github/react18-tools/r18gs/maintainability) [![codecov](https://codecov.io/gh/react18-tools/r18gs/graph/badge.svg)](https://codecov.io/gh/react18-tools/r18gs) [![Version](https://img.shields.io/npm/v/r18gs.svg?colorB=green)](https://www.npmjs.com/package/r18gs) [![Downloads](https://img.jsdelivr.com/img.shields.io/npm/dt/r18gs.svg)](https://www.npmjs.com/package/r18gs) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/r18gs) [![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/from-referrer/)
+[![test](https://github.com/react18-tools/r18gs/actions/workflows/test.yml/badge.svg)](https://github.com/react18-tools/r18gs/actions/workflows/test.yml) [![Maintainability](https://api.codeclimate.com/v1/badges/41f10c0e6846d1e8a56b/maintainability)](https://codeclimate.com/github/react18-tools/r18gs/maintainability) [![codecov](https://codecov.io/gh/react18-tools/r18gs/graph/badge.svg)](https://codecov.io/gh/react18-tools/r18gs) [![Version](https://img.shields.io/npm/v/r18gs.svg?colorB=green)](https://www.npmjs.com/package/r18gs) [![Downloads](https://img.jsdelivr.com/img.shields.io/npm/dt/r18gs.svg)](https://www.npmjs.com/package/r18gs) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/r18gs) [![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/from-referrer/)
 
 ## Motivation
 
@@ -42,18 +42,7 @@ $ yarn add r18gs
 
 ## Step by Step Instructions and Checklist
 
-- [ ] Set up `CodeCov`
-  - [ ] Visit codecov and setup your repo
-  - [ ] Create repository secrets for `CODECOV_TOKEN`
-- [ ] Set up `CodeClimate`
-  - [ ] Visit CodeClimate and setup your repo
-  - [ ] Create repository secrets for `CC_TEST_REPORTER_ID`
-  - [ ] add `*.test.*` to ignore patterns on the website
-  - [ ] update code climate badge
-- [ ] Add `NPM_AUTH_TOKEN` to repository secrets to automate publishing package
-  - [ ] login to your `npm` account and create automation token
-  - [ ] Create a new repository secrets `NPM_AUTH_TOKEN`
-- [ ] Update description in `packages/r18gs/package.json`
+- [ ] Update description in `lib/r18gs/package.json`
 - [ ] Update Repo Stats by visiting and setting up [repobeats](https://repobeats.axiom.co/)
 - [ ] Create your library and update examples
 - [ ] Update README
@@ -63,29 +52,6 @@ $ yarn add r18gs
 - [ ] Optionally deploy your example(s) to Vercel.
 - [ ] You are most welcome to star this template, contribute, and/or sponsor the `terbo-repo-template` project or my other open-source work
 
-## What's inside?
-
-### Utilities
-
-This Turborepo template includes pre-configured tools:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-- Plop based code generator for scaffolding new components
-- Automatically rebrand this template to match your repo name
-
-### Apps and Packages
-
-This Turborepo includes the following packages/examples/lib:
-
-- `nextjs`: a [Next.js](https://nextjs.org/) app
-- `vite`: a [Vite.js](https://vitest.dev) app
-- `fork-me`: a React component library shared by both `Next.js` and `Vite` examples
-- `eslint-config-custom`: ESLint configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `tsconfig`: `tsconfig.json`s used throughout the monorepo
-
-Each package/example is 100% [TypeScript](https://www.typescriptlang.org/).
 
 ### Build
 
