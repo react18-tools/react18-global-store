@@ -10,7 +10,7 @@ jobs:
   publish:
     # Don't run just after creating repo from template
     # Also avoid running after merging set-up PR
-    if: github.run_number > 2 && github.event.repository.owner.login == 'react18-tools'
+    if: github.event.repository.owner.login == 'react18-tools'
     runs-on: ubuntu-latest
     permissions:
       packages: write
@@ -48,10 +48,16 @@ jobs:
       - name: Publish Scoped package to NPM
         # continue on error - expecing npm to trow error if scoping is done twice
         continue-on-error: true
-        id: publish_scoped
         run: cd dist && node ../scope.js && npm publish --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OWNER: ${{ github.event.repository.owner.login }}
           REPO: ${{ github.event.repository.name }}
+
+      - name: Publish package with long name for better SEO
+        continue-on-error: true
+        run: |
+          cd dist
+          sed -i -e "s/.*name.*/\t\"name\": \"react18-global-store\",/" package.json
+          npm publish --provenance --access public

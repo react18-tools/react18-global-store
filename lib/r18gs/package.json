@@ -3,7 +3,7 @@
 	"author": "Mayank Kumar Chaudhari <https://mayank-chaudhari.vercel.app>",
 	"private": false,
 	"version": "0.0.0",
-	"description": "An intuitive React.js fork me ribbon component for promoting open source project forks.",
+	"description": "A simple yet elegant, light weight, react18 global store to replace Zustand for better tree shaking.",
 	"main": "./index.ts",
 	"types": "./index.ts",
 	"repository": {
@@ -44,25 +44,22 @@
 	},
 	"peerDependencies": {
 		"@types/react": "16.8 - 18",
-		"next": "10 - 14",
 		"react": "16.8 - 18"
-	},
-	"peerDependenciesMeta": {
-		"next": {
-			"optional": true
-		}
 	},
 	"funding": {
 		"type": "github",
 		"url": "https://github.com/sponsors/mayank1513"
 	},
 	"keywords": [
-		"fork-me",
-		"GitHub",
+		"react18-global-store",
 		"nextjs",
 		"nextjs13",
+		"nextjs14",
 		"react",
 		"react18",
+		"zustand",
+		"zen-store",
+		"react-global-store",
 		"react-server-components",
 		"react-client-components",
 		"typescript",
