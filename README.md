@@ -24,6 +24,8 @@ Thus, I decided to create a bare minimum, ultra-light store that creates shared 
 
 ## Install
 
+> A canonical package with longer name is also published `react18-global-store`
+
 ```bash
 $ pnpm add r18gs
 ```
