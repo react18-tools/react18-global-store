@@ -40,19 +40,6 @@ or
 $ yarn add r18gs
 ```
 
-## Step by Step Instructions and Checklist
-
-- [ ] Update description in `lib/r18gs/package.json`
-- [ ] Update Repo Stats by visiting and setting up [repobeats](https://repobeats.axiom.co/)
-- [ ] Create your library and update examples
-- [ ] Update README
-- [ ] Setup GitHub pages to deploy docs
-  - [ ] Go to [repo settings](https://github.com/mayank1513/r18gs/settings/pages) -> pages (On left panel); Select deploy from a branch; Then Select `main` and `/docs`
-- [ ] Push your changes/Create PR and see your library being automatically tested and published
-- [ ] Optionally deploy your example(s) to Vercel.
-- [ ] You are most welcome to star this template, contribute, and/or sponsor the `terbo-repo-template` project or my other open-source work
-
-
 ### Build
 
 To build all apps and packages, run the following command:
@@ -71,22 +58,11 @@ cd r18gs
 pnpm dev
 ```
 
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
-
 ### 🤩 Don't forger to start [this repo](https://github.com/mayank1513/r18gs)!
 
 Want hands-on course for getting started with Turborepo? Check out [React and Next.js with TypeScript](https://mayank-chaudhari.vercel.app/courses/react-and-next-js-with-typescript) and [The Game of Chess with Next.js, React and TypeScrypt](https://www.udemy.com/course/game-of-chess-with-nextjs-react-and-typescrypt/?referralCode=851A28F10B254A8523FE)
 
-![Repo Stats](https://repobeats.axiom.co/api/embed/2ef1a24385037998386148afe5a98ded6006f410.svg "Repobeats analytics image")
+![Repo Stats](https://repobeats.axiom.co/api/embed/ec3e74d795ed805a0fce67c0b64c3f08872e7945.svg "Repobeats analytics image")
 
 ## License
 
