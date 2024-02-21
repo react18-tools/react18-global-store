@@ -7,7 +7,7 @@ on:
     - cron: "0 */8 * * *"
 jobs:
   generate-docs:
-    if: github.event.repository.owner.login == 'react18-tools'
+    if: github.event.repository.owner.login == 'mayank1513'
     runs-on: ubuntu-latest
     permissions:
       packages: write

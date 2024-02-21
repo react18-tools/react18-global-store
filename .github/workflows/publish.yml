@@ -4,13 +4,13 @@ name: Publish to NPM
 on:
   push:
     branches: [main]
-    paths: "lib/fork-me/package.json"
+    paths: "lib/r18gs/package.json"
 
 jobs:
   publish:
     # Don't run just after creating repo from template
     # Also avoid running after merging set-up PR
-    if: github.run_number > 2 && github.event.repository.owner.login == 'react18-tools'
+    if: github.run_number > 2 && github.event.repository.owner.login == 'mayank1513'
     runs-on: ubuntu-latest
     permissions:
       packages: write
@@ -19,7 +19,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: ./lib/fork-me
+        working-directory: ./lib/r18gs
 
     steps:
       - uses: actions/checkout@v3

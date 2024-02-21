@@ -7,7 +7,6 @@ on:
     - cron: "5 */8 * * *"
 jobs:
   test:
-    if: github.run_number != 1
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -24,12 +23,12 @@ jobs:
         continue-on-error: true
         uses: codecov/codecov-action@v3
         with:
-          directory: ./lib/fork-me
+          directory: ./lib/r18gs
           token: ${{ secrets.CODECOV_TOKEN }}
-          flags: fork-me
+          flags: r18gs
       - uses: paambaati/codeclimate-action@v5.0.0
         continue-on-error: true
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         with:
-          coverageLocations: ./lib/fork-me/coverage/*.xml:clover
+          coverageLocations: ./lib/r18gs/coverage/*.xml:clover

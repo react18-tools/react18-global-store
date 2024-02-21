@@ -6,8 +6,7 @@
 		"test": "turbo run test",
 		"doc": "turbo run doc",
 		"lint": "turbo run lint",
-		"format": "prettier --write \"**/*.{ts,tsx,js,jsx,md,css,scss}\"",
-		"preinstall": "node -e \"require('child_process').spawn('bash', ['./preinstall.sh'], { stdio: 'inherit'})\""
+		"format": "prettier --write \"**/*.{ts,tsx,js,jsx,md,css,scss}\""
 	},
 	"devDependencies": {
 		"@changesets/cli": "^2.27.1",
