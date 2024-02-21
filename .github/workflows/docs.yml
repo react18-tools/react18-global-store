@@ -7,7 +7,7 @@ on:
     - cron: "0 */8 * * *"
 jobs:
   generate-docs:
-    if: github.event.repository.owner.login == 'mayank1513'
+    if: github.event.repository.owner.login == 'react18-tools'
     runs-on: ubuntu-latest
     permissions:
       packages: write
@@ -37,7 +37,7 @@ jobs:
         run: pnpm doc
       - name: Setup Git
         run: |
-          git config --global user.name "mayank1513"
+          git config --global user.name "react18-tools"
           git config --global user.email "mayank.srmu@gmail.com"
           git fetch
           git checkout main
