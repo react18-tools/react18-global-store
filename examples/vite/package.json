@@ -1,7 +1,7 @@
 {
 	"name": "vite-example",
 	"private": true,
-	"version": "0.0.5",
+	"version": "0.0.0",
 	"type": "module",
 	"scripts": {
 		"dev": "vite --port 3001",
@@ -10,7 +10,8 @@
 		"preview": "vite preview"
 	},
 	"dependencies": {
-		"@mayank1513/fork-me": "workspace:*",
+		"@mayank1513/fork-me": "latest",
+		"r18gs": "workspace:*",
 		"nextjs-themes": "^2.1.1",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",

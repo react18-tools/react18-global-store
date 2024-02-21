@@ -11,7 +11,8 @@
 		"typecheck": "tsc"
 	},
 	"dependencies": {
-		"@mayank1513/fork-me": "workspace:*",
+		"@mayank1513/fork-me": "latest",
+		"r18gs": "workspace:*",
 		"@remix-run/css-bundle": "^2.6.0",
 		"@remix-run/node": "^2.6.0",
 		"@remix-run/react": "^2.6.0",
