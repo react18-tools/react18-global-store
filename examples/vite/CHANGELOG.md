@@ -1,5 +1,13 @@
 # vite-example
 
+## 0.0.2
+
+### Patch Changes
+
+- Updated dependencies
+  - r18gs@0.0.2
+  - shared-ui@0.0.0
+
 ## 0.0.1
 
 ### Patch Changes
