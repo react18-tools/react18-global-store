@@ -1,5 +1,11 @@
 # r18gs
 
+## 0.0.3
+
+### Patch Changes
+
+- Fix exports; improve examples; Update README
+
 ## 0.0.2
 
 ### Patch Changes
