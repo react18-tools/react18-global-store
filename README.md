@@ -42,6 +42,72 @@ or
 $ yarn add r18gs
 ```
 
+## Usage
+
+Use this hook similar to `useState` hook.
+
+The difference is that you need to pass an unique key - unique across the app to identify
+and make this state accessible to all client components.
+
+```tsx
+const [state, setState] = useRGS<number>("counter", 1);
+```
+
+You can access the same state across all client side components using unique.
+
+> It is recommended to store your keys in separate file to avoid typos and unnecessary conflicts.
+
+### Example
+
+```tsx
+// constants/global-states.ts
+export const COUNTER = "counter";
+```
+
+```tsx
+// components/display.tsx
+"use client";
+
+import useRGS from "r18gs";
+import { COUNTER } from "../constants/global-states";
+
+export default function Display() {
+	const [count] = useRGS<number>(COUNTER);
+	return (
+		<div>
+			<h2>Client component 2</h2>
+			<b>{count}</b>
+		</div>
+	);
+}
+```
+
+```tsx
+// components/counter.tsx
+"use client";
+
+import useRGS from "r18gs";
+import { COUNTER } from "../constants/global-states";
+
+export default function Counter() {
+	const [count, setCount] = useRGS(COUNTER, 0);
+	return (
+		<div>
+			<h2>Clinet component 1</h2>
+			<input
+				onChange={e => {
+					setCount(parseInt(e.target.value.trim()));
+				}}
+				type="number"
+				value={count}
+			/>
+		</div>
+	);
+}
+```
+
+## Contribute
+
 ### Build
 
 To build all apps and packages, run the following command:
@@ -59,6 +125,11 @@ To develop all apps and packages, run the following command:
 cd r18gs
 pnpm dev
 ```
+
+Also, please
+
+1. check out discussion for providing any feedback or sugestions.
+2. Report any issues or feature requests in issues tab
 
 ### 🤩 Don't forger to start [this repo](https://github.com/mayank1513/r18gs)!
 
