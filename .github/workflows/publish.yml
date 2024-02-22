@@ -48,7 +48,7 @@ jobs:
       - name: Publish Scoped package to NPM
         # continue on error - expecing npm to trow error if scoping is done twice
         continue-on-error: true
-        run: cd dist && node ../scope.js && npm publish --provenance --access public
+        run: cd dist && node ../scope.js && npm publish --provenance --access public && cd ..
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -58,8 +58,8 @@ jobs:
       - name: Publish package with long name for better SEO
         continue-on-error: true
         run: |
-          ls -la
-          npm cache clean --force
           cd dist
           sed -i -e "s/.*name.*/\t\"name\": \"react18-global-store\",/" package.json
-          npm publish --access public
+          npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
