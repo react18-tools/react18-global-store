@@ -58,7 +58,8 @@ jobs:
       - name: Publish package with long name for better SEO
         continue-on-error: true
         run: |
+          ls -la
           npm cache clean --force
           cd dist
           sed -i -e "s/.*name.*/\t\"name\": \"react18-global-store\",/" package.json
-          npm publish --provenance --access public
+          npm publish --access public
