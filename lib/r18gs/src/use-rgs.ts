@@ -5,7 +5,9 @@ interface React18GlobalStore {
 	value: unknown;
 }
 
-type SetterArgType<T> = T | ((prevState: T) => T);
+export type SetterArgType<T> = T | ((prevState: T) => T);
+
+export type SetStateAction<T> = (val: SetterArgType<T>) => void;
 
 declare global {
 	// eslint-disable-next-line no-var -- var required for global declaration.
