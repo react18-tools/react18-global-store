@@ -1,5 +1,11 @@
 # r18gs
 
+## 0.0.4
+
+### Patch Changes
+
+- Fix getServerSnapshot errors on some projects.
+
 ## 0.0.3
 
 ### Patch Changes
