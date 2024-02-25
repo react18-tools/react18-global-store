@@ -2,18 +2,18 @@
 	"name": "r18gs",
 	"author": "Mayank Kumar Chaudhari <https://mayank-chaudhari.vercel.app>",
 	"private": false,
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"description": "A simple yet elegant, light weight, react18 global store to replace Zustand for better tree shaking.",
 	"main": "./index.ts",
 	"types": "./index.ts",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/react18-tools/r18gs.git"
+		"url": "git+https://github.com/react18-tools/react18-global-store.git"
 	},
 	"bugs": {
-		"url": "https://github.com/react18-tools/r18gs/issues"
+		"url": "https://github.com/react18-tools/react18-global-store/issues"
 	},
-	"homepage": "https://github.com/react18-tools/r18gs/tree/main/lib/fork-me#readme",
+	"homepage": "https://github.com/react18-tools/react18-global-store#readme",
 	"sideEffects": false,
 	"license": "MIT",
 	"scripts": {

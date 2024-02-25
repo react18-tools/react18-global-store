@@ -51,6 +51,6 @@ export default function useRGS<T>(key: string, value?: T): [T, (val: SetterArgTy
 	// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- temp fix
 	const getSnapshot = () => (globalThis.rgs[key]?.value ?? value) as T;
 
-	const val = useSyncExternalStore<T>(subscribe, getSnapshot);
+	const val = useSyncExternalStore<T>(subscribe, getSnapshot, () => value);
 	return [val, setRGState];
 }

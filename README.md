@@ -1,6 +1,6 @@
 # React18GlobalStore
 
-[![test](https://github.com/react18-tools/r18gs/actions/workflows/test.yml/badge.svg)](https://github.com/react18-tools/r18gs/actions/workflows/test.yml) [![Maintainability](https://api.codeclimate.com/v1/badges/41f10c0e6846d1e8a56b/maintainability)](https://codeclimate.com/github/react18-tools/r18gs/maintainability) [![codecov](https://codecov.io/gh/react18-tools/r18gs/graph/badge.svg)](https://codecov.io/gh/react18-tools/r18gs) [![Version](https://img.shields.io/npm/v/r18gs.svg?colorB=green)](https://www.npmjs.com/package/r18gs) [![Downloads](https://img.jsdelivr.com/img.shields.io/npm/dt/r18gs.svg)](https://www.npmjs.com/package/r18gs) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/r18gs) [![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/from-referrer/)
+[![test](https://github.com/react18-tools/react18-global-store/actions/workflows/test.yml/badge.svg)](https://github.com/react18-tools/react18-global-store/actions/workflows/test.yml) [![Maintainability](https://api.codeclimate.com/v1/badges/a79e66d0da36cb9a86b6/maintainability)](https://codeclimate.com/github/react18-tools/reacr18-global-store/maintainability) [![codecov](https://codecov.io/gh/react18-tools/react18-global-store/graph/badge.svg)](https://codecov.io/gh/react18-tools/react18-global-store) [![Version](https://img.shields.io/npm/v/r18gs.svg?colorB=green)](https://www.npmjs.com/package/r18gs) [![Downloads](https://img.jsdelivr.com/img.shields.io/npm/dt/r18gs.svg)](https://www.npmjs.com/package/r18gs) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/r18gs) [![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/from-referrer/)
 
 ## Motivation
 
@@ -18,7 +18,7 @@ Thus, I decided to create a bare minimum, ultra-light store that creates shared 
 
 ✅ Works with all build systems/tools/frameworks for React18
 
-✅ Doccumented with [Typedoc](https://react18-tools.github.io/r18gs) ([Docs](https://react18-tools.github.io/r18gs))
+✅ Doccumented with [Typedoc](https://react18-tools.github.io/react18-global-store) ([Docs](https://react18-tools.github.io/react18-global-store))
 
 ✅ Next.js, Vite and Remix examples
 
@@ -113,7 +113,7 @@ export default function Counter() {
 To build all apps and packages, run the following command:
 
 ```
-cd r18gs
+cd react18-global-store
 pnpm build
 ```
 
@@ -122,7 +122,7 @@ pnpm build
 To develop all apps and packages, run the following command:
 
 ```
-cd r18gs
+cd react18-global-store
 pnpm dev
 ```
 
@@ -131,7 +131,7 @@ Also, please
 1. check out discussion for providing any feedback or sugestions.
 2. Report any issues or feature requests in issues tab
 
-### 🤩 Don't forger to start [this repo](https://github.com/mayank1513/r18gs)!
+### 🤩 Don't forger to star [this repo](https://github.com/mayank1513/react18-global-store)!
 
 Want hands-on course for getting started with Turborepo? Check out [React and Next.js with TypeScript](https://mayank-chaudhari.vercel.app/courses/react-and-next-js-with-typescript) and [The Game of Chess with Next.js, React and TypeScrypt](https://www.udemy.com/course/game-of-chess-with-nextjs-react-and-typescrypt/?referralCode=851A28F10B254A8523FE)
 
