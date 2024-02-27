@@ -37,7 +37,10 @@ globalThis.subscribers = {};
 export default function useRGS<T>(key: string, value?: T): [T, (val: SetterArgType<T>) => void] {
 	if (!globalThis.subscribers[key]) {
 		globalThis.subscribers[key] = (listener: () => void) => {
-			if (!globalThis.rgs[key]) globalThis.rgs[key] = { listeners: [], value };
+			if (!globalThis.rgs[key]) {
+				/** opportunity to add initializer */
+				globalThis.rgs[key] = { listeners: [], value };
+			}
 			const rgs = globalThis.rgs[key] as React18GlobalStore;
 			rgs.listeners.push(listener);
 			return () => {
@@ -51,6 +54,7 @@ export default function useRGS<T>(key: string, value?: T): [T, (val: SetterArgTy
 		globalThis.setters[key] = val => {
 			const rgs = globalThis.rgs[key] as React18GlobalStore;
 			rgs.value = val instanceof Function ? val(rgs.value as T) : val;
+			/** opportunity to add custom listener */
 			for (const listener of rgs.listeners) listener();
 		};
 	}

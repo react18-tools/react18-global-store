@@ -1,5 +1,11 @@
 # r18gs
 
+## 0.1.0
+
+### Minor Changes
+
+- Remove client side hooks. Now this store works well with server components as well. Though, server side use is tricky and not recommended yet.
+
 ## 0.0.5
 
 ### Patch Changes

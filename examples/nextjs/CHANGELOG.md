@@ -1,5 +1,13 @@
 # nextjs-example
 
+## 0.0.6
+
+### Patch Changes
+
+- Updated dependencies
+  - r18gs@0.1.0
+  - shared-ui@0.0.0
+
 ## 0.0.5
 
 ### Patch Changes
