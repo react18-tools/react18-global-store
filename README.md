@@ -8,8 +8,6 @@ I have built wonderful libraries utilizing React18 features using Zustand. They 
 
 Thus, I decided to create a bare minimum, ultra-light store that creates shared state even while importing components from separate files for better treeshaking.
 
-> Will be using this library soon to fix issues with `nextjs-themes`.
-
 ## Features
 
 ✅ Full TypeScript Support
@@ -17,6 +15,8 @@ Thus, I decided to create a bare minimum, ultra-light store that creates shared 
 ✅ Unleash the full power of React18 Server components
 
 ✅ Works with all build systems/tools/frameworks for React18
+
+✅ Works for both client side and server side components (be careful, separate states are created for server side and client side. Any changes done on client side will not affect the server components.)
 
 ✅ Doccumented with [Typedoc](https://react18-tools.github.io/react18-global-store) ([Docs](https://react18-tools.github.io/react18-global-store))
 
