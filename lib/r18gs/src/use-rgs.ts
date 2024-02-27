@@ -1,4 +1,5 @@
-import { useCallback, useSyncExternalStore } from "react";
+/* eslint-disable @typescript-eslint/non-nullable-type-assertion-style -- as ! operator is forbidden by eslint*/
+import { useSyncExternalStore } from "react";
 
 interface React18GlobalStore {
 	listeners: (() => void)[];
@@ -11,7 +12,11 @@ export type SetStateAction<T> = (val: SetterArgType<T>) => void;
 
 declare global {
 	// eslint-disable-next-line no-var -- var required for global declaration.
-	var rgs: Record<string, React18GlobalStore>;
+	var rgs: Record<string, React18GlobalStore | undefined>;
+	// eslint-disable-next-line no-var -- var required for global declaration.
+	var setters: Record<string, SetStateAction<unknown> | undefined>;
+	// eslint-disable-next-line no-var -- var required for global declaration.
+	var subscribers: Record<string, ((listener: () => void) => () => void) | undefined>;
 }
 
 globalThis.rgs = {};
@@ -28,29 +33,29 @@ globalThis.rgs = {};
  * ```
  */
 export default function useRGS<T>(key: string, value?: T): [T, (val: SetterArgType<T>) => void] {
-	const setRGState = useCallback(
-		(val: SetterArgType<T>) => {
-			const rgs = globalThis.rgs[key] as React18GlobalStore;
-			rgs.value = val instanceof Function ? val(rgs.value as T) : val;
-			for (const listener of rgs.listeners) listener();
-		},
-		[key],
-	);
-	const subscribe = useCallback(
-		(listener: () => void) => {
+	if (!globalThis.subscribers[key]) {
+		globalThis.subscribers[key] = (listener: () => void) => {
 			if (!globalThis.rgs[key]) globalThis.rgs[key] = { listeners: [], value };
 			const rgs = globalThis.rgs[key] as React18GlobalStore;
 			rgs.listeners.push(listener);
 			return () => {
 				rgs.listeners = rgs.listeners.filter(l => l !== listener);
 			};
-		},
-		[key, value],
-	);
+		};
+	}
+	const subscribe = globalThis.subscribers[key] as (listener: () => void) => () => void;
 
-	// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- temp fix
+	if (!globalThis.setters[key]) {
+		globalThis.setters[key] = val => {
+			const rgs = globalThis.rgs[key] as React18GlobalStore;
+			rgs.value = val instanceof Function ? val(rgs.value as T) : val;
+			for (const listener of rgs.listeners) listener();
+		};
+	}
+	const setRGState = globalThis.setters[key] as SetStateAction<T>;
+
 	const getSnapshot = () => (globalThis.rgs[key]?.value ?? value) as T;
 
-	const val = useSyncExternalStore<T>(subscribe, getSnapshot, () => value as T);
+	const val = useSyncExternalStore<T>(subscribe, getSnapshot, getSnapshot);
 	return [val, setRGState];
 }
