@@ -13,7 +13,7 @@
 	"bugs": {
 		"url": "https://github.com/react18-tools/react18-global-store/issues"
 	},
-	"homepage": "https://github.com/react18-tools/react18-global-store#readme",
+	"homepage": "https://react18-global-store.vercel.app/",
 	"sideEffects": false,
 	"license": "MIT",
 	"scripts": {
