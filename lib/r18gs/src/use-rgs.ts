@@ -20,6 +20,8 @@ declare global {
 }
 
 globalThis.rgs = {};
+globalThis.setters = {};
+globalThis.subscribers = {};
 
 /**
  * Use this hook similar to `useState` hook.
