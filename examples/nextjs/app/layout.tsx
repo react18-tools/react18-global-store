@@ -1,4 +1,4 @@
-import { NextJsSSGThemeSwitcher } from "nextjs-themes/server/nextjs";
+import { ServerTarget } from "nthul-lite/server";
 import { Inter } from "next/font/google";
 import { SharedRootLayout } from "shared-ui";
 
@@ -8,7 +8,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }):
 	return (
 		<html lang="en">
 			<body>
-				<NextJsSSGThemeSwitcher />
+				<ServerTarget />
 				<SharedRootLayout className={inter.className}>{children}</SharedRootLayout>
 			</body>
 		</html>

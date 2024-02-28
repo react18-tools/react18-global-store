@@ -8,8 +8,6 @@ I have built wonderful libraries utilizing React18 features using Zustand. They 
 
 Thus, I decided to create a bare minimum, ultra-light store that creates shared state even while importing components from separate files for better treeshaking.
 
-> Will be using this library soon to fix issues with `nextjs-themes`.
-
 ## Features
 
 ✅ Full TypeScript Support
