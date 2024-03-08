@@ -34,44 +34,26 @@ globalThis.t = {};
  * ```
  */
 
-interface Extension<T> {
+export interface Extension<T> {
 	/** called with default value provided before the store value is initialized */
-	beforeInit?: (value?: T) => T | undefined;
+	beforeInit?: (key: string, value: T | undefined, setterFunc: SetStateAction<T>) => T | undefined;
 	/** called with the current value of the store. */
-	afterInit?: (value?: T) => void;
+	afterInit?: (key: string, value?: T) => void;
 	/** called with the current value of the store - transform the value if needed */
-	beforeUpdate?: (value: SetterArgType<T>) => SetterArgType<T>;
+	beforeUpdate?: (key: string, value: SetterArgType<T>) => SetterArgType<T>;
 	/** called with the current value of the store */
-	afterUpdate?: (value: T) => void;
+	afterUpdate?: (key: string, value: T) => void;
 }
 
 function initialize<T>(key: string, value?: T, extensions?: Extension<T>[]) {
-	// add subsciber function for a given key
-	globalThis.t[key] = (listener: () => void) => {
-		let v = value;
-
-		/** beforeInit - executed sequentially for all the extensions added */
-		for (const extension of extensions ?? []) v = extension.beforeInit?.(v);
-
-		globalThis.r[key] = { l: [], v };
-
-		/** afterInit - executed sequentially for all the extensions added */
-		for (const extension of extensions ?? []) extension.afterInit?.(v);
-
-		const rgs = globalThis.r[key] as React18GlobalStore;
-		rgs.l.push(listener);
-		return () => {
-			rgs.l = rgs.l.filter(l => l !== listener);
-		};
-	};
-
 	// add setter function for a given key
-	globalThis.s[key] = valueOrFunc => {
+	const setterFunc: SetStateAction<T> = valueOrFunc => {
 		const rgs = globalThis.r[key] as React18GlobalStore;
 
 		/** Apply beforeUpdate */
 		let v1 = valueOrFunc;
-		for (const extension of extensions ?? []) v1 = extension.beforeUpdate?.(v1 as SetterArgType<T>);
+		for (const extension of extensions ?? [])
+			if (extension.beforeUpdate) v1 = extension.beforeUpdate(key, v1);
 
 		/** update the store */
 		rgs.v = v1 instanceof Function ? v1(rgs.v as T) : v1;
@@ -79,7 +61,28 @@ function initialize<T>(key: string, value?: T, extensions?: Extension<T>[]) {
 		for (const listener of rgs.l) listener();
 
 		/** afterUpdate - executed sequentially for all the extensions added */
-		for (const extension of extensions ?? []) extension.afterUpdate?.(rgs.v as T);
+		for (const extension of extensions ?? []) extension.afterUpdate?.(key, rgs.v as T);
+	};
+
+	globalThis.s[key] = setterFunc as SetStateAction<unknown>;
+	// add subsciber function for a given key
+	globalThis.t[key] = (listener: () => void) => {
+		let v = value;
+
+		/** beforeInit - executed sequentially for all the extensions added */
+		for (const extension of extensions ?? [])
+			if (extension.beforeInit) v = extension.beforeInit(key, v, setterFunc);
+
+		globalThis.r[key] = { l: [], v };
+
+		/** afterInit - executed sequentially for all the extensions added */
+		for (const extension of extensions ?? []) extension.afterInit?.(key, v);
+
+		const rgs = globalThis.r[key] as React18GlobalStore;
+		rgs.l.push(listener);
+		return () => {
+			rgs.l = rgs.l.filter(l => l !== listener);
+		};
 	};
 }
 
