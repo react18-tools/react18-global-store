@@ -106,6 +106,10 @@ export default function Counter() {
 }
 ```
 
+## Extensions
+
+We are providing a way for you to modify the store behaviour by providing extensions.
+
 ## Contribute
 
 ### Build
