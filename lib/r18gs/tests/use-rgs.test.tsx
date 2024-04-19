@@ -1,19 +1,19 @@
 import { describe, test } from "vitest";
 import { act, fireEvent, render, screen } from "@testing-library/react";
 import useRGS from "../src";
+import { ChangeEvent, useCallback } from "react";
 
 function Component1() {
 	const [count, setCount] = useRGS<number>("count", 0);
+	const handleChange = useCallback(
+		(e: ChangeEvent<HTMLInputElement>) => {
+			setCount(parseInt(e.target.value));
+		},
+		[setCount],
+	);
 	return (
 		<div>
-			<input
-				data-testid="input"
-				onChange={e => {
-					setCount(parseInt(e.target.value));
-				}}
-				type="number"
-				value={count}
-			/>
+			<input data-testid="input" onChange={handleChange} type="number" value={count} />
 		</div>
 	);
 }
