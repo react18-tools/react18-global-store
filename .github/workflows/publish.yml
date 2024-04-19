@@ -63,6 +63,10 @@ jobs:
           npm publish --provenance --access public
           sed -i -e "s/.*name.*/\t\"name\": \"react18-store\",/" package.json
           npm publish --provenance --access public
+          sed -i -e "s/.*name.*/\t\"name\": \"react19-store\",/" package.json
+          npm publish --provenance --access public
+          sed -i -e "s/.*name.*/\t\"name\": \"r19gs\",/" package.json
+          npm publish --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
 
