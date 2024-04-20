@@ -19,13 +19,16 @@ declare global {
 
 globalThis.rgs = {};
 
+/** Initialize the named store when invoked for the first time. */
 function init<T>(key: string, value?: T) {
 	const listeners: Listener[] = [];
+	/** setter function to set the state. */
 	const setter: SetStateAction<T> = val => {
 		const rgs = globalThis.rgs[key] as RGS;
 		rgs[VALUE] = val instanceof Function ? val(rgs[VALUE] as T) : val;
 		(rgs[LISTENERS] as Listener[]).forEach(listener => listener());
 	};
+	/** subscriber function to subscribe to the store. */
 	const subscriber: Subscriber = listener => {
 		const rgs = globalThis.rgs[key] as RGS;
 		const listeners = rgs[LISTENERS] as Listener[];
@@ -57,9 +60,12 @@ export default function useRGS<T>(
 
 	const rgs = globalThis.rgs[key] as RGS;
 
+	/** Function to set the state. */
 	const setRGState = rgs[SETTER] as SetStateAction<T>;
+	/** Function to get snapshot of the state. */
 	const getSnap = () => (rgs[VALUE] ?? value) as T;
-	const getServerSnap = () => (serverValue ?? value) as T;
+	/** Function to get server snapshot. Returns server value is provided else the default value. */
+	const getServerSnap = () => (serverValue ?? rgs[VALUE] ?? value) as T;
 
 	const val = useSyncExternalStore<T>(rgs[SUBSCRIBER] as Subscriber, getSnap, getServerSnap);
 	return [val, setRGState];
