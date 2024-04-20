@@ -63,6 +63,8 @@ jobs:
           npm publish --provenance --access public
           sed -i -e "s/.*name.*/\t\"name\": \"react18-store\",/" package.json
           npm publish --provenance --access public
+          sed -i -e "s/.*name.*/\t\"name\": \"react19-global-store\",/" package.json
+          npm publish --provenance --access public
           sed -i -e "s/.*name.*/\t\"name\": \"react19-store\",/" package.json
           npm publish --provenance --access public
           sed -i -e "s/.*name.*/\t\"name\": \"r19gs\",/" package.json
