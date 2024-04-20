@@ -2,9 +2,9 @@
 import { useSyncExternalStore } from "react";
 
 type Listener = () => void;
-type SetterArgType<T> = T | ((prevState: T) => T);
 type Subscriber = (l: Listener) => () => void;
-export type SetStateAction<T> = (val: SetterArgType<T>) => void;
+export type SetterArgType<T> = T | ((prevState: T) => T);
+export type SetStateAction<T> = (value: SetterArgType<T>) => void;
 
 /**
  * This is a hack to reduce lib size + readability + not encouraging direct access to globalThis
@@ -52,12 +52,13 @@ function init<T>(key: string, value?: T) {
  * ```tsx
  * const [state, setState] = useRGS<number>("counter", 1);
  * ```
+ *
+ * @param key - Unique key to identify the store.
+ * @param value - Initial value of the store.
+ * @param serverValue - Server value of the store.
+ * @returns - A tuple (Ordered sequance of values) containing the state and a function to set the state.
  */
-export default function useRGS<T>(
-	key: string,
-	value?: T,
-	serverValue?: T,
-): [T, (val: SetterArgType<T>) => void] {
+export default function useRGS<T>(key: string, value?: T, serverValue?: T): [T, SetStateAction<T>] {
 	if (!globalRGS[key]) init(key, value);
 
 	const rgs = globalRGS[key] as RGS;
