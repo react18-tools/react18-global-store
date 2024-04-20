@@ -19,7 +19,7 @@
 	"scripts": {
 		"test": "vitest run --coverage",
 		"build": "tsup src && tsc -p tsconfig-build.json && node touchup.js",
-		"doc": "typedoc",
+		"doc": "cp ../../README.md . && typedoc",
 		"publish-package": "cd dist && npm publish --provenance --access public",
 		"lint": "eslint ."
 	},
