@@ -28,6 +28,7 @@ const globalThisForBetterMinification = globalThis;
 globalThisForBetterMinification.rgs = {};
 const globalRGS = globalThisForBetterMinification.rgs;
 
+/** trigger all listeners */
 function triggerListeners(rgs: RGS) {
 	(rgs[LISTENERS] as Listener[]).forEach(listener => listener());
 }
@@ -36,6 +37,7 @@ let allExtentionsInitialized = false;
 /** Initialize extestions - wait for previous extension's promise to be resolved before processing next */
 async function initExtentions<T>(key: string, extensions: Extension<T>[]) {
 	const rgs = globalRGS[key] as RGS;
+	/** Mutate function to update the value and server value */
 	const mutate: Mutate<T> = (newValue, newServerValue) => {
 		[rgs[VALUE], rgs[SERVER_VALUE]] = [newValue, newServerValue];
 	};
