@@ -1,7 +1,7 @@
 import "./globals.css";
 import "nthul-lite/styles.css";
 import { ThemeSwitcher } from "nthul-lite/client/theme-switcher";
-import { ForkMe } from "@mayank1513/fork-me/server"; // todo: import directory not supported in remix
+import { ForkMe } from "@mayank1513/fork-me/server";
 import type { HTMLProps } from "react";
 import styles from "./root-layout.module.css";
 import { Cards } from "./cards";
