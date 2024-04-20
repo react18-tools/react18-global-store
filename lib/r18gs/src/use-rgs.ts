@@ -14,32 +14,32 @@ type RGS = [unknown, Listener[], SetStateAction<unknown>, Subscriber];
 
 declare global {
 	// eslint-disable-next-line no-var -- var required for global declaration.
-	var rgs: Map<string, RGS | undefined>;
+	var rgs: Record<string, RGS | undefined>;
 }
 
-let g = globalThis;
-g.rgs = new Map();
-let globalRGS = g.rgs;
+const globalThisForBetterMinification = globalThis;
+globalThisForBetterMinification.rgs = {};
+const globalRGS = globalThisForBetterMinification.rgs;
 
 /** Initialize the named store when invoked for the first time. */
 function init<T>(key: string, value?: T) {
 	const listeners: Listener[] = [];
 	/** setter function to set the state. */
 	const setter: SetStateAction<T> = val => {
-		const rgs = globalRGS.get(key) as RGS;
+		const rgs = globalRGS[key] as RGS;
 		rgs[VALUE] = val instanceof Function ? val(rgs[VALUE] as T) : val;
 		(rgs[LISTENERS] as Listener[]).forEach(listener => listener());
 	};
 	/** subscriber function to subscribe to the store. */
 	const subscriber: Subscriber = listener => {
-		const rgs = globalRGS.get(key) as RGS;
+		const rgs = globalRGS[key] as RGS;
 		const listeners = rgs[LISTENERS] as Listener[];
 		listeners.push(listener);
 		return () => {
 			rgs[LISTENERS] = listeners.filter(l => l !== listener);
 		};
 	};
-	globalRGS.set(key, [value, listeners, setter as SetStateAction<unknown>, subscriber]);
+	globalRGS[key] = [value, listeners, setter as SetStateAction<unknown>, subscriber];
 }
 
 /**
@@ -58,9 +58,9 @@ export default function useRGS<T>(
 	value?: T,
 	serverValue?: T,
 ): [T, (val: SetterArgType<T>) => void] {
-	if (!globalRGS.has(key)) init(key, value);
+	if (!globalRGS[key]) init(key, value);
 
-	const rgs = globalRGS.get(key) as RGS;
+	const rgs = globalRGS[key] as RGS;
 
 	/** Function to set the state. */
 	const setRGState = rgs[SETTER] as SetStateAction<T>;
