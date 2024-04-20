@@ -11,6 +11,7 @@ export type Extension<T> = {
 	init?: (key: string, value: T | undefined, serverValue: T | undefined, mutate: Mutate<T>) => void;
 	onChange?: (key: string, value?: T, serverValue?: T) => void;
 };
+type HookType<T> = () => [T, SetStateAction<T>];
 
 /**
  * This is a hack to reduce lib size + readability + not encouraging direct access to globalThis
@@ -79,6 +80,47 @@ function init<T>(key: string, value?: T, serverValue?: T, extensions: Extension<
  *
  * @example
  * ```tsx
+ * // in hook file
+ * export const useRGS = create<type>(key, value, serverValue, extensions);
+ *
+ * // in component file
+ * const [state, setState] = useRGS();
+ * ```
+ *
+ * @param key - Unique key to identify the store.
+ * @param value - Initial value of the store.
+ * @param serverValue - Server value of the store.
+ * @returns - A hook funciton that returns a tuple (Ordered sequance of values) containing the state and a function to set the state.
+ */
+export function create<T>(
+	key: string,
+	value?: T,
+	serverValue?: T,
+	extensions?: Extension<T>[],
+): HookType<T> {
+	if (!globalRGS[key]) init(key, value, serverValue, extensions);
+
+	const rgs = globalRGS[key] as RGS;
+
+	/** Function to set the state. */
+	const setRGState = rgs[SETTER] as SetStateAction<T>;
+	/** Function to get snapshot of the state. */
+	const getSnap = () => rgs[VALUE] as T;
+	/** Function to get server snapshot. Returns server value is provided else the default value. */
+	const getServerSnap = () => (rgs[SERVER_VALUE] ?? rgs[VALUE]) as T;
+
+	const val = useSyncExternalStore<T>(rgs[SUBSCRIBER] as Subscriber, getSnap, getServerSnap);
+	return () => [val, setRGState];
+}
+
+/**
+ * Use this hook similar to `useState` hook.
+ * The difference is that you need to pass a
+ * unique key - unique across the app to make
+ * this state accessible to all client components.
+ *
+ * @example
+ * ```tsx
  * const [state, setState] = useRGS<number>("counter", 1);
  * ```
  *
@@ -93,17 +135,5 @@ export default function useRGS<T>(
 	serverValue?: T,
 	extensions?: Extension<T>[],
 ): [T, SetStateAction<T>] {
-	if (!globalRGS[key]) init(key, value, serverValue, extensions);
-
-	const rgs = globalRGS[key] as RGS;
-
-	/** Function to set the state. */
-	const setRGState = rgs[SETTER] as SetStateAction<T>;
-	/** Function to get snapshot of the state. */
-	const getSnap = () => rgs[VALUE] as T;
-	/** Function to get server snapshot. Returns server value is provided else the default value. */
-	const getServerSnap = () => (rgs[SERVER_VALUE] ?? rgs[VALUE]) as T;
-
-	const val = useSyncExternalStore<T>(rgs[SUBSCRIBER] as Subscriber, getSnap, getServerSnap);
-	return [val, setRGState];
+	return create(key, value, serverValue, extensions)();
 }

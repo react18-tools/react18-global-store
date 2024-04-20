@@ -106,6 +106,28 @@ export default function Counter() {
 }
 ```
 
+## Advanced Usage
+
+You can extend the functionality by passing in extensions array.
+
+```ts
+type Extension<T> = {
+	init?: (key: string, value: T | undefined, serverValue: T | undefined, mutate: Mutate<T>) => void;
+	onChange?: (key: string, value?: T, serverValue?: T) => void;
+};
+```
+
+For ease, in most cases, you can use `create` function to create the hook in a separate file and reuse it.
+
+```tsx
+// hook.ts
+import { create } from "r18gs";
+
+export function useRGS_MyApp = create("MyApp", {some_state: 1}, undefined, [{init: null, onChange: ()=> doStuff}])
+```
+
+> detailed documentation coming soon... [Need help!]
+
 ## Contribute
 
 ### Build
