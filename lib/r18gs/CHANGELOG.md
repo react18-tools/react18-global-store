@@ -1,5 +1,11 @@
 # r18gs
 
+## 0.1.3
+
+### Patch Changes
+
+- Quick Fix the build setup and fix library issues.
+
 ## 0.1.2
 
 ### Patch Changes
