@@ -29,12 +29,12 @@ export default defineConfig(options => ({
 						.trim()
 						.replace(/\]|\[/g, "")
 						.split(",")
-						.map(t => t.trim());
+						.map((t, i) => ({ token: t.trim(), i }));
 
-					tokens.sort((a, b) => a.length - b.length);
+					tokens.sort((a, b) => a.token.length - b.token.length);
 
-					for (let i = 0; i < tokens.length; i++) {
-						contents = contents.replace(new RegExp(`${tokens[i]}`, "g"), i + "");
+					for (const t of tokens) {
+						contents = contents.replace(new RegExp(`${t.token}`, "g"), t.i + "");
 					}
 					return { contents, loader: "ts" };
 				});
