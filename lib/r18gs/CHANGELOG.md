@@ -1,5 +1,11 @@
 # r18gs
 
+## 0.1.2
+
+### Patch Changes
+
+- Improve minification
+
 ## 0.1.1
 
 ### Patch Changes

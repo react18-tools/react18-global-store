@@ -1,10 +1,9 @@
 import { defineConfig } from "tsup";
 import fs from "node:fs";
-import path from "node:path";
 
 export default defineConfig(options => ({
 	format: ["cjs", "esm"],
-	target: "es2019",
+	target: "es2015",
 	sourcemap: false,
 	clean: true,
 	bundle: true,
@@ -37,7 +36,6 @@ export default defineConfig(options => ({
 					for (let i = 0; i < tokens.length; i++) {
 						contents = contents.replace(new RegExp(`${tokens[i]}`, "g"), i + "");
 					}
-					console.log({ contents });
 					return { contents, loader: "ts" };
 				});
 			},
