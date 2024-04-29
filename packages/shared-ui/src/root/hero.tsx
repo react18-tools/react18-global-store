@@ -2,6 +2,7 @@ import styles from "../root-layout.module.css";
 import { Logo } from "../common/logo";
 import Counter from "./counter";
 import Display from "./display";
+import PersistantCounter from "./persistant-counter";
 
 export function Hero() {
 	return (
@@ -25,6 +26,10 @@ export function Hero() {
 				<div className={styles.center}>
 					<Counter />
 					<Display />
+				</div>
+				<p>Persistant counter - Also synced with multiple tabs</p>
+				<div className={styles.center}>
+					<PersistantCounter />
 				</div>
 			</div>
 		</div>

@@ -1,5 +1,15 @@
 # r18gs
 
+## 0.2.0
+
+### Minor Changes
+
+- 81b9d3f: Make the library extensible with plugins
+
+### Patch Changes
+
+- Add Persist and Sync plugin
+
 ## 0.1.4
 
 ### Patch Changes

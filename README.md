@@ -16,8 +16,6 @@ Thus, I decided to create a bare minimum, ultra-light store that creates shared 
 
 ✅ Works with all build systems/tools/frameworks for React18
 
-✅ Works for both client side and server side components (be careful, separate states are created for server side and client side. Any changes done on client side will not affect the server components.)
-
 ✅ Doccumented with [Typedoc](https://react18-tools.github.io/react18-global-store) ([Docs](https://react18-tools.github.io/react18-global-store))
 
 ✅ Next.js, Vite and Remix examples
@@ -53,7 +51,7 @@ and make this state accessible to all client components.
 const [state, setState] = useRGS<number>("counter", 1);
 ```
 
-You can access the same state across all client side components using unique.
+You can access the same state across all client side components using unique key.
 
 > It is recommended to store your keys in separate file to avoid typos and unnecessary conflicts.
 
@@ -106,30 +104,9 @@ export default function Counter() {
 }
 ```
 
-## Contribute
+## Contributing
 
-### Build
-
-To build all apps and packages, run the following command:
-
-```
-cd react18-global-store
-pnpm build
-```
-
-### Develop
-
-To develop all apps and packages, run the following command:
-
-```
-cd react18-global-store
-pnpm dev
-```
-
-Also, please
-
-1. check out discussion for providing any feedback or sugestions.
-2. Report any issues or feature requests in issues tab
+See [contributing.md](/contributing.md)
 
 ### 🤩 Don't forger to star [this repo](https://github.com/mayank1513/react18-global-store)!
 

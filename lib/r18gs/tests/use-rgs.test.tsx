@@ -3,8 +3,10 @@ import { act, fireEvent, render, screen } from "@testing-library/react";
 import useRGS from "../src";
 import { ChangeEvent, useCallback } from "react";
 
+const COUNT_RGS_KEY = "count";
+
 function Component1() {
-	const [count, setCount] = useRGS<number>("count", 0);
+	const [count, setCount] = useRGS<number>(COUNT_RGS_KEY, 0);
 	const handleChange = useCallback(
 		(e: ChangeEvent<HTMLInputElement>) => {
 			setCount(parseInt(e.target.value));
@@ -19,7 +21,7 @@ function Component1() {
 }
 
 function Component2() {
-	const [count] = useRGS<number>("count");
+	const [count] = useRGS<number>(COUNT_RGS_KEY);
 	return <h1 data-testid="display">{count}</h1>;
 }
 
