@@ -8,7 +8,6 @@ export default defineConfig(options => ({
 	clean: true,
 	bundle: true,
 	minify: !options.watch,
-	legacyOutput: true,
 	esbuildPlugins: [
 		{
 			name: "improve-minify",
