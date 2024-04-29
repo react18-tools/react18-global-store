@@ -1,5 +1,11 @@
 # r18gs
 
+## 0.1.4
+
+### Patch Changes
+
+- Fix ESM builds
+
 ## 0.1.3
 
 ### Patch Changes
