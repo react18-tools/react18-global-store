@@ -3,7 +3,7 @@ import { Plugin } from "..";
 function persistAndSyncPlugin<T>(): Plugin<T> {
 	return {
 		init(key, value, _, mutate) {
-			if (typeof window == undefined) return;
+			if (typeof window === "undefined") return;
 			const persistedValue = localStorage.getItem(key);
 			const newVal = JSON.parse(persistedValue || "{}").val;
 			if (newVal) mutate(newVal);
@@ -16,7 +16,7 @@ function persistAndSyncPlugin<T>(): Plugin<T> {
 			});
 		},
 		onChange(key, value) {
-			if (typeof window !== undefined) {
+			if (typeof window !== "undefined") {
 				localStorage.setItem(key, JSON.stringify({ val: value }));
 			}
 		},
