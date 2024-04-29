@@ -30,7 +30,7 @@ export default defineConfig(options => ({
 						.split(",")
 						.map((t, i) => ({ token: t.trim(), i }));
 
-					tokens.sort((a, b) => a.token.length - b.token.length);
+					tokens.sort((a, b) => b.token.length - a.token.length);
 
 					for (const t of tokens) {
 						contents = contents.replace(new RegExp(`${t.token}`, "g"), t.i + "");

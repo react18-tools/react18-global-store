@@ -7,11 +7,14 @@
 			"dependsOn": ["^build"]
 		},
 		"lint": {},
-		"test": {},
+		"test": {
+			"dependsOn": ["^build"]
+		},
 		"doc": {},
 		"dev": {
 			"cache": false,
-			"persistent": true
+			"persistent": true,
+			"dependsOn": ["^build"]
 		}
 	}
 }

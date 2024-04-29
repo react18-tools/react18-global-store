@@ -74,13 +74,14 @@ async function initPlugins<T>(key: string, plugins: Plugin<T>[]) {
 	const rgs = globalRGS[key] as RGS;
 	/** Mutate function to update the value and server value */
 	const mutate: Mutate<T> = (newValue, newServerValue) => {
-		[rgs[VALUE], rgs[SERVER_VALUE]] = [newValue, newServerValue];
+		rgs[VALUE] = newValue;
+		rgs[SERVER_VALUE] = newServerValue;
+		triggerListeners(rgs);
 	};
-	for (const ext of plugins) {
+	for (const plugin of plugins) {
 		/** Next plugins initializer will get the new value if updated by previous one */
-		await ext.init?.(key, rgs[VALUE] as T, rgs[SERVER_VALUE] as T, mutate);
+		await plugin.init?.(key, rgs[VALUE] as T, rgs[SERVER_VALUE] as T, mutate);
 	}
-	triggerListeners(rgs);
 	allExtentionsInitialized = true;
 }
 
@@ -91,15 +92,16 @@ export function initWithPlugins<T>(
 	serverValue?: T,
 	plugins: Plugin<T>[] = [],
 ) {
-	const listeners: Listener[] = [];
 	/** setter function to set the state. */
 	const setterWithPlugins: SetStateAction<unknown> = val => {
 		/** Do not allow mutating the store before all extentions are initialized */
 		if (!allExtentionsInitialized) return;
-		createSetter(key)(val);
+		const rgs = globalRGS[key] as RGS;
+		rgs[VALUE] = val instanceof Function ? val(rgs[VALUE] as T) : val;
+		triggerListeners(rgs);
 		plugins.forEach(plugin => plugin.onChange?.(key, rgs[VALUE] as T, rgs[SERVER_VALUE] as T));
 	};
 
-	globalRGS[key] = [value, serverValue, listeners, setterWithPlugins, createSubcriber(key)];
+	globalRGS[key] = [value, serverValue, [], setterWithPlugins, createSubcriber(key)];
 	initPlugins(key, plugins);
 }

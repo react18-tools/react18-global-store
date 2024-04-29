@@ -1,22 +1,26 @@
 import { Plugin } from "..";
 
-const persistAndSyncExtension: Plugin<unknown> = {
-	init(key, value, _, mutate) {
-		if (window !== undefined && localStorage !== undefined) {
+function persistAndSyncPlugin<T>(): Plugin<T> {
+	return {
+		init(key, value, _, mutate) {
+			if (typeof window == undefined) return;
 			const persistedValue = localStorage.getItem(key);
-			if (persistedValue) {
-				mutate(JSON.parse(persistedValue).val);
-			}
+			const newVal = JSON.parse(persistedValue || "{}").val;
+			if (newVal) mutate(newVal);
+
 			addEventListener("storage", e => {
 				if (e.key === key && e.newValue) {
-					mutate(JSON.parse(e.newValue).val);
+					const newVal = JSON.parse(e.newValue).val;
+					if (newVal !== undefined) mutate(newVal);
 				}
 			});
-		}
-	},
-	onChange(key, value) {
-		if (window !== undefined && localStorage !== undefined) {
-			localStorage.setItem(key, JSON.stringify({ val: value }));
-		}
-	},
-};
+		},
+		onChange(key, value) {
+			if (typeof window !== undefined) {
+				localStorage.setItem(key, JSON.stringify({ val: value }));
+			}
+		},
+	};
+}
+
+export default persistAndSyncPlugin;

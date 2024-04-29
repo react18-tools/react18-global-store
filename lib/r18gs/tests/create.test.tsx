@@ -1,12 +1,15 @@
 import { describe, test } from "vitest";
 import { act, fireEvent, render, screen } from "@testing-library/react";
-import useRGS from "../src";
+import { create } from "../src/with-plugins";
+import persistAndSyncPlugin from "../src/plugins/persist-and-sync";
 import { ChangeEvent, useCallback } from "react";
 
-const COUNT_RGS_KEY = "count";
+const COUNTER_RGS_KEY = "count";
+
+const useMyRGS = create(COUNTER_RGS_KEY, 0, 0, [persistAndSyncPlugin()]);
 
 function Component1() {
-	const [count, setCount] = useRGS<number>(COUNT_RGS_KEY, 0);
+	const [count, setCount] = useMyRGS();
 	const handleChange = useCallback(
 		(e: ChangeEvent<HTMLInputElement>) => {
 			setCount(parseInt(e.target.value));
@@ -21,7 +24,7 @@ function Component1() {
 }
 
 function Component2() {
-	const [count] = useRGS<number>(COUNT_RGS_KEY);
+	const [count] = useMyRGS();
 	return <h1 data-testid="display">{count}</h1>;
 }
 
