@@ -2,6 +2,7 @@ name: Publish to NPM
 
 # publish only when package json has changed - assuming version upgrade
 on:
+  workflow_dispatch:
   push:
     branches: [main]
     paths: "lib/r18gs/package.json"
@@ -37,6 +38,7 @@ jobs:
         run: pnpm test
       - name: publish to NPM
         run: pnpm build && pnpm publish-package
+        continue-on-error: true
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -45,7 +47,7 @@ jobs:
 
       - name: Create GitHub release
         run: |
-          v=$(node.exe -p -e "require('./package.json').version")
+          v=$(node -p -e "require('./package.json').version")
           gh release create $v --generate-notes --latest -F CHANGELOG.md --title "Release $v"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
