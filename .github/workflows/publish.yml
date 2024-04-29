@@ -22,11 +22,11 @@ jobs:
         working-directory: ./lib/r18gs
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           node-version: 20
           registry-url: https://registry.npmjs.org
@@ -35,30 +35,26 @@ jobs:
         # fail and not publish if any of the unit tests are failing
       - name: Test
         run: pnpm test
-      - name: Create release and publish to NPM
+      - name: publish to NPM
         run: pnpm build && pnpm publish-package
-        # continue on error to publish scoped package name <- by default repo is setup for a non-scoped + scoped package name
-        continue-on-error: true
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OWNER: ${{ github.event.repository.owner.login }}
           REPO: ${{ github.event.repository.name }}
 
-      - name: Publish Scoped package to NPM
-        # continue on error - expecing npm to trow error if scoping is done twice
-        continue-on-error: true
-        run: cd dist && node ../scope.js && npm publish --provenance --access public && cd ..
+      - name: Create GitHub release
+        run: |
+          v=$(node.exe -p -e "require('./package.json').version")
+          gh release create $v --generate-notes --latest -F CHANGELOG.md --title "Release $v"
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
-          TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          OWNER: ${{ github.event.repository.owner.login }}
-          REPO: ${{ github.event.repository.name }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Publish package with long name for better SEO
+      - name: Publish canonical packages
         continue-on-error: true
         run: |
-          cd dist
+          sed -i -e "s/.*name.*/\t\"name\": \"@mayank1513\/r18gs\",/" package.json
+          npm publish --provenance --access public
           sed -i -e "s/.*name.*/\t\"name\": \"react18-global-store\",/" package.json
           npm publish --provenance --access public
           sed -i -e "s/.*name.*/\t\"name\": \"react18-store\",/" package.json

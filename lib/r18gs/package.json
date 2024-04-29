@@ -4,8 +4,12 @@
 	"private": false,
 	"version": "0.1.4",
 	"description": "A simple yet elegant, light weight, react18 global store to replace Zustand for better tree shaking.",
-	"main": "./index.ts",
-	"types": "./index.ts",
+	"main": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"module": "./dist/index.mjs",
+	"files": [
+		"dist/**"
+	],
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/react18-tools/react18-global-store.git"
@@ -18,9 +22,9 @@
 	"license": "MIT",
 	"scripts": {
 		"test": "vitest run --coverage",
-		"build": "tsup src && tsc -p tsconfig-build.json && node touchup.js",
+		"build": "tsup src && tsc -p tsconfig-build.json",
 		"doc": "cp ../../README.md . && typedoc",
-		"publish-package": "cd dist && npm publish --provenance --access public",
+		"publish-package": "cp ../../README.md . && npm publish --provenance --access public",
 		"lint": "eslint ."
 	},
 	"devDependencies": {
