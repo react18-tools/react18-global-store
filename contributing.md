@@ -1,4 +1,52 @@
-# Contributing to fork-me
+# Contributing to r18gs
+
+## Contribute
+
+Once you have cloned the repo. `cd` to the repo directory and use following commands.
+
+### Build
+
+To build all apps and packages, run the following command:
+
+```bash
+pnpm build
+```
+
+### Develop
+
+To develop all apps and packages, run the following command:
+
+```bash
+pnpm dev
+```
+
+### Run unit tests
+
+To run unit tests, run the following command:
+
+```bash
+pnpm test
+```
+
+### Linting and formating
+
+Before creating PR make sure lint is passing and also run formatter to properly format the code.
+
+```bash
+pnpm lint
+```
+
+and
+
+```bash
+pnpm format
+```
+
+You can also contribute by
+
+1. Sponsoring
+2. Check out discussion for providing any feedback or sugestions.
+3. Report any issues or feature requests in issues tab
 
 ## What's inside?
 
@@ -10,18 +58,25 @@ This Turborepo has some additional tools already setup for you:
 - [ESLint](https://eslint.org/) for code linting
 - [Prettier](https://prettier.io) for code formatting
 
-### Apps and Packages
+### Library, Examples and Packages
 
 This Turborepo includes the following packages/examples:
 
+#### React18 Global Store library
+
+You will find the core library code inside lib/r18gs
+
+#### Examples (/examples)
+
 - `nextjs`: a [Next.js](https://nextjs.org/) app
 - `vite`: a [Vite.js](https://vitest.dev) app
+- `remix`: a [Remix](https://remix.run/) app
+
+#### Packages (/packages)
+
 - `eslint-config-custom`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
 - `tsconfig`: `tsconfig.json`s used throughout the monorepo
-
-To increase the visibility we have moved core library to lib
-
-- `fork-me`: a React component library shared by both `nextjs` and `vite` examples lives in `./lib/fork-me`
+- `shared-ui`: An internal UI package for shared UI code
 
 Each package/example is 100% [TypeScript](https://www.typescriptlang.org/).
 
@@ -29,48 +84,6 @@ Each package/example is 100% [TypeScript](https://www.typescriptlang.org/).
 
 - just run `yarn turbo gen` and follow the propts to auto generate your new component with test file and dependency linking
 - follow best practices automatically
-
-### Build
-
-To build all apps and packages, run the following command:
-
-```bash
-cd r18gs
-pnpm build
-```
-
-### Develop
-
-To develop all apps and packages, run the following command:
-
-```bash
-cd r18gs
-pnpm dev
-```
-
-### Run unit tests
-
-To run unit tests, run the following command:
-
-```bash
-cd r18gs
-pnpm test
-```
-
-### Linting and formating
-
-Before creating PR make sure lint is passing and also run formatter to properly format the code.
-
-```bash
-cd r18gs
-pnpm lint
-```
-
-and
-
-```bash
-pnpm format
-```
 
 ## Useful Links
 
@@ -88,5 +101,7 @@ Learn more about Turborepo and Next.js:
 > A quick tip: Delete all stale branches `git branch --merged main | grep -v '^[ *]*main$' | xargs git branch -d`
 
 <hr />
+
+### 🤩 Don't forger to star [this repo](https://github.com/mayank1513/react18-global-store)!
 
 <p align="center" style="text-align:center">with 💖 by <a href="https://mayank-chaudhari.vercel.app" target="_blank">Mayank Kumar Chaudhari</a></p>
