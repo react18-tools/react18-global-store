@@ -8,6 +8,9 @@ const COUNTER_RGS_KEY = "count";
 
 const useMyRGS = create(COUNTER_RGS_KEY, 0, 0, [persistAndSyncPlugin()]);
 
+const TESTID_INPUT = "in1";
+const TESTID_DISPLAY = "d1";
+
 function Component1() {
 	const [count, setCount] = useMyRGS();
 	const handleChange = useCallback(
@@ -18,21 +21,41 @@ function Component1() {
 	);
 	return (
 		<div>
-			<input data-testid="input" onChange={handleChange} type="number" value={count} />
+			<input data-testid={TESTID_INPUT} onChange={handleChange} type="number" value={count} />
 		</div>
 	);
 }
 
 function Component2() {
 	const [count] = useMyRGS();
-	return <h1 data-testid="display">{count}</h1>;
+	console.log("c2", { count });
+	return <h1 data-testid={TESTID_DISPLAY}>{count}</h1>;
 }
 
 describe("React18GlobalStore", () => {
 	test("check state update to multiple components", async ({ expect }) => {
 		render(<Component1 />);
 		render(<Component2 />);
-		await act(() => fireEvent.input(screen.getByTestId("input"), { target: { value: 5 } }));
-		expect(screen.getByTestId("display").textContent).toBe("5");
+		/** Await and allow for the state to update from localStorate */
+		await new Promise(resolve => setTimeout(resolve, 100));
+		await act(() => fireEvent.input(screen.getByTestId(TESTID_INPUT), { target: { value: 5 } }));
+		expect(screen.getByTestId(TESTID_DISPLAY).textContent).toBe("5");
+		expect(JSON.parse(localStorage.getItem(COUNTER_RGS_KEY) ?? "{}").val).toBe(5);
+	});
+
+	test("storage event", async ({ expect }) => {
+		render(<Component1 />);
+		render(<Component2 />);
+		/** Await and allow for the state to update from localStorate */
+		await new Promise(resolve => setTimeout(resolve, 100));
+		await act(() =>
+			window.dispatchEvent(
+				new StorageEvent("storage", {
+					key: COUNTER_RGS_KEY,
+					newValue: JSON.stringify({ val: 15 }),
+				}),
+			),
+		);
+		expect(screen.getByTestId(TESTID_DISPLAY).textContent).toBe("15");
 	});
 });
