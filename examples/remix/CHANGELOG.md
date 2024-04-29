@@ -1,5 +1,15 @@
 # remix-example
 
+## 0.0.11
+
+### Patch Changes
+
+- 81b9d3f: Make the library extensible with plugins
+- Updated dependencies [81b9d3f]
+- Updated dependencies
+  - r18gs@0.2.0
+  - shared-ui@0.0.0
+
 ## 0.0.10
 
 ### Patch Changes
