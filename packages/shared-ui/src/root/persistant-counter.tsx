@@ -3,6 +3,11 @@
 import { ChangeEvent, useCallback } from "react";
 import { useMyPersistantCounterStore } from "../../hooks/use-persistant-counter";
 
+/**
+ * Persistant Counter
+ *
+ * @returns {JSX.Element}
+ */
 export default function PersistantCounter() {
 	const [count, setCount] = useMyPersistantCounterStore();
 

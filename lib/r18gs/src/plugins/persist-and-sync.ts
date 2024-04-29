@@ -1,5 +1,10 @@
 import { Plugin } from "..";
 
+/**
+ * A plugin that persists and syncs RGS store between tabs.
+ *
+ * @returns A plugin that persists and syncs a value between tabs.
+ */
 function persistAndSyncPlugin<T>(): Plugin<T> {
 	return {
 		init(key, value, _, mutate) {
