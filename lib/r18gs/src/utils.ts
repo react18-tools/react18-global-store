@@ -10,7 +10,7 @@ export type SetStateAction<T> = (value: SetterArgType<T>) => void;
  * This is a hack to reduce lib size + readability + not encouraging direct access to globalThis
  */
 const [VALUE, LISTENERS, SETTER, SUBSCRIBER] = [0, 1, 2, 3, 4];
-type RGS = [unknown, Listener[], SetStateAction<unknown>, Subscriber];
+type RGS = [unknown, Listener[], SetStateAction<unknown> | null, Subscriber];
 
 declare global {
 	// eslint-disable-next-line no-var -- var required for global declaration.
@@ -77,7 +77,17 @@ async function initPlugins<T>(key: string, plugins: Plugin<T>[]) {
 }
 
 /** Initialize the named store when invoked for the first time. */
-export function initWithPlugins<T>(key: string, value?: T, plugins: Plugin<T>[] = []) {
+export function initWithPlugins<T>(
+	key: string,
+	value?: T,
+	plugins: Plugin<T>[] = [],
+	doNotInit = false,
+) {
+	if (doNotInit) {
+		/** You will not have access to the setter until initialized */
+		globalRGS[key] = [value, [], null, createSubcriber(key)];
+		return;
+	}
 	/** setter function to set the state. */
 	const setterWithPlugins: SetStateAction<unknown> = val => {
 		/** Do not allow mutating the store before all extentions are initialized */
@@ -88,6 +98,37 @@ export function initWithPlugins<T>(key: string, value?: T, plugins: Plugin<T>[] 
 		plugins.forEach(plugin => plugin.onChange?.(key, rgs[VALUE] as T));
 	};
 
-	globalRGS[key] = [value, [], setterWithPlugins, createSubcriber(key)];
+	const rgs = globalRGS[key];
+	if (rgs) {
+		rgs[VALUE] = value;
+		rgs[SETTER] = setterWithPlugins;
+	} else globalRGS[key] = [value, [], setterWithPlugins, createSubcriber(key)];
 	initPlugins(key, plugins);
+}
+
+/**
+ * Use this hook similar to `useState` hook.
+ * The difference is that you need to pass a
+ * unique key - unique across the app to make
+ * this state accessible to all client components.
+ *
+ * @example
+ * ```tsx
+ * const [state, setState] = useRGS<number>("counter", 1);
+ * ```
+ *
+ * @param key - Unique key to identify the store.
+ * @param value - Initial value of the store.
+ * @param plugins - Plugins to be applied to the store.
+ * @param doNotInit - Do not initialize the store. Useful when you want to initialize the store later. Note that the setter function is not available until the store is initialized.
+ * @returns - A tuple (Ordered sequance of values) containing the state and a function to set the state.
+ */
+export function useRGSWithPlugins<T>(
+	key: string,
+	value?: T,
+	plugins?: Plugin<T>[],
+	doNotInit = false,
+): [T, SetStateAction<T>] {
+	if (!globalRGS[key]?.[SETTER]) initWithPlugins(key, value, plugins, doNotInit);
+	return createHook<T>(key);
 }
