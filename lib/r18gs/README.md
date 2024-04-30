@@ -4,9 +4,9 @@
 
 ## Motivation
 
-I have built wonderful libraries utilizing React18 features using Zustand. They worked awesome. However, when I try importing from specific folder for better tree-shaking, the libraries fail. This is because, for each import a separate zustand store is created. This actually increases the package size also.
+I've developed fantastic libraries leveraging React18 features using Zustand, and they performed admirably. However, when attempting to import from specific folders for better tree-shaking, the libraries encountered issues. Each import resulted in a separate Zustand store being created, leading to increased package size.
 
-Thus, I decided to create a bare minimum, ultra-light store that creates shared state even while importing components from separate files for better treeshaking.
+As a solution, I set out to create a lightweight, bare minimum store that facilitates shared state even when importing components from separate files, optimizing tree-shaking.
 
 ## Features
 
@@ -14,109 +14,55 @@ Thus, I decided to create a bare minimum, ultra-light store that creates shared 
 
 ✅ Unleash the full power of React18 Server components
 
-✅ Works with all build systems/tools/frameworks for React18
+✅ Compatible with all build systems/tools/frameworks for React18
 
-✅ Doccumented with [Typedoc](https://react18-tools.github.io/react18-global-store) ([Docs](https://react18-tools.github.io/react18-global-store))
+✅ Documented with [Typedoc](https://react18-tools.github.io/react18-global-store) ([Docs](https://react18-tools.github.io/react18-global-store))
 
-✅ Next.js, Vite and Remix examples
+✅ Examples for Next.js, Vite, and Remix
 
-## Install
+## Simple Global State Shared Across Multiple Components
 
-> A canonical package with longer name is also published `react18-global-store`
-
-```bash
-$ pnpm add r18gs
-```
-
-or
-
-```bash
-$ npm install r18gs
-```
-
-or
-
-```bash
-$ yarn add r18gs
-```
-
-## Usage
-
-Use this hook similar to `useState` hook.
-
-The difference is that you need to pass an unique key - unique across the app to identify
-and make this state accessible to all client components.
+Utilize this hook similarly to the `useState` hook. However, ensure to pass a unique key, unique across the app, to identify and make this state accessible to all client components.
 
 ```tsx
 const [state, setState] = useRGS<number>("counter", 1);
 ```
 
-You can access the same state across all client side components using unique key.
+> For detailed instructions, see [Getting Started](./md-docs/1.getting-started.md)
 
-> It is recommended to store your keys in separate file to avoid typos and unnecessary conflicts.
+## Using Plugins
 
-### Example
-
-```tsx
-// constants/global-states.ts
-export const COUNTER = "counter";
-```
+Enhance the functionality of the store by leveraging either the `create` function, `withPlugins` function, or the `useRGSWithPlugins` hook from `r18gs/dist/with-plugins`, enabling features such as storing to local storage, among others.
 
 ```tsx
-// components/display.tsx
-"use client";
+// store.ts
+import { create } from "r18gs/dist/with-plugins";
+import { persist } from "r18gs/dist/plugins"; /** You can create your own plugin or import third-party plugins */
 
-import useRGS from "r18gs";
-import { COUNTER } from "../constants/global-states";
-
-export default function Display() {
-	const [count] = useRGS<number>(COUNTER);
-	return (
-		<div>
-			<h2>Client component 2</h2>
-			<b>{count}</b>
-		</div>
-	);
-}
+export const useMyPersistentCounterStore = create<number>("persistent-counter", 0, [persist()]);
 ```
+
+Now, you can utilize `useMyPersistentCounterStore` similarly to `useState` without specifying an initial value.
 
 ```tsx
-// components/counter.tsx
-"use client";
-
-import useRGS from "r18gs";
-import { COUNTER } from "../constants/global-states";
-
-export default function Counter() {
-	const [count, setCount] = useRGS(COUNTER, 0);
-	return (
-		<div>
-			<h2>Clinet component 1</h2>
-			<input
-				onChange={e => {
-					setCount(parseInt(e.target.value.trim()));
-				}}
-				type="number"
-				value={count}
-			/>
-		</div>
-	);
-}
+const [persistedCount, setPersistedCount] = useMyPersistentCounterStore();
 ```
+
+> For detailed instructions, see [Leveraging Plugins](./md-docs/2.leveraging-plugins.md)
 
 ## Contributing
 
 See [contributing.md](/contributing.md)
 
-### 🤩 Don't forger to star [this repo](https://github.com/mayank1513/react18-global-store)!
+### 🤩 Don't forget to star [this repo](https://github.com/mayank1513/react18-global-store)!
 
-Want hands-on course for getting started with Turborepo? Check out [React and Next.js with TypeScript](https://mayank-chaudhari.vercel.app/courses/react-and-next-js-with-typescript) and [The Game of Chess with Next.js, React and TypeScrypt](https://www.udemy.com/course/game-of-chess-with-nextjs-react-and-typescrypt/?referralCode=851A28F10B254A8523FE)
+Interested in hands-on courses for getting started with Turborepo? Check out [React and Next.js with TypeScript](https://mayank-chaudhari.vercel.app/courses/react-and-next-js-with-typescript) and [The Game of Chess with Next.js, React and TypeScript](https://www.udemy.com/course/game-of-chess-with-nextjs-react-and-typescript/?referralCode=851A28F10B254A8523FE)
 
 ![Repo Stats](https://repobeats.axiom.co/api/embed/ec3e74d795ed805a0fce67c0b64c3f08872e7945.svg "Repobeats analytics image")
 
 ## License
 
-Licensed as MIT open source.
+Licensed under the MPL 2.0 open source license.
 
 <hr />
 
