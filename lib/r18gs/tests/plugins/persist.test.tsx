@@ -17,7 +17,7 @@ const persistOptions: PersistOptions[] = [
 
 describe("React18GlobalStore", () => {
 	persistOptions.forEach((options, i) => {
-		const COUNTER_RGS_KEY = "count" + i;
+		const COUNTER_RGS_KEY = `count-${i}`;
 		const useMyRGS = create(COUNTER_RGS_KEY, 0, [persist(options)]);
 
 		function Component1() {
@@ -40,28 +40,25 @@ describe("React18GlobalStore", () => {
 			return <h1 data-testid={TESTID_DISPLAY}>{count}</h1>;
 		}
 
-		test(
-			"check state update to multiple components: " + JSON.stringify(options),
-			async ({ expect }) => {
-				render(<Component1 />);
-				render(<Component2 />);
-				/** Await and allow for the state to update from localStorate */
-				await new Promise(resolve => setTimeout(resolve, 100));
-				await act(() =>
-					fireEvent.input(screen.getByTestId(TESTID_INPUT), { target: { value: 5 } }),
-				);
-				expect(screen.getByTestId(TESTID_DISPLAY).textContent).toBe("5");
-				console.log("sessionStorage --- ", sessionStorage.getItem(COUNTER_RGS_KEY), options);
-				console.log("localStorage --- ", localStorage.getItem(COUNTER_RGS_KEY));
-				expect(
-					JSON.parse(
-						((options.storage ?? "local") === "local" ? localStorage : sessionStorage).getItem(
-							COUNTER_RGS_KEY,
-						) ?? "{}",
-					).val,
-				).toBe(5);
-			},
-		);
+		test(`check state update to multiple components: ${JSON.stringify(options)}`, async ({
+			expect,
+		}) => {
+			render(<Component1 />);
+			render(<Component2 />);
+			/** Await and allow for the state to update from localStorate */
+			await new Promise(resolve => setTimeout(resolve, 100));
+			await act(() => fireEvent.input(screen.getByTestId(TESTID_INPUT), { target: { value: 5 } }));
+			expect(screen.getByTestId(TESTID_DISPLAY).textContent).toBe("5");
+			console.log("sessionStorage --- ", sessionStorage.getItem(COUNTER_RGS_KEY), options);
+			console.log("localStorage --- ", localStorage.getItem(COUNTER_RGS_KEY));
+			expect(
+				JSON.parse(
+					((options.storage ?? "local") === "local" ? localStorage : sessionStorage).getItem(
+						COUNTER_RGS_KEY,
+					) ?? "{}",
+				).val,
+			).toBe(5);
+		});
 
 		if (options.sync ?? true) {
 			test("storage event", async ({ expect }) => {
