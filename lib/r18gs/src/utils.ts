@@ -30,10 +30,9 @@ function triggerListeners(rgs: RGS) {
 export function createSubcriber(key: string): Subscriber {
 	return listener => {
 		const rgs = globalRGS[key] as RGS;
-		const listeners = rgs[LISTENERS] as Listener[];
-		listeners.push(listener);
+		(rgs[LISTENERS] as Listener[]).push(listener);
 		return () => {
-			rgs[LISTENERS] = listeners.filter(l => l !== listener);
+			rgs[LISTENERS] = (rgs[LISTENERS] as Listener[]).filter(l => l !== listener);
 		};
 	};
 }
@@ -43,7 +42,7 @@ export function createSetter<T>(key: string): SetStateAction<unknown> {
 	return val => {
 		const rgs = globalRGS[key] as RGS;
 		rgs[VALUE] = val instanceof Function ? val(rgs[VALUE] as T) : val;
-		triggerListeners(rgs);
+		(rgs[LISTENERS] as Listener[]).forEach(listener => listener());
 	};
 }
 
