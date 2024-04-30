@@ -20,89 +20,29 @@ Thus, I decided to create a bare minimum, ultra-light store that creates shared 
 
 ✅ Next.js, Vite and Remix examples
 
-## Install
+## Simple global state shared across multiple components
 
-> A canonical package with longer name is also published `react18-global-store`
-
-```bash
-$ pnpm add r18gs
-```
-
-or
-
-```bash
-$ npm install r18gs
-```
-
-or
-
-```bash
-$ yarn add r18gs
-```
-
-## Usage
-
-Use this hook similar to `useState` hook.
-
-The difference is that you need to pass an unique key - unique across the app to identify
-and make this state accessible to all client components.
+Utilize this hook similarly to the `useState` hook. However, ensure to pass a unique key, unique across the app, to identify and make this state accessible to all client components.
 
 ```tsx
 const [state, setState] = useRGS<number>("counter", 1);
 ```
 
-You can access the same state across all client side components using unique key.
+> For detailed instructions see [Getting Started](./md-docs/getting-started.md)
 
-> It is recommended to store your keys in separate file to avoid typos and unnecessary conflicts.
+## Using Plugins
 
-### Example
-
-```tsx
-// constants/global-states.ts
-export const COUNTER = "counter";
-```
+You can enhance the functionality of the store by utilizing either the `create` function or the `useRGSWithPlugins` hook from `r18gs/dist/with-plugins`, enabling features such as storing to local storage, among others.
 
 ```tsx
-// components/display.tsx
-"use client";
+// store.ts
+import { create } from "r18gs/dist/with-plugins";
+import { persist } from "r18gs/dist/plugins"; /** You can create your own plugin or import third party plugin */
 
-import useRGS from "r18gs";
-import { COUNTER } from "../constants/global-states";
-
-export default function Display() {
-	const [count] = useRGS<number>(COUNTER);
-	return (
-		<div>
-			<h2>Client component 2</h2>
-			<b>{count}</b>
-		</div>
-	);
-}
+export const useMyPersistentCounterStore = create<number>("persistent-counter", 0, [persist()]);
 ```
 
-```tsx
-// components/counter.tsx
-"use client";
-
-import useRGS from "r18gs";
-import { COUNTER } from "../constants/global-states";
-
-export default function Counter() {
-	const [count, setCount] = useRGS(COUNTER, 0);
-	return (
-		<div>
-			<h2>Clinet component 1</h2>
-			<input
-				onChange={e => {
-					setCount(parseInt(e.target.value.trim()));
-				}}
-				type="number"
-				value={count}
-			/>
-		</div>
-	);
-}
-```
+Now you can use `useMyPersistentCounterStore` similar to `useState` without any initial value.
 
 ## Contributing
 

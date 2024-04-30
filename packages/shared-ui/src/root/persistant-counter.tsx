@@ -1,7 +1,7 @@
 "use client";
 
 import { ChangeEvent, useCallback } from "react";
-import { useMyPersistantCounterStore } from "../../hooks/use-persistant-counter";
+import { useMyPersistentCounterStore } from "../../hooks/use-persistant-counter";
 
 /**
  * Persistant Counter
@@ -9,7 +9,7 @@ import { useMyPersistantCounterStore } from "../../hooks/use-persistant-counter"
  * @returns {JSX.Element}
  */
 export default function PersistantCounter() {
-	const [count, setCount] = useMyPersistantCounterStore();
+	const [count, setCount] = useMyPersistentCounterStore();
 
 	const handleChange = useCallback(
 		(e: ChangeEvent<HTMLInputElement>) => {
