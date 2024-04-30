@@ -5,11 +5,10 @@ import { persist } from "../src/plugins/persist";
 import { ChangeEvent, useCallback } from "react";
 
 const COUNTER_RGS_KEY = "count";
-
-const useMyRGS = create(COUNTER_RGS_KEY, 0, [persist()]);
-
 const TESTID_INPUT = "in1";
 const TESTID_DISPLAY = "d1";
+
+const useMyRGS = create(COUNTER_RGS_KEY, 0, [persist({ storage: "cookie" })]);
 
 function Component1() {
 	const [count, setCount] = useMyRGS();
@@ -28,7 +27,6 @@ function Component1() {
 
 function Component2() {
 	const [count] = useMyRGS();
-	console.log("c2", { count });
 	return <h1 data-testid={TESTID_DISPLAY}>{count}</h1>;
 }
 
@@ -40,7 +38,7 @@ describe("React18GlobalStore", () => {
 		await new Promise(resolve => setTimeout(resolve, 100));
 		await act(() => fireEvent.input(screen.getByTestId(TESTID_INPUT), { target: { value: 5 } }));
 		expect(screen.getByTestId(TESTID_DISPLAY).textContent).toBe("5");
-		expect(JSON.parse(localStorage.getItem(COUNTER_RGS_KEY) ?? "{}").val).toBe(5);
+		expect(JSON.parse(sessionStorage.getItem(COUNTER_RGS_KEY) ?? "{}").val).toBe(5);
 	});
 
 	test("storage event", async ({ expect }) => {

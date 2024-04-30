@@ -1,6 +1,6 @@
 import { Plugin } from "..";
 
-interface PersistOptions {
+export interface PersistOptions {
 	/** @defaultValue true */
 	sync?: boolean;
 	/** @defaultValue local */
@@ -11,9 +11,8 @@ interface PersistOptions {
 function getItem(key: string, options?: PersistOptions) {
 	const cookie = document.cookie.split("; ").find(c => c.startsWith(key));
 	switch (options?.storage) {
-		case "cookie": {
+		case "cookie":
 			return cookie?.split("=")[1];
-		}
 		case "session":
 			return sessionStorage.getItem(key);
 		default:
