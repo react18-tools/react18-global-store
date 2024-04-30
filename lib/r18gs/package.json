@@ -23,7 +23,7 @@
 	"scripts": {
 		"test": "vitest run --coverage",
 		"build": "tsup src && tsc -p tsconfig-build.json",
-		"doc": "cp ../../README.md . && typedoc",
+		"doc": "cp ../../README.md . && typedoc && cp -r ../../md-docs ../../docs/",
 		"publish-package": "cp ../../README.md . && npm publish --provenance --access public",
 		"lint": "eslint ."
 	},
