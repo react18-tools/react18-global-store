@@ -36,8 +36,9 @@ export function create<T>(
  */
 export function withPlugins<T>(
 	plugins?: Plugin<T>[],
-): (key: string, value?: T) => [T, SetStateAction<T>] {
+): (key: string, value?: T, doNotInit?: boolean) => [T, SetStateAction<T>] {
 	/**
+	 * todo - this typedoc comments are not visible in IDE suggestions - fix this
 	 * @param key - Unique key to identify the store.
 	 * @param value - Initial value of the store.
 	 * @param doNotInit - @defaultValue false - Do not initialize the store. Useful when you want to initialize the store later. Note that the setter function is not available until the store is initialized.

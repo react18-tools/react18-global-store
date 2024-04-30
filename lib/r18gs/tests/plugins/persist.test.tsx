@@ -49,8 +49,6 @@ describe("React18GlobalStore", () => {
 			await new Promise(resolve => setTimeout(resolve, 100));
 			await act(() => fireEvent.input(screen.getByTestId(TESTID_INPUT), { target: { value: 5 } }));
 			expect(screen.getByTestId(TESTID_DISPLAY).textContent).toBe("5");
-			console.log("sessionStorage --- ", sessionStorage.getItem(COUNTER_RGS_KEY), options);
-			console.log("localStorage --- ", localStorage.getItem(COUNTER_RGS_KEY));
 			expect(
 				JSON.parse(
 					((options.storage ?? "local") === "local" ? localStorage : sessionStorage).getItem(
