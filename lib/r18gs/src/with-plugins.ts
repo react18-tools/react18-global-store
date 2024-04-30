@@ -16,17 +16,15 @@ import type { Plugin, SetStateAction } from "./utils";
  *
  * @param key - Unique key to identify the store.
  * @param value - Initial value of the store.
- * @param serverValue - Server value of the store.
  * @param plugins - Plugins to be applied to the store.
  * @returns - A tuple (Ordered sequance of values) containing the state and a function to set the state.
  */
 export function useRGSWithPlugins<T>(
 	key: string,
 	value?: T,
-	serverValue?: T,
 	plugins?: Plugin<T>[],
 ): [T, SetStateAction<T>] {
-	if (!globalRGS[key]) initWithPlugins(key, value, serverValue, plugins);
+	if (!globalRGS[key]) initWithPlugins(key, value, plugins);
 	return createHook<T>(key);
 }
 
@@ -39,7 +37,7 @@ export function useRGSWithPlugins<T>(
  * @example
  * ```tsx
  * // in hook file
- * export const useRGS = create<type>(key, value, serverValue, plugins);
+ * export const useRGS = create<type>(key, value, plugins);
  *
  * // in component file
  * const [state, setState] = useRGS();
@@ -47,15 +45,13 @@ export function useRGSWithPlugins<T>(
  *
  * @param key - Unique key to identify the store.
  * @param value - Initial value of the store.
- * @param serverValue - Server value of the store.
  * @param plugins - Plugins to be applied to the store.
  * @returns - A hook funciton that returns a tuple (Ordered sequance of values) containing the state and a function to set the state.
  */
 export function create<T>(
 	key: string,
 	value?: T,
-	serverValue?: T,
 	plugins?: Plugin<T>[],
 ): () => [T, SetStateAction<T>] {
-	return () => useRGSWithPlugins(key, value, serverValue, plugins);
+	return () => useRGSWithPlugins(key, value, plugins);
 }

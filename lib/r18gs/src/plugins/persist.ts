@@ -7,7 +7,7 @@ import { Plugin } from "..";
  */
 function persistAndSyncPlugin<T>(): Plugin<T> {
 	return {
-		init(key, value, _, mutate) {
+		init(key, _, mutate) {
 			if (typeof window === "undefined") return;
 			const persistedValue = localStorage.getItem(key);
 			const newVal = JSON.parse(persistedValue || "{}").val;

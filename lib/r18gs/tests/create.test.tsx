@@ -1,12 +1,12 @@
 import { describe, test } from "vitest";
 import { act, fireEvent, render, screen } from "@testing-library/react";
 import { create } from "../src/with-plugins";
-import persistAndSyncPlugin from "../src/plugins/persist-and-sync";
+import persistAndSyncPlugin from "../src/plugins/persist";
 import { ChangeEvent, useCallback } from "react";
 
 const COUNTER_RGS_KEY = "count";
 
-const useMyRGS = create(COUNTER_RGS_KEY, 0, 0, [persistAndSyncPlugin()]);
+const useMyRGS = create(COUNTER_RGS_KEY, 0, [persistAndSyncPlugin()]);
 
 const TESTID_INPUT = "in1";
 const TESTID_DISPLAY = "d1";

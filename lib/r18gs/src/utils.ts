@@ -9,8 +9,8 @@ export type SetStateAction<T> = (value: SetterArgType<T>) => void;
 /**
  * This is a hack to reduce lib size + readability + not encouraging direct access to globalThis
  */
-const [VALUE, SERVER_VALUE, LISTENERS, SETTER, SUBSCRIBER] = [0, 1, 2, 3, 4];
-type RGS = [unknown, unknown, Listener[], SetStateAction<unknown>, Subscriber];
+const [VALUE, LISTENERS, SETTER, SUBSCRIBER] = [0, 1, 2, 3, 4];
+type RGS = [unknown, Listener[], SetStateAction<unknown>, Subscriber];
 
 declare global {
 	// eslint-disable-next-line no-var -- var required for global declaration.
@@ -54,44 +54,36 @@ export function createHook<T>(key: string): [T, SetStateAction<T>] {
 	const setRGState = rgs[SETTER] as SetStateAction<T>;
 	/** Function to get snapshot of the state. */
 	const getSnap = () => rgs[VALUE] as T;
-	/** Function to get server snapshot. Returns server value is provided else the default value. */
-	const getServerSnap = () => (rgs[SERVER_VALUE] ?? rgs[VALUE]) as T;
 
-	const val = useSyncExternalStore<T>(rgs[SUBSCRIBER] as Subscriber, getSnap, getServerSnap);
+	const val = useSyncExternalStore<T>(rgs[SUBSCRIBER] as Subscriber, getSnap);
 	return [val, setRGState];
 }
 
-type Mutate<T> = (value?: T, serverValue?: T) => void;
+type Mutate<T> = (value?: T) => void;
 
 export type Plugin<T> = {
-	init?: (key: string, value: T | undefined, serverValue: T | undefined, mutate: Mutate<T>) => void;
-	onChange?: (key: string, value?: T, serverValue?: T) => void;
+	init?: (key: string, value: T | undefined, mutate: Mutate<T>) => void;
+	onChange?: (key: string, value?: T) => void;
 };
 
 let allExtentionsInitialized = false;
 /** Initialize extestions - wait for previous plugins's promise to be resolved before processing next */
 async function initPlugins<T>(key: string, plugins: Plugin<T>[]) {
 	const rgs = globalRGS[key] as RGS;
-	/** Mutate function to update the value and server value */
-	const mutate: Mutate<T> = (newValue, newServerValue) => {
+	/** Mutate function to update the value */
+	const mutate: Mutate<T> = newValue => {
 		rgs[VALUE] = newValue;
-		rgs[SERVER_VALUE] = newServerValue;
 		triggerListeners(rgs);
 	};
 	for (const plugin of plugins) {
 		/** Next plugins initializer will get the new value if updated by previous one */
-		await plugin.init?.(key, rgs[VALUE] as T, rgs[SERVER_VALUE] as T, mutate);
+		await plugin.init?.(key, rgs[VALUE] as T, mutate);
 	}
 	allExtentionsInitialized = true;
 }
 
 /** Initialize the named store when invoked for the first time. */
-export function initWithPlugins<T>(
-	key: string,
-	value?: T,
-	serverValue?: T,
-	plugins: Plugin<T>[] = [],
-) {
+export function initWithPlugins<T>(key: string, value?: T, plugins: Plugin<T>[] = []) {
 	/** setter function to set the state. */
 	const setterWithPlugins: SetStateAction<unknown> = val => {
 		/** Do not allow mutating the store before all extentions are initialized */
@@ -99,9 +91,9 @@ export function initWithPlugins<T>(
 		const rgs = globalRGS[key] as RGS;
 		rgs[VALUE] = val instanceof Function ? val(rgs[VALUE] as T) : val;
 		triggerListeners(rgs);
-		plugins.forEach(plugin => plugin.onChange?.(key, rgs[VALUE] as T, rgs[SERVER_VALUE] as T));
+		plugins.forEach(plugin => plugin.onChange?.(key, rgs[VALUE] as T));
 	};
 
-	globalRGS[key] = [value, serverValue, [], setterWithPlugins, createSubcriber(key)];
+	globalRGS[key] = [value, [], setterWithPlugins, createSubcriber(key)];
 	initPlugins(key, plugins);
 }
