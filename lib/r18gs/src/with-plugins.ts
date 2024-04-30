@@ -18,7 +18,7 @@ import type { Plugin, SetStateAction } from "./utils";
  * @param key - Unique key to identify the store.
  * @param value - Initial value of the store.
  * @param plugins - Plugins to be applied to the store.
- * @returns - A hook funciton that returns a tuple (Ordered sequance of values) containing the state and a function to set the state.
+ * @returns - A hook function that returns a tuple (Ordered sequence of values) containing the state and a function to set the state.
  */
 export function create<T>(
 	key: string,
@@ -35,16 +35,24 @@ export function create<T>(
  * @returns A hook that automatically initializes the store (if not already initialized) with the given plugins.
  */
 export function withPlugins<T>(
-	plugins?: Plugin<T>[],
-): (key: string, value?: T, doNotInit?: boolean) => [T, SetStateAction<T>] {
+	plugins: Plugin<T>[],
+): <U = T>(key: string, value?: U, doNotInit?: boolean) => [U, SetStateAction<U>] {
 	/**
-	 * todo - this typedoc comments are not visible in IDE suggestions - fix this
+	 * Creates a hook similar to useRGS, with plugins applied on first invocation.
+	 *
 	 * @param key - Unique key to identify the store.
 	 * @param value - Initial value of the store.
-	 * @param doNotInit - @defaultValue false - Do not initialize the store. Useful when you want to initialize the store later. Note that the setter function is not available until the store is initialized.
+	 * @param doNotInit - If true, the store won't be initialized immediately. Defaults to false. Useful when you want to initialize the store later. Note that the setter function is not available until the store is initialized.
+	 * @returns A tuple containing the state value and its setter function.
 	 */
-	return (key: string, value?: T, doNotInit = false) =>
-		useRGSWithPlugins(key, value, plugins, doNotInit);
+	const hookWithPlugins = <U = T>(
+		key: string,
+		value?: U,
+		doNotInit = false,
+	): [U, SetStateAction<U>] =>
+		useRGSWithPlugins(key, value, plugins as unknown as Plugin<U>[], doNotInit);
+
+	return hookWithPlugins;
 }
 
 export { useRGSWithPlugins };

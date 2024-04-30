@@ -14,7 +14,7 @@ const TESTID_DISPLAY2 = "d2";
 
 const useMyRGS = create(COUNTER_RGS_KEY, 0, [persist({ storage: "cookie" })]);
 
-const useMyRGS2 = withPlugins<number>([persist()]);
+const useMyRGS2 = withPlugins([persist()]);
 
 function Component1() {
 	const [count, setCount] = useMyRGS();
