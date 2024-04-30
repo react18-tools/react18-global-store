@@ -1,6 +1,4 @@
 import { create } from "r18gs/dist/with-plugins";
-import persistNSyncPlugin from "r18gs/dist/plugins/persist-and-sync";
+import { persist } from "r18gs/dist/plugins";
 
-export const useMyPersistantCounterStore = create<number>("persistant-counter", 1, 1, [
-	persistNSyncPlugin(),
-]);
+export const useMyPersistentCounterStore = create<number>("persistent-counter", 1, [persist()]);

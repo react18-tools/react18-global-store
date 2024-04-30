@@ -2,7 +2,7 @@
 	"name": "r18gs",
 	"author": "Mayank Kumar Chaudhari <https://mayank-chaudhari.vercel.app>",
 	"private": false,
-	"version": "0.2.0",
+	"version": "1.0.0",
 	"description": "A simple yet elegant, light weight, react18 global store to replace Zustand for better tree shaking.",
 	"main": "./dist/index.js",
 	"types": "./dist/index.d.ts",
@@ -19,7 +19,7 @@
 	},
 	"homepage": "https://react18-global-store.vercel.app/",
 	"sideEffects": false,
-	"license": "MIT",
+	"license": "MPL-2.0",
 	"scripts": {
 		"test": "vitest run --coverage",
 		"build": "tsup src && tsc -p tsconfig-build.json",
@@ -42,6 +42,10 @@
 		"tsconfig": "workspace:*",
 		"tsup": "^8.0.2",
 		"typedoc": "^0.25.13",
+		"typedoc-plugin-mdn-links": "^3.1.23",
+		"typedoc-plugin-missing-exports": "^2.2.0",
+		"typedoc-plugin-rename-defaults": "^0.7.0",
+		"typedoc-plugin-zod": "^1.1.2",
 		"typescript": "^5.4.5",
 		"vite-tsconfig-paths": "^4.3.2",
 		"vitest": "^1.5.2"
@@ -50,10 +54,13 @@
 		"@types/react": "16.8 - 18",
 		"react": "16.8 - 18"
 	},
-	"funding": {
-		"type": "github",
-		"url": "https://github.com/sponsors/mayank1513"
-	},
+	"funding": [
+		{
+			"type": "github",
+			"url": "https://github.com/sponsors/mayank1513"
+		},
+		"https://pages.razorpay.com/mayank1513"
+	],
 	"keywords": [
 		"react18-global-store",
 		"nextjs",

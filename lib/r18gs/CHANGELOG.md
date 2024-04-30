@@ -1,5 +1,20 @@
 # r18gs
 
+## 1.0.0
+
+### Major Changes
+
+- Removed `serverValue` field as it should always be same as `value`. For more details please check out documentation of useSyncExternalStore hook provided by react.
+
+### Minor Changes
+
+- Added persist plugin to create state that is persisted and synced between browser contexts.
+- Added `useRGSWithPlugins` hook to support extending the store functionality with plugins.
+
+### Patch Changes
+
+- Refactored to reduce bundle size and improve stability and reduce likelyhood of bugs.
+
 ## 0.2.0
 
 ### Minor Changes
