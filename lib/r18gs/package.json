@@ -42,6 +42,10 @@
 		"tsconfig": "workspace:*",
 		"tsup": "^8.0.2",
 		"typedoc": "^0.25.13",
+		"typedoc-plugin-mdn-links": "^3.1.23",
+		"typedoc-plugin-missing-exports": "^2.2.0",
+		"typedoc-plugin-rename-defaults": "^0.7.0",
+		"typedoc-plugin-zod": "^1.1.2",
 		"typescript": "^5.4.5",
 		"vite-tsconfig-paths": "^4.3.2",
 		"vitest": "^1.5.2"
