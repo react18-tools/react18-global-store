@@ -19,7 +19,7 @@
 	},
 	"homepage": "https://react18-global-store.vercel.app/",
 	"sideEffects": false,
-	"license": "MIT",
+	"license": "MPL-2.0",
 	"scripts": {
 		"test": "vitest run --coverage",
 		"build": "tsup src && tsc -p tsconfig-build.json",
@@ -54,10 +54,13 @@
 		"@types/react": "16.8 - 18",
 		"react": "16.8 - 18"
 	},
-	"funding": {
-		"type": "github",
-		"url": "https://github.com/sponsors/mayank1513"
-	},
+	"funding": [
+		{
+			"type": "github",
+			"url": "https://github.com/sponsors/mayank1513"
+		},
+		"https://pages.razorpay.com/mayank1513"
+	],
 	"keywords": [
 		"react18-global-store",
 		"nextjs",
