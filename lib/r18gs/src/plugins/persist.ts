@@ -9,11 +9,11 @@ interface PersistOptions {
 
 /** get stored item */
 function getItem(key: string, options?: PersistOptions) {
+	const cookie = document.cookie.split("; ").find(c => c.startsWith(key));
 	switch (options?.storage) {
-		case "cookie":
-			const cookies = document.cookie.split("; ");
-			const cookie = cookies.find(c => c.startsWith(key));
+		case "cookie": {
 			return cookie?.split("=")[1];
+		}
 		case "session":
 			return sessionStorage.getItem(key);
 		default:
