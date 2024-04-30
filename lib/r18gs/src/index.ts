@@ -24,5 +24,5 @@ export default function useRGS<T>(key: string, value?: T): [T, SetStateAction<T>
 	/** Initialize the named store when invoked for the first time. */
 	if (!globalRGS[key]) globalRGS[key] = [value, [], createSetter(key), createSubcriber(key)];
 
-	return createHook(key);
+	return createHook<T>(key);
 }
