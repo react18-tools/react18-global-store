@@ -4,31 +4,33 @@
 
 ## Motivation
 
-I've developed fantastic libraries leveraging React18 features using Zustand, and they performed admirably. However, when attempting to import from specific folders for better tree-shaking, the libraries encountered issues. Each import resulted in a separate Zustand store being created, leading to increased package size.
+I've created outstanding libraries that harness React18 features using Zustand, which have performed remarkably well. However, when I tried to import from specific folders to enhance tree-shaking, the libraries encountered complications. Each import led to the creation of a separate Zustand store, causing an increase in package size.
 
-As a solution, I set out to create a lightweight, bare minimum store that facilitates shared state even when importing components from separate files, optimizing tree-shaking.
+To address this issue, I embarked on developing a lightweight, minimalistic store that facilitates shared state even when importing components from different files, thereby optimizing tree-shaking.
 
 ## Features
 
-✅ Full TypeScript Support
+✅ Complete TypeScript Support
 
-✅ Unleash the full power of React18 Server components
+✅ Unleash the full capabilities of React18 Server components
 
-✅ Compatible with all build systems/tools/frameworks for React18
+✅ Compatible with all React18 build systems, tools, and frameworks
+
+✅ Available in both CommonJS (CJS) and ECMAScript Modules (ESM)
 
 ✅ Documented with [Typedoc](https://react18-tools.github.io/react18-global-store) ([Docs](https://react18-tools.github.io/react18-global-store))
 
-✅ Examples for Next.js, Vite, and Remix
+✅ Examples available for Next.js, Vite, and Remix
 
 ## Simple Global State Shared Across Multiple Components
 
-Utilize this hook similarly to the `useState` hook. However, ensure to pass a unique key, unique across the app, to identify and make this state accessible to all client components.
+Utilize this hook similar to the `useState` hook. However, ensure to provide a unique key, unique across the app, to identify and make this state accessible to all client components.
 
 ```tsx
 const [state, setState] = useRGS<number>("counter", 1);
 ```
 
-> For detailed instructions, see [Getting Started](./md-docs/1.getting-started.md)
+> For detailed instructions, refer to [Getting Started](./md-docs/1.getting-started.md)
 
 ## Using Plugins
 
