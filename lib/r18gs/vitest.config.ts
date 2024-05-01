@@ -11,6 +11,7 @@ export default defineConfig({
 		setupFiles: [],
 		coverage: {
 			include: ["src/**"],
+			exclude: ["src/Guides.ts"],
 			reporter: ["text", "json", "clover", "html"],
 		},
 	},

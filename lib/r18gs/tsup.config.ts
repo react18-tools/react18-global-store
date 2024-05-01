@@ -12,6 +12,8 @@ export default defineConfig(options => ({
 		{
 			name: "improve-minify",
 			setup(build) {
+				build.onLoad({ filter: /Guides.ts/ }, () => ({ contents: " ", loader: "ts" }));
+
 				build.onLoad({ filter: /utils.ts/ }, args => {
 					let contents = fs.readFileSync(args.path, "utf8");
 					const lines = contents.split("\n");
