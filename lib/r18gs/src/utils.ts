@@ -49,7 +49,11 @@ export function createSetter<T>(key: string): SetStateAction<unknown> {
 /** Extract coomon create hook logic to utils */
 export function createHook<T>(key: string): [T, SetStateAction<T>] {
 	const rgs = globalRGS[key] as RGS;
-	const val = useSyncExternalStore<T>(rgs[SUBSCRIBER] as Subscriber, () => rgs[VALUE] as T);
+	const val = useSyncExternalStore<T>(
+		rgs[SUBSCRIBER] as Subscriber,
+		() => rgs[VALUE] as T,
+		() => rgs[VALUE] as T,
+	);
 	return [val, rgs[SETTER] as SetStateAction<T>];
 }
 

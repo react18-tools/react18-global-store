@@ -2,7 +2,7 @@
 	"name": "r18gs",
 	"author": "Mayank Kumar Chaudhari <https://mayank-chaudhari.vercel.app>",
 	"private": false,
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "A simple yet elegant, light weight, react18 global store to replace Zustand for better tree shaking.",
 	"main": "./dist/index.js",
 	"types": "./dist/index.d.ts",
@@ -34,7 +34,7 @@
 		"@types/react": "^18.3.1",
 		"@types/react-dom": "^18.3.0",
 		"@vitejs/plugin-react": "^4.2.1",
-		"@vitest/coverage-v8": "^1.5.2",
+		"@vitest/coverage-v8": "^1.5.3",
 		"eslint-config-custom": "workspace:*",
 		"jsdom": "^24.0.0",
 		"octokit": "^3.2.0",
@@ -48,7 +48,7 @@
 		"typedoc-plugin-zod": "^1.1.2",
 		"typescript": "^5.4.5",
 		"vite-tsconfig-paths": "^4.3.2",
-		"vitest": "^1.5.2"
+		"vitest": "^1.5.3"
 	},
 	"peerDependencies": {
 		"@types/react": "16.8 - 18",
