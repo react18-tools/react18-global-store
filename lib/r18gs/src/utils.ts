@@ -22,12 +22,11 @@ globalThisForBetterMinification.rgs = {};
 export const globalRGS = globalThisForBetterMinification.rgs;
 
 /** trigger all listeners */
-function triggerListeners(rgs: RGS) {
+const triggerListeners = (rgs: RGS) =>
 	(rgs[LISTENERS] as Listener[]).forEach(listener => listener());
-}
 
 /** craete subscriber function to subscribe to the store. */
-export function createSubcriber(key: string): Subscriber {
+export const createSubcriber = (key: string): Subscriber => {
 	return listener => {
 		const rgs = globalRGS[key] as RGS;
 		(rgs[LISTENERS] as Listener[]).push(listener);
@@ -35,27 +34,25 @@ export function createSubcriber(key: string): Subscriber {
 			rgs[LISTENERS] = (rgs[LISTENERS] as Listener[]).filter(l => l !== listener);
 		};
 	};
-}
+};
 
 /** setter function to set the state. */
-export function createSetter<T>(key: string): SetStateAction<unknown> {
+export const createSetter = <T>(key: string): SetStateAction<unknown> => {
 	return val => {
 		const rgs = globalRGS[key] as RGS;
 		rgs[VALUE] = val instanceof Function ? val(rgs[VALUE] as T) : val;
 		(rgs[LISTENERS] as Listener[]).forEach(listener => listener());
 	};
-}
+};
 
 /** Extract coomon create hook logic to utils */
-export function createHook<T>(key: string): [T, SetStateAction<T>] {
+export const createHook = <T>(key: string): [T, SetStateAction<T>] => {
 	const rgs = globalRGS[key] as RGS;
-	const val = useSyncExternalStore<T>(
-		rgs[SUBSCRIBER] as Subscriber,
-		() => rgs[VALUE] as T,
-		() => rgs[VALUE] as T,
-	);
+	/** This function is called by react to get the current stored value. */
+	const getSnapshot = () => rgs[VALUE] as T;
+	const val = useSyncExternalStore<T>(rgs[SUBSCRIBER] as Subscriber, getSnapshot, getSnapshot);
 	return [val, rgs[SETTER] as SetStateAction<T>];
-}
+};
 
 type Mutate<T> = (value?: T) => void;
 
@@ -66,7 +63,7 @@ export type Plugin<T> = {
 
 let allExtentionsInitialized = false;
 /** Initialize extestions - wait for previous plugins's promise to be resolved before processing next */
-async function initPlugins<T>(key: string, plugins: Plugin<T>[]) {
+const initPlugins = async <T>(key: string, plugins: Plugin<T>[]) => {
 	const rgs = globalRGS[key] as RGS;
 	/** Mutate function to update the value */
 	const mutate: Mutate<T> = newValue => {
@@ -78,15 +75,15 @@ async function initPlugins<T>(key: string, plugins: Plugin<T>[]) {
 		await plugin.init?.(key, rgs[VALUE] as T, mutate);
 	}
 	allExtentionsInitialized = true;
-}
+};
 
 /** Initialize the named store when invoked for the first time. */
-export function initWithPlugins<T>(
+export const initWithPlugins = <T>(
 	key: string,
 	value?: T,
 	plugins: Plugin<T>[] = [],
 	doNotInit = false,
-) {
+) => {
 	if (doNotInit) {
 		/** You will not have access to the setter until initialized */
 		globalRGS[key] = [value, [], null, createSubcriber(key)];
@@ -108,7 +105,7 @@ export function initWithPlugins<T>(
 		rgs[SETTER] = setterWithPlugins;
 	} else globalRGS[key] = [value, [], setterWithPlugins, createSubcriber(key)];
 	initPlugins(key, plugins);
-}
+};
 
 /**
  * Use this hook similar to `useState` hook.
@@ -127,12 +124,12 @@ export function initWithPlugins<T>(
  * @param doNotInit - Do not initialize the store. Useful when you want to initialize the store later. Note that the setter function is not available until the store is initialized.
  * @returns - A tuple (Ordered sequance of values) containing the state and a function to set the state.
  */
-export function useRGSWithPlugins<T>(
+export const useRGSWithPlugins = <T>(
 	key: string,
 	value?: T,
 	plugins?: Plugin<T>[],
 	doNotInit = false,
-): [T, SetStateAction<T>] {
+): [T, SetStateAction<T>] => {
 	if (!globalRGS[key]?.[SETTER]) initWithPlugins(key, value, plugins, doNotInit);
 	return createHook<T>(key);
-}
+};
