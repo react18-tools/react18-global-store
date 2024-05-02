@@ -28,9 +28,9 @@
 		"lint": "eslint ."
 	},
 	"devDependencies": {
-		"@testing-library/react": "^15.0.5",
+		"@testing-library/react": "^15.0.6",
 		"@turbo/gen": "^1.13.3",
-		"@types/node": "^20.12.7",
+		"@types/node": "^20.12.8",
 		"@types/react": "^18.3.1",
 		"@types/react-dom": "^18.3.0",
 		"@vitejs/plugin-react": "^4.2.1",
