@@ -48,6 +48,7 @@ export const createSetter = <T>(key: string): SetStateAction<unknown> => {
 /** Extract coomon create hook logic to utils */
 export const createHook = <T>(key: string): [T, SetStateAction<T>] => {
 	const rgs = globalRGS[key] as RGS;
+	/** This function is called by react to get the current stored value. */
 	const getSnapshot = () => rgs[VALUE] as T;
 	const val = useSyncExternalStore<T>(rgs[SUBSCRIBER] as Subscriber, getSnapshot, getSnapshot);
 	return [val, rgs[SETTER] as SetStateAction<T>];
