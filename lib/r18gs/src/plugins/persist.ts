@@ -8,7 +8,7 @@ export interface PersistOptions {
 }
 
 /** get stored item */
-function getItem(key: string, options?: PersistOptions) {
+const getItem = (key: string, options?: PersistOptions) => {
 	const cookie = document.cookie.split("; ").find(c => c.startsWith(key));
 	switch (options?.storage) {
 		case "cookie":
@@ -18,10 +18,10 @@ function getItem(key: string, options?: PersistOptions) {
 		default:
 			return localStorage.getItem(key);
 	}
-}
+};
 
 /** set item to persistant store */
-function setItem(key: string, value: string, options?: PersistOptions) {
+const setItem = (key: string, value: string, options?: PersistOptions) => {
 	switch (options?.storage) {
 		case "cookie":
 			document.cookie = `${key}=${value}; max-age=31536000; SameSite=Strict;`;
@@ -33,13 +33,13 @@ function setItem(key: string, value: string, options?: PersistOptions) {
 		default:
 			localStorage.setItem(key, value);
 	}
-}
+};
 /**
  * A plugin that persists and syncs RGS store between tabs.
  *
  * @returns A plugin that persists and syncs a value between tabs.
  */
-export function persist<T>(options?: PersistOptions): Plugin<T> {
+export const persist = <T>(options?: PersistOptions): Plugin<T> => {
 	return {
 		init(key, _, mutate) {
 			if (typeof window === "undefined") return;
@@ -62,4 +62,4 @@ export function persist<T>(options?: PersistOptions): Plugin<T> {
 			}
 		},
 	};
-}
+};

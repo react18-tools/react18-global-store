@@ -20,13 +20,13 @@ import type { Plugin, SetStateAction } from "./utils";
  * @param plugins - Plugins to be applied to the store.
  * @returns - A hook function that returns a tuple (Ordered sequence of values) containing the state and a function to set the state.
  */
-export function create<T>(
+export const create = <T>(
 	key: string,
 	value?: T,
 	plugins?: Plugin<T>[],
-): () => [T, SetStateAction<T>] {
+): (() => [T, SetStateAction<T>]) => {
 	return () => useRGSWithPlugins(key, value, plugins);
-}
+};
 
 /**
  * Creates a hook similar to useRGS, but with plugins to be applied on first invocation.
@@ -34,9 +34,9 @@ export function create<T>(
  * @param plugins - Plugins to be applied to the store.
  * @returns A hook that automatically initializes the store (if not already initialized) with the given plugins.
  */
-export function withPlugins<T>(
+export const withPlugins = <T>(
 	plugins: Plugin<T>[],
-): <U = T>(key: string, value?: U, doNotInit?: boolean) => [U, SetStateAction<U>] {
+): (<U = T>(key: string, value?: U, doNotInit?: boolean) => [U, SetStateAction<U>]) => {
 	/**
 	 * Creates a hook similar to useRGS, with plugins applied on first invocation.
 	 *
@@ -53,6 +53,6 @@ export function withPlugins<T>(
 		useRGSWithPlugins(key, value, plugins as unknown as Plugin<U>[], doNotInit);
 
 	return hookWithPlugins;
-}
+};
 
 export { useRGSWithPlugins };
