@@ -1,26 +1,23 @@
 # Security Policy
 
-## Supported Versions
+## Version Support
 
-We support the latest minor version.
-For one minor version prior to the latest, pull requests providing patches to fix security vulnerabilities will be accepted.
-Support for the previous minor version relies completely on community pull requests.
+We provide support for the latest minor version. Pull requests aimed at fixing security vulnerabilities in the version immediately preceding the latest will be considered. Support for versions prior to this relies entirely on community-driven pull requests.
 
-| Version | Supported          |
+| Version | Support Status     |
 | ------- | ------------------ |
 | 1.0.x   | :white_check_mark: |
 | 0.2.x   | :warning:          |
 | < 0.2   | :x:                |
 
-## Patching LTS Versions
+## Patching Long-Term Support (LTS) Versions
 
-If you depend on the prior minor version of TypeDoc and want to submit a fix, submit a pull request
-to the `lts` branch. When merged, a new version will be automatically published with your patch.
+If you rely on a previous minor version of TypeDoc and need to address security issues, kindly submit a pull request to the `lts` branch. Upon merge, your patch will automatically trigger the publication of a new version.
 
-Be sure to include an update to the version field in `package.json`.
+Ensure to update the version field in `package.json`.
 
-Note: Only pull requests which fix security vulnerabilities will be accepted. Additional features and bug fixes are out of scope for old versions.
+Note: We only accept pull requests addressing security vulnerabilities. Additional functionalities and bug fixes for older versions are beyond the scope.
 
-## Reporting a Vulnerability
+## Reporting Vulnerabilities
 
-Since this library is developed with community support, you may create a new issue for reporting any Vulnerability.
+Kindly report vulnerabilities [here](https://github.com/react18-tools/react18-global-store/security/advisories/new).
