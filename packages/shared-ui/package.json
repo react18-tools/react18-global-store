@@ -11,8 +11,8 @@
 	},
 	"devDependencies": {
 		"@mayank1513/fork-me": "^2.1.2",
-		"@types/node": "^20.12.8",
-		"@types/react": "^18.3.1",
+		"@types/node": "^20.12.12",
+		"@types/react": "^18.3.3",
 		"@types/react-dom": "^18.3.0",
 		"eslint-config-custom": "workspace:*",
 		"next": "^14.2.3",
@@ -22,7 +22,7 @@
 		"typescript": "5.4.5"
 	},
 	"dependencies": {
-		"eslint": "^9.1.1",
-		"nthul-lite": "^0.2.0"
+		"eslint": "^9.3.0",
+		"nthul-lite": "^0.2.3"
 	}
 }
