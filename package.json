@@ -1,19 +1,20 @@
 {
-	"private": true,
-	"scripts": {
-		"build": "turbo run build",
-		"dev": "turbo run dev",
-		"test": "turbo run test",
-		"doc": "turbo run doc",
-		"lint": "turbo run lint",
-		"format": "prettier --write \"**/*.{ts,tsx,js,jsx,md,css,scss}\""
-	},
-	"devDependencies": {
-		"@changesets/cli": "^2.27.5",
-		"eslint": "^9.4.0",
-		"prettier": "^3.3.0",
-		"tsconfig": "workspace:*",
-		"turbo": "^1.13.3"
-	},
-	"name": "r18gs"
+  "private": true,
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "test": "turbo run test",
+    "doc": "turbo run doc",
+    "lint": "turbo run lint",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,md,css,scss}\""
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.27.5",
+    "eslint": "^9.4.0",
+    "prettier": "^3.3.0",
+    "tsconfig": "workspace:*",
+    "turbo": "^2.0.1"
+  },
+  "name": "r18gs",
+  "packageManager": "pnpm@9.1.4"
 }
