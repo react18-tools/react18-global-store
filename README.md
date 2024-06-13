@@ -8,6 +8,9 @@ I've developed fantastic libraries leveraging React18 features using Zustand, an
 
 As a solution, I set out to create a lightweight, bare minimum store that facilitates shared state even when importing components from separate files, optimizing tree-shaking.
 
+> If you need fully featured state management solution, consider using Zustand with [`treeshakable`](https://github.com/react18-tools/treeshakable/)
+> To understand the issue with treeshakability and importing from subpath, see - <https://treeshakable.vercel.app>
+
 ## Features
 
 ✅ Full TypeScript Support
@@ -26,6 +29,12 @@ Utilize this hook similarly to the `useState` hook. However, ensure to pass a un
 
 ```tsx
 const [state, setState] = useRGS<number>("counter", 1);
+```
+
+**_or_**
+
+```tsx
+const [state, setState] = useRGS<number>("counter", () => 1);
 ```
 
 > For detailed instructions, see [Getting Started](./md-docs/1.getting-started.md)
