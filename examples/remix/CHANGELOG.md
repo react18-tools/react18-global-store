@@ -1,5 +1,13 @@
 # remix-example
 
+## 0.0.15
+
+### Patch Changes
+
+- Updated dependencies
+  - r18gs@1.1.0
+  - shared-ui@0.0.0
+
 ## 0.0.14
 
 ### Patch Changes

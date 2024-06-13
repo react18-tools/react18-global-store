@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/non-nullable-type-assertion-style -- as ! operator is forbidden by eslint*/
 import { createHook, createSetter, createSubcriber, globalRGS } from "./utils";
 
-import type { SetStateAction } from "./utils";
+import type { SetStateAction, ValueType } from "./utils";
 
 export type { SetterArgType, SetStateAction, Plugin } from "./utils";
 
@@ -20,9 +20,15 @@ export type { SetterArgType, SetStateAction, Plugin } from "./utils";
  * @param value - Initial value of the store.
  * @returns - A tuple (Ordered sequance of values) containing the state and a function to set the state.
  */
-const useRGS = <T>(key: string, value?: T): [T, SetStateAction<T>] => {
+const useRGS = <T>(key: string, value?: ValueType<T>): [T, SetStateAction<T>] => {
 	/** Initialize the named store when invoked for the first time. */
-	if (!globalRGS[key]) globalRGS[key] = [value, [], createSetter(key), createSubcriber(key)];
+	if (!globalRGS[key])
+		globalRGS[key] = [
+			value instanceof Function ? value() : value,
+			[],
+			createSetter(key),
+			createSubcriber(key),
+		];
 
 	return createHook<T>(key);
 };

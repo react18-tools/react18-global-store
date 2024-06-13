@@ -1,5 +1,11 @@
 # r18gs
 
+## 1.1.0
+
+### Minor Changes
+
+- Support initializer function. Now you can initialize the RGStore by supplying a function in place of constant.
+
 ## 1.0.2
 
 ### Patch Changes
