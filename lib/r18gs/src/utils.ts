@@ -5,6 +5,7 @@ type Subscriber = (l: Listener) => () => void;
 
 export type SetterArgType<T> = T | ((prevState: T) => T);
 export type SetStateAction<T> = (value: SetterArgType<T>) => void;
+export type ValueType<T> = T | (() => T);
 
 /**
  * This is a hack to reduce lib size + readability + not encouraging direct access to globalThis
@@ -80,10 +81,11 @@ const initPlugins = async <T>(key: string, plugins: Plugin<T>[]) => {
 /** Initialize the named store when invoked for the first time. */
 export const initWithPlugins = <T>(
 	key: string,
-	value?: T,
+	value?: ValueType<T>,
 	plugins: Plugin<T>[] = [],
 	doNotInit = false,
 ) => {
+	value = value instanceof Function ? value() : value;
 	if (doNotInit) {
 		/** You will not have access to the setter until initialized */
 		globalRGS[key] = [value, [], null, createSubcriber(key)];
@@ -126,7 +128,7 @@ export const initWithPlugins = <T>(
  */
 export const useRGSWithPlugins = <T>(
 	key: string,
-	value?: T,
+	value?: ValueType<T>,
 	plugins?: Plugin<T>[],
 	doNotInit = false,
 ): [T, SetStateAction<T>] => {
