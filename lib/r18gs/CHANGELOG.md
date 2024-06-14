@@ -1,5 +1,11 @@
 # r18gs
 
+## 1.1.1
+
+### Patch Changes
+
+- Refactor to reduce minzip size
+
 ## 1.1.0
 
 ### Minor Changes
