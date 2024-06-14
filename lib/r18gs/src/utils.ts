@@ -15,6 +15,7 @@ type RGS = [unknown, Listener[], SetStateAction<unknown> | null, Subscriber];
 
 declare global {
 	// eslint-disable-next-line no-var -- var required for global declaration.
+	// skipcq: JS-0102, JS-0239
 	var rgs: Record<string, RGS | undefined>;
 }
 
@@ -41,7 +42,7 @@ export const createSubcriber = (key: string): Subscriber => {
 export const createSetter = <T>(key: string): SetStateAction<unknown> => {
 	return val => {
 		const rgs = globalRGS[key] as RGS;
-		rgs[VALUE] = val instanceof Function ? val(rgs[VALUE] as T) : val;
+		rgs[VALUE] = typeof val === "function" ? val(rgs[VALUE] as T) : val;
 		(rgs[LISTENERS] as Listener[]).forEach(listener => listener());
 	};
 };
