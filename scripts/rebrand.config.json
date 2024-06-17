@@ -1,5 +1,5 @@
 {
+  "packageName": "r18gs",
   "owner": "react18-tools",
-  "repo": "turborepo-template",
-  "packageName": "react18-loaders"
+  "repo": "react18-global-store"
 }

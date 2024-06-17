@@ -20,4 +20,4 @@ Note: We only accept pull requests addressing security vulnerabilities. Addition
 
 ## Reporting Vulnerabilities
 
-Kindly report vulnerabilities [here](https://github.com/react18-tools/turborepo-template/security/advisories/new).
+Kindly report vulnerabilities [here](https://github.com/react18-tools/react18-global-store/security/advisories/new).
