@@ -43,9 +43,9 @@ try {
 execSync("cd lib && pnpm build");
 
 /** Create GitHub release */
-execSync(
-  `gh release create ${VERSION} --generate-notes --latest -n "$(sed '1,/^## /d;/^## /,$d' CHANGELOG.md)" --title "Release v${VERSION}"`,
-);
+// execSync(
+//   `gh release create ${VERSION} --generate-notes --latest -n "$(sed '1,/^## /d;/^## /,$d' CHANGELOG.md)" --title "Release v${VERSION}"`,
+// );
 
 // Publish canonical packages
 [
