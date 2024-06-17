@@ -1,5 +1,17 @@
 # r18gs
 
+## 1.1.2-alpha.1
+
+### Patch Changes
+
+- cad3c42: Add minify plugin
+
+## 1.1.2-alpha.0
+
+### Patch Changes
+
+- 46b9218: Test if Next.js app router works when useRGS is exported as named export
+
 ## 1.1.1
 
 ### Patch Changes

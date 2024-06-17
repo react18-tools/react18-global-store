@@ -1,0 +1,20 @@
+{
+  "mode": "exit",
+  "tag": "alpha",
+  "initialVersions": {
+    "@example/nextjs": "0.0.0",
+    "@example/remix": "0.0.0",
+    "@example/vite": "0.0.0",
+    "r18gs": "1.1.2-alpha.0",
+    "@repo/eslint-config": "0.0.0",
+    "@repo/typescript-config": "0.0.0",
+    "@repo/jest-presets": "0.0.0",
+    "@repo/logger": "0.0.0",
+    "@repo/shared": "0.0.1-alpha.0",
+    "@repo/scripts": "0.0.0"
+  },
+  "changesets": [
+    "five-roses-taste",
+    "tall-oranges-sort"
+  ]
+}
