@@ -34,7 +34,7 @@ export default defineConfig(options => ({
           tokens.sort((a, b) => b.token.length - a.token.length);
 
           for (const t of tokens) {
-            contents = contents.replace(new RegExp(`${t.token}`, "g"), t.i + "");
+            contents = contents.replace(new RegExp(`${t.token}`, "g"), String(t.i));
           }
           return { contents, loader: "ts" };
         });
