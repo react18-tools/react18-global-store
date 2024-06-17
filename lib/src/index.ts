@@ -34,5 +34,6 @@ const useRGS = <T>(key: string, value?: ValueType<T>): [T, SetStateAction<T>] =>
   return createHook<T>(key);
 };
 
+/** @deprecated - default export is deprecated and will be removed. Use `import { useRGS } from "r18gs"` */
 export default useRGS;
 export { useRGS };
