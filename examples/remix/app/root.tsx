@@ -10,7 +10,7 @@ import { Header } from "@repo/shared";
 export const meta: MetaFunction = () => [
   {
     charset: "utf-8",
-    title: `Blog | React18 Loaders`,
+    title: "Blog | React18 Global Store",
     viewport: "width=device-width,initial-scale=1",
   },
 ];
