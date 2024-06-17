@@ -1,5 +1,11 @@
 # r18gs
 
+## 1.1.2-alpha.0
+
+### Patch Changes
+
+- 46b9218: Test if Next.js app router works when useRGS is exported as named export
+
 ## 1.1.1
 
 ### Patch Changes
