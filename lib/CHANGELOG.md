@@ -1,5 +1,11 @@
 # r18gs
 
+## 1.1.2-alpha.1
+
+### Patch Changes
+
+- cad3c42: Add minify plugin
+
 ## 1.1.2-alpha.0
 
 ### Patch Changes
