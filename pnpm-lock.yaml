@@ -5117,11 +5117,15 @@ packages:
       '@types/react': 16.8 - 18
       react: 16.8 - 18
 
-  r18gs@1.1.1:
-    resolution: {integrity: sha512-osmk7CinxcRLETlw2pddw0IOVc0CTO3G6kp9RYW9i4J4JhsjvrWMErgbx/fQlqxkbHYq/dPDPPH+6bXP/7iu5g==}
+  r18gs@1.1.2:
+    resolution: {integrity: sha512-kDM2CvgG0HmSqxIzYSEv5NQ5a/g3RggvT1Vl939HKtPBCq9Qi4U+8+FSLN29lxSx2rCQDFIjvDDGb+IlCfhg+g==}
     peerDependencies:
-      '@types/react': 16.8 - 18
-      react: 16.8 - 18
+      '@types/react': 16.8 - 19
+      next: '*'
+      react: 16.8 - 19
+    peerDependenciesMeta:
+      next:
+        optional: true
 
   range-parser@1.2.1:
     resolution: {integrity: sha512-Hrgsx+orqoygnmhFbKaHE6c296J+HTAQXoxEF6gNupROmmGJRoyzfG3ccAveqCBrwr/2yxQ5BVd/GTl5agOwSg==}
@@ -11952,7 +11956,7 @@ snapshots:
   nextjs-darkmode@1.0.2(@types/react@18.3.3)(next@14.2.4(@babel/core@7.24.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.5))(react@18.3.1):
     dependencies:
       '@types/react': 18.3.3
-      r18gs: 1.1.1(@types/react@18.3.3)(react@18.3.1)
+      r18gs: 1.1.2(@types/react@18.3.3)(next@14.2.4(@babel/core@7.24.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.5))(react@18.3.1)
       react: 18.3.1
     optionalDependencies:
       next: 14.2.4(@babel/core@7.24.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.5)
@@ -11960,7 +11964,7 @@ snapshots:
   nextjs-themes@3.1.2(@types/react@18.3.3)(next@14.2.4(@babel/core@7.24.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.5))(react@18.3.1):
     dependencies:
       '@types/react': 18.3.3
-      r18gs: 1.1.1(@types/react@18.3.3)(react@18.3.1)
+      r18gs: 1.1.2(@types/react@18.3.3)(next@14.2.4(@babel/core@7.24.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.5))(react@18.3.1)
       react: 18.3.1
     optionalDependencies:
       next: 14.2.4(@babel/core@7.24.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.5)
@@ -12522,10 +12526,12 @@ snapshots:
       '@types/react': 18.3.3
       react: 18.3.1
 
-  r18gs@1.1.1(@types/react@18.3.3)(react@18.3.1):
+  r18gs@1.1.2(@types/react@18.3.3)(next@14.2.4(@babel/core@7.24.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.5))(react@18.3.1):
     dependencies:
       '@types/react': 18.3.3
       react: 18.3.1
+    optionalDependencies:
+      next: 14.2.4(@babel/core@7.24.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.5)
 
   range-parser@1.2.1: {}
 
@@ -12579,7 +12585,7 @@ snapshots:
   react18-loaders@1.1.2(@types/react@18.3.3)(next@14.2.4(@babel/core@7.24.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.5))(react@18.3.1):
     dependencies:
       '@types/react': 18.3.3
-      r18gs: 1.1.1(@types/react@18.3.3)(react@18.3.1)
+      r18gs: 1.1.2(@types/react@18.3.3)(next@14.2.4(@babel/core@7.24.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.5))(react@18.3.1)
       react: 18.3.1
     optionalDependencies:
       next: 14.2.4(@babel/core@7.24.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.5)
