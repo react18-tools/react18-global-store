@@ -1,9 +1,9 @@
 /** @type {import('typedoc').TypeDocOptions} */
 module.exports = {
   tsconfig: "tsconfig.docs.json",
-  name: "React18 Loaders",
+  name: "React18 Global Store",
   entryPoints: ["./lib/src"],
-  exclude: ["**/*.test.tsx", "**/index.ts", "**/declaration.d.ts"],
+  exclude: ["**/*.test.tsx", "**/declaration.d.ts"],
   entryPointStrategy: "Expand",
   out: "./docs",
   commentStyle: "all",
