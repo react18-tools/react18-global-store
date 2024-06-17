@@ -179,8 +179,8 @@ module.exports = {
     {
       type: "list",
       name: "pkgPath",
-      choices: ["lib", "packages/shared"],
-      default: "lib",
+      choices: ["packages/shared"],
+      default: "packages/shared",
       message: "Select the package",
     },
     {
