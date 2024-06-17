@@ -40,7 +40,7 @@ if (!isPatch) {
 }
 
 /** Create release */
-execSync("cd lib && pnpm build && npm publish --provenance --access public");
+execSync("cd lib && pnpm build");
 
 /** Create GitHub release */
 execSync(
@@ -49,7 +49,7 @@ execSync(
 
 // Publish canonical packages
 [
-  "@mayank1513/r18gs",
+  "@mayank1513\\/r18gs",
   "react18-global-store",
   "react18-store",
   "react19-global-store",
