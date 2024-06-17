@@ -10,7 +10,7 @@
   "types": "./dist/index.d.ts",
   "repository": "github:react18-tools/react18-global-store",
   "bugs": "https://github.com/react18-tools/react18-global-store/issues",
-  "homepage": "https://github.com/react18-tools/react18-global-store/#readme",
+  "homepage": "https://react18-global-store.vercel.app/",
   "sideEffects": false,
   "files": [
     "dist/**"
@@ -43,12 +43,8 @@
     "vite-tsconfig-paths": "^4.3.2",
     "vitest": "^1.6.0"
   },
-  "dependencies": {
-    "r18gs": "^1.1.1"
-  },
   "peerDependencies": {
     "@types/react": "16.8 - 19",
-    "next": "10 - 14",
     "react": "16.8 - 19"
   },
   "peerDependenciesMeta": {
@@ -68,20 +64,32 @@
   ],
   "keywords": [
     "React",
-    "React Loaders",
     "React 18",
     "React 19",
     "Next.js",
     "Next.js 14",
-    "React server components",
-    "Customizable",
-    "Cutting-edge",
-    "Compatibility",
-    "Frontend development",
-    "UI components",
-    "Web development",
+    "Next.js 15",
+    "React Server Components",
+    "Highly Customizable",
+    "State-of-the-Art",
+    "Broad Compatibility",
+    "Frontend Development",
+    "UI Components",
+    "Web Development",
     "Progressive",
-    "Modern",
-    "Seamless integration"
+    "Modern Design",
+    "Seamless Integration",
+    "react18-global-store",
+    "Next.js Framework",
+    "Next.js 13",
+    "React 18 Features",
+    "Zustand Alternative for simple need",
+    "Zen Store",
+    "React Global Store",
+    "React Server-Side Components",
+    "React Client-Side Components",
+    "TypeScript Support",
+    "Mayank1513",
+    "Turborepo Template"
   ]
 }
