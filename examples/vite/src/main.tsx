@@ -1,15 +1,16 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
-import App from "./App.tsx";
-import { SharedRootLayout } from "shared-ui";
+import { createRoot } from "react-dom/client";
+import App from "./app";
+import "./index.css";
 
-const rootElement = document.getElementById("root");
-if (!rootElement) throw new Error("Root element not found");
-
-ReactDOM.createRoot(rootElement).render(
-	<React.StrictMode>
-		<SharedRootLayout>
-			<App />
-		</SharedRootLayout>
-	</React.StrictMode>,
-);
+const el = document.getElementById("root");
+if (el) {
+  const root = createRoot(el);
+  root.render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>,
+  );
+} else {
+  throw new Error("Could not find root element");
+}

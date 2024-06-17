@@ -1,3 +1,11 @@
-export default function Home() {
-	return <h1>Remix Example</h1>;
+import { Demo } from "@repo/shared";
+import { LandingPage } from "@repo/shared/dist/server";
+
+/** Remix App */
+export default function Index(): JSX.Element {
+  return (
+    <LandingPage title="Remix Example">
+      <Demo />
+    </LandingPage>
+  );
 }

@@ -1,0 +1,22 @@
+[
+  {
+    "title": "React18 Loaders",
+    "description": "A comprehensive library providing customizable loading animation components and a fullscreen loader container, seamlessly integrating with React and Next.js.",
+    "href": "https://github.com/react18-tools/turborepo-template/blob/main/lib/README.md"
+  },
+  {
+    "title": "Nextjs-Darkmode",
+    "description": "Unleash the Power of React Server Components! Use dark/light mode on your site with confidence, without losing any advantages of React Server Components",
+    "href": "https://github.com/react18-tools/nextjs-darkmode/#readme"
+  },
+  {
+    "title": "Nextjs-Themes",
+    "description": "🤟 👉 Theme with confidence and Unleash the Power of React Server Components",
+    "href": "https://github.com/react18-tools/nextjs-themes"
+  },
+  {
+    "title": "React 18 Themes",
+    "description": "🤟 👉 Unleash the Power of React Server Components",
+    "href": "https://github.com/react18-tools/react18-themes"
+  }
+]

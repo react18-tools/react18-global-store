@@ -7,9 +7,8 @@ on:
     - cron: "5 */8 * * *"
 jobs:
   test:
+    if: github.run_number != 1
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -23,12 +22,11 @@ jobs:
         continue-on-error: true
         uses: codecov/codecov-action@v4
         with:
-          directory: ./lib/r18gs
+          directory: ./lib
           token: ${{ secrets.CODECOV_TOKEN }}
-          flags: r18gs
       - uses: paambaati/codeclimate-action@v5.0.0
         continue-on-error: true
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         with:
-          coverageLocations: ./lib/r18gs/coverage/*.xml:clover
+          coverageLocations: ./lib/coverage/*.xml:clover

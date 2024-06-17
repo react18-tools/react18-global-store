@@ -1,19 +1,11 @@
 {
   "scope": "Workspace",
-  "tasks": {
-    "task-oQKhoVOKYhYaRYGvlDMj5": {
-      "id": "task-oQKhoVOKYhYaRYGvlDMj5",
-      "description": "Add support for persist and sync",
-      "columnId": "column-todo"
-    }
-  },
+  "tasks": {},
   "columns": [
     {
       "id": "column-todo",
       "title": "To do",
-      "tasksIds": [
-        "task-oQKhoVOKYhYaRYGvlDMj5"
-      ]
+      "tasksIds": []
     },
     {
       "id": "column-doing",
