@@ -16,10 +16,10 @@
     "next": "^14.2.4",
     "nextjs-darkmode": "^1.0.2",
     "nextjs-themes": "^3.1.2",
+    "r18gs": "workspace:*",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react18-loaders": "latest",
-    "r18gs": "workspace:*"
+    "react18-loaders": "^1.1.2"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^14.2.4",

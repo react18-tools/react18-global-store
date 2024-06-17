@@ -44,7 +44,7 @@
     "nextjs-themes": "^3.1.2",
     "r18gs": "workspace:*",
     "react-live": "^4.1.6",
-    "react18-loaders": "latest"
+    "react18-loaders": "^1.1.2"
   },
   "peerDependencies": {
     "@types/react": "16.8 - 19",
