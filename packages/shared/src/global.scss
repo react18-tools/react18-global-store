@@ -80,3 +80,9 @@ a {
     display: none !important;
   }
 }
+
+@media screen and (max-width: 800px) {
+  .lg {
+    display: none !important;
+  }
+}

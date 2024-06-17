@@ -14,7 +14,8 @@ interface LogoProps {
 export function Logo({ href }: LogoProps) {
   return (
     <a href={href ?? "/"} target="_blank" rel="noopener noreferrer" className={styles.logo}>
-      <span>{repo}</span>
+      <span className="lg">{repo}</span>
+      <span className="mb">r18gs</span>
     </a>
   );
 }
