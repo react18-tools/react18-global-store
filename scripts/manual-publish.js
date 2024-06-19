@@ -75,3 +75,6 @@ execSync(`cd lib && pnpm build && npm publish --provenance --access public --tag
 execSync(
   `gh release create ${NEW_VERSION} --generate-notes${isLatestRelease ? " --latest" : ""} -n "$(sed '1,/^## /d;/^## /,$d' CHANGELOG.md)" --title "Release v${NEW_VERSION}"`,
 );
+
+// Publish canonical packages
+execSync("node scripts/publish-canonical.js");
