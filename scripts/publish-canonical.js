@@ -1,3 +1,5 @@
+const { execSync } = require("child_process");
+
 // Publish canonical packages
 [
   "@mayank1513\\/r18gs",
