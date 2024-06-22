@@ -23,13 +23,13 @@ export type { SetterArgType, SetStateAction, Plugin } from "./utils";
 const useRGS = <T>(key: string, value?: ValueType<T>): [T, SetStateAction<T>] => {
   /** Initialize the named store when invoked for the first time. */
   if (!globalRGS[key])
-    globalRGS[key] = [
+    globalRGS[key] = {
       // @ts-expect-error -- ok
-      typeof value === "function" ? value() : value,
-      [],
-      createSetter(key),
-      createSubcriber(key),
-    ];
+      v: typeof value === "function" ? value() : value,
+      l: [],
+      s: createSetter(key),
+      u: createSubcriber(key),
+    };
 
   return createHook<T>(key);
 };
