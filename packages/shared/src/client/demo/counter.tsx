@@ -1,4 +1,4 @@
-import useRGS from "r18gs";
+import { useRGS } from "r18gs";
 
 const RGS_COUNTER_KEY = "counter";
 

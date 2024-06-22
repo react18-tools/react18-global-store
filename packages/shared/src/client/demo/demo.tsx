@@ -4,7 +4,7 @@ import { CounterController, CounterDisplay } from "./counter";
 import styles from "./demo.module.scss";
 import { Editor } from "react-live";
 
-const code = `import useRGS from "r18gs";
+const code = `import { useRGS } from "r18gs";
 
 const MY_KEY = "counter";
 
