@@ -8,10 +8,10 @@
     "r18gs": "1.1.2",
     "@repo/eslint-config": "0.0.0",
     "@repo/typescript-config": "0.0.0",
-    "@repo/jest-presets": "0.0.0",
-    "@repo/logger": "0.0.0",
     "@repo/shared": "0.0.1",
     "@repo/scripts": "0.0.0"
   },
-  "changesets": []
+  "changesets": [
+    "twenty-starfishes-unite"
+  ]
 }
