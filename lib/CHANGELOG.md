@@ -1,5 +1,11 @@
 # r18gs
 
+## 1.1.3
+
+### Patch Changes
+
+- 6866e86: Simplify build - handle prototype pollution vulnerability.
+
 ## 1.1.3-refactor.0
 
 ### Patch Changes
