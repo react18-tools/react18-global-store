@@ -1,0 +1,17 @@
+{
+  "mode": "exit",
+  "tag": "refactor",
+  "initialVersions": {
+    "@example/nextjs": "0.0.0",
+    "@example/remix": "0.0.0",
+    "@example/vite": "0.0.0",
+    "r18gs": "1.1.2",
+    "@repo/eslint-config": "0.0.0",
+    "@repo/typescript-config": "0.0.0",
+    "@repo/shared": "0.0.1",
+    "@repo/scripts": "0.0.0"
+  },
+  "changesets": [
+    "twenty-starfishes-unite"
+  ]
+}
