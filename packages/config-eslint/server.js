@@ -33,9 +33,6 @@ module.exports = {
   overrides: [
     {
       files: ["**/__tests__/**/*"],
-      env: {
-        jest: true,
-      },
     },
   ],
   ignorePatterns: [".*.js", "node_modules/", "dist/"],
