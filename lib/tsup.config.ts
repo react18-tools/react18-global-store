@@ -1,5 +1,4 @@
 import { defineConfig } from "tsup";
-import fs from "node:fs";
 
 export default defineConfig(options => ({
   format: ["cjs", "esm"],
