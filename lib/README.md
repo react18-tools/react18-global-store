@@ -8,6 +8,10 @@ I've developed fantastic libraries leveraging React18 features using Zustand, an
 
 As a solution, I set out to create a lightweight, bare minimum store that facilitates shared state even when importing components from separate files, optimizing tree-shaking.
 
+### Important Announcement
+
+The default export from `r18gs` is [deprecated](https://github.com/react18-tools/react18-global-store/discussions/31). Please switch to using `import { useRGS } from "r18gs"` instead. The default export will be removed in the next major release.
+
 ## Features
 
 ✅ Full TypeScript Support
