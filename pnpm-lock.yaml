@@ -75,8 +75,8 @@ importers:
         specifier: ^18.3.1
         version: 18.3.1(react@18.3.1)
       react-webgl-trails:
-        specifier: 0.0.2-optimize.0
-        version: 0.0.2-optimize.0(@types/react@18.3.3)(react@18.3.1)
+        specifier: 0.0.2
+        version: 0.0.2(@types/react@18.3.3)(react@18.3.1)
       react18-loaders:
         specifier: ^1.1.3
         version: 1.1.3(@types/react@18.3.3)(next@14.2.4(@babel/core@7.24.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.6))(react@18.3.1)
@@ -4995,8 +4995,8 @@ packages:
     peerDependencies:
       react: '>=16.8'
 
-  react-webgl-trails@0.0.2-optimize.0:
-    resolution: {integrity: sha512-ijo+bu3l5RiflenZhJvWdOC4UAL6b4fjTsNvWsJSV3uRDANf0QdXr/xYOvmMbkv++A1VRJW8MASWqXkoXxVNcg==}
+  react-webgl-trails@0.0.2:
+    resolution: {integrity: sha512-Hh7wJETTKiA+NrMkHH2hxVXa7lVKvz2eDEER1ixhVw4UOKMYtqqFxSR2nQSXJlq5XCku24xmDecrcUBIanZTpw==}
     peerDependencies:
       '@types/react': 16.8 - 19
       react: 16.8 - 19
@@ -12260,7 +12260,7 @@ snapshots:
       '@remix-run/router': 1.17.0
       react: 18.3.1
 
-  react-webgl-trails@0.0.2-optimize.0(@types/react@18.3.3)(react@18.3.1):
+  react-webgl-trails@0.0.2(@types/react@18.3.3)(react@18.3.1):
     dependencies:
       '@types/react': 18.3.3
       react: 18.3.1
