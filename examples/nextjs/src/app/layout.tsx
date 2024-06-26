@@ -4,6 +4,7 @@ import { Core } from "nextjs-darkmode";
 import { Layout } from "@repo/shared/dist/server";
 import { GlobalLoader, Header } from "@repo/shared";
 import { Inter } from "next/font/google";
+import { MouseTrail } from "react-webgl-trails";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,6 +19,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }):
           {children}
         </Layout>
         <GlobalLoader />
+        <MouseTrail />
       </body>
     </html>
   );
