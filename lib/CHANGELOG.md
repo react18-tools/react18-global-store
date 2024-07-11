@@ -1,5 +1,11 @@
 # r18gs
 
+## 2.0.0
+
+### Major Changes
+
+- 05cad85: Remove default export.
+
 ## 2.0.0-alpha.0
 
 ### Major Changes
