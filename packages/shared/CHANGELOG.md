@@ -1,5 +1,12 @@
 # @repo/shared
 
+## 0.0.3-alpha.0
+
+### Patch Changes
+
+- Updated dependencies [e3e8e74]
+  - r18gs@2.0.0-alpha.0
+
 ## 0.0.2
 
 ### Patch Changes

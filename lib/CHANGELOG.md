@@ -1,5 +1,11 @@
 # r18gs
 
+## 2.0.0-alpha.0
+
+### Major Changes
+
+- e3e8e74: Remove default export.
+
 ## 1.1.3
 
 ### Patch Changes
