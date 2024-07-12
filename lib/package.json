@@ -16,7 +16,7 @@
     "dist/**"
   ],
   "scripts": {
-    "build": "tsup && tsc -p tsconfig-build.json",
+    "build": "vite build && tsc -p tsconfig-build.json",
     "clean": "rm -rf dist",
     "dev": "tsup --watch && tsc -p tsconfig-build.json -w",
     "typecheck": "tsc --noEmit",
@@ -39,17 +39,14 @@
     "react-dom": "^18.3.1",
     "tsup": "^8.1.0",
     "typescript": "^5.5.3",
+    "vite": "^5.3.3",
     "vite-tsconfig-paths": "^4.3.2",
-    "vitest": "^2.0.2"
+    "vitest": "^2.0.2",
+    "glob": "^11.0.0"
   },
   "peerDependencies": {
     "@types/react": "16.8 - 19",
     "react": "16.8 - 19"
-  },
-  "peerDependenciesMeta": {
-    "next": {
-      "optional": true
-    }
   },
   "funding": [
     {
