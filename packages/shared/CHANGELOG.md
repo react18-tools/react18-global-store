@@ -1,5 +1,12 @@
 # @repo/shared
 
+## 0.0.4-use.0
+
+### Patch Changes
+
+- Updated dependencies [ae26214]
+  - r18gs@2.0.1-use.0
+
 ## 0.0.3
 
 ### Patch Changes

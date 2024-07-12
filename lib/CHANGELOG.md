@@ -1,5 +1,11 @@
 # r18gs
 
+## 2.0.1-use.0
+
+### Patch Changes
+
+- ae26214: Use vite to build the library
+
 ## 2.0.0
 
 ### Major Changes

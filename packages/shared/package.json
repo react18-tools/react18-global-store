@@ -1,6 +1,6 @@
 {
   "name": "@repo/shared",
-  "version": "0.0.3",
+  "version": "0.0.4-use.0",
   "private": true,
   "sideEffects": false,
   "main": "./dist/index.js",
