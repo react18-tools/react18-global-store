@@ -19,7 +19,7 @@ export const meta: MetaFunction = () => [
 export const links: LinksFunction = () => [{ rel: "stylesheet", href: styles }];
 
 /** Remix app root */
-export default function App(): JSX.Element {
+export default function App() {
   return (
     <html lang="en">
       <head>

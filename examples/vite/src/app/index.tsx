@@ -7,7 +7,7 @@ import { Core } from "nextjs-darkmode";
 import { Demo, Header } from "@repo/shared";
 
 /** Vite App */
-function App(): JSX.Element {
+function App() {
   return (
     <Layout>
       <Core t="background .5s" />

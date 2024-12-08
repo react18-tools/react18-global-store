@@ -6,7 +6,7 @@ export const metadata = {
 };
 
 /** next.js landing page */
-export default function Page(): JSX.Element {
+export default function Page() {
   return (
     <LandingPage title="Next.js Example">
       <Demo />
