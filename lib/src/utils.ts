@@ -19,7 +19,7 @@ declare global {
 }
 
 const globalThisForBetterMinification = globalThis;
-globalThisForBetterMinification.rgs = {};
+if (!globalThisForBetterMinification.rgs) globalThisForBetterMinification.rgs = {};
 export const globalRGS = globalThisForBetterMinification.rgs;
 
 /** trigger all listeners */

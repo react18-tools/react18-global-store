@@ -1,5 +1,11 @@
 # r18gs
 
+## 2.0.1
+
+### Patch Changes
+
+- 087a5b9: Fix: fix resetting store
+
 ## 2.0.0
 
 ### Major Changes
