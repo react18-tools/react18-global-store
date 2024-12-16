@@ -44,15 +44,5 @@
     "r18gs": "workspace:*",
     "react-live": "^4.1.8",
     "react18-loaders": "^1.1.4"
-  },
-  "peerDependencies": {
-    "@types/react": "16.8 - 19",
-    "next": "10 - 14",
-    "react": "16.8 - 19"
-  },
-  "peerDependenciesMeta": {
-    "next": {
-      "optional": true
-    }
   }
 }
