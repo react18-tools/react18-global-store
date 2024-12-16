@@ -46,11 +46,6 @@
     "@types/react": "16.8 - 19",
     "react": "16.8 - 19"
   },
-  "peerDependenciesMeta": {
-    "next": {
-      "optional": true
-    }
-  },
   "funding": [
     {
       "type": "github",
