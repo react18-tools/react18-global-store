@@ -17,7 +17,7 @@ jobs:
       - run: npm i -g pnpm && pnpm i
         name: Install dependencies
       - name: Run unit tests
-        run: pnpm test
+        run: cd lib && pnpm test
       - name: Upload coverage reports to Codecov
         continue-on-error: true
         uses: codecov/codecov-action@v4
