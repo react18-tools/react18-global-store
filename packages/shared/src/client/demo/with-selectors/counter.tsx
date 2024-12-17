@@ -7,8 +7,8 @@ export function Counter() {
   renderCount.current++;
   return (
     <div>
-      <h1>Counter With Selectors</h1>
-      <h2>Rerender is triggered by RGS only when count changes.</h2>
+      <h2>Counter With Selectors</h2>
+      <p>Rerender is triggered by RGS only when count changes.</p>
       <p>Count: {count}</p>
       <button onClick={() => setState(state => ({ ...state, count: count + 1 }))}>Increment</button>
       <button onClick={() => setState(state => ({ ...state, count: count - 1 }))}>Decrement</button>

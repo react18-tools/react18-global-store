@@ -1,12 +1,13 @@
 import { useRef } from "react";
 import { useStore } from "./store";
+import styles from "../demo.module.scss";
 
 export function Header() {
   const [{ name }] = useStore("name");
   const renderCount = useRef(0);
   renderCount.current++;
   return (
-    <header>
+    <header className={styles.header}>
       <h1>My name is {name}</h1>
       <small>
         <i>

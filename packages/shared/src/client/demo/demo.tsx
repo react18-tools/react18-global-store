@@ -9,6 +9,9 @@ import { WithSelector } from "./with-selectors";
 import withSelectorCode from "./with-selectors/with-selectors.tsx?raw";
 import storeCode from "./with-selectors/store.ts?raw";
 import couter2Code from "./with-selectors/counter.tsx?raw";
+import counterWithoutSelectorscode from "./with-selectors/counter-without-selectors.tsx?raw";
+import headerCode from "./with-selectors/header.tsx?raw";
+import userDataCode from "./with-selectors/user-data.tsx?raw";
 
 const basicExCode = [
   { filename: "counter.tsx", code: counterCode },
@@ -17,7 +20,10 @@ const basicExCode = [
 
 const withSelectorExCode = [
   { filename: "store.ts", code: storeCode },
+  { filename: "header.tsx", code: headerCode },
   { filename: "counter.tsx", code: couter2Code },
+  { filename: "counter-without-selectors.tsx", code: counterWithoutSelectorscode },
+  { filename: "user-data.tsx", code: userDataCode },
   { filename: "with-selectors.tsx", code: withSelectorCode },
 ];
 

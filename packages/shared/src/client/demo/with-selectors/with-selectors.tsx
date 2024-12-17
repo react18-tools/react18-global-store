@@ -8,9 +8,11 @@ export function WithSelector() {
   return (
     <div className={styles.preview}>
       <Header />
-      <Counter />
-      <CounterWithoutSelectors />
-      <UserData />
+      <div className={styles.flex}>
+        <Counter />
+        <CounterWithoutSelectors />
+        <UserData />
+      </div>
     </div>
   );
 }
