@@ -1,5 +1,5 @@
 import { CounterController, CounterDisplay } from "./counter";
-import styles from "./demo.module.scss";
+import styles from "../demo.module.scss";
 
 export function BasicExample() {
   return (

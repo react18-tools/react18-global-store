@@ -2,8 +2,8 @@
 
 import { BasicExample } from "./basic-example";
 import styles from "./demo.module.scss";
-import basicExampleCode from "./basic-example.tsx?raw";
-import counterCode from "./counter.tsx?raw";
+import basicExampleCode from "./basic-example/basic-example.tsx?raw";
+import counterCode from "./basic-example/counter.tsx?raw";
 import { CodeDisplay } from "./code-display";
 
 const code = [
