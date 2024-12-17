@@ -1,5 +1,15 @@
 # r18gs
 
+## 2.1.0
+
+### Minor Changes
+
+- 22efc00: Add selectors - do not unnecessarily re-render the components.
+
+### Patch Changes
+
+- a05da0e: Improve type safety
+
 ## 2.0.1
 
 ### Patch Changes

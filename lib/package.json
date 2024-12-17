@@ -2,7 +2,7 @@
   "name": "r18gs",
   "author": "Mayank Kumar Chaudhari <https://mayank-chaudhari.vercel.app>",
   "private": false,
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "A simple yet elegant, light weight, react18 global store to replace Zustand for better tree shaking.",
   "license": "MPL-2.0",
   "main": "./dist/index.js",
