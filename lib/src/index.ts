@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/non-nullable-type-assertion-style -- as ! operator is forbidden by eslint*/
 import { createHook, createSetter, createSubcriber, globalRGS } from "./utils";
 
-import type { Selector, SetStateAction, ValueType } from "./utils";
+import type { SetStateAction, ValueType } from "./utils";
 
 export type { SetterArgType, SetStateAction, Plugin } from "./utils";
 
@@ -23,7 +23,7 @@ export type { SetterArgType, SetStateAction, Plugin } from "./utils";
 const useRGS = <T>(
   key: string,
   value?: ValueType<T>,
-  ...fields: Selector[]
+  ...fields: (keyof T)[]
 ): [T, SetStateAction<T>] => {
   /** Initialize the named store when invoked for the first time. */
   if (!globalRGS[key])
