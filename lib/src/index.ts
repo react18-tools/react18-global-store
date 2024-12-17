@@ -31,7 +31,6 @@ const useRGS = <T>(
       v: value instanceof Function ? value() : value,
       l: [],
       s: createSetter(key),
-      u: createSubcriber(key, fields),
     };
 
   return createHook<T>(key, fields);

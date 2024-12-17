@@ -16,7 +16,6 @@ type RGS = {
   v: unknown;
   l: ListenerWithSelectors[];
   s: SetStateAction<unknown> | null;
-  u: Subscriber;
 };
 
 declare global {
@@ -104,7 +103,7 @@ export const initWithPlugins = <T>(
   value = value instanceof Function ? value() : value;
   if (doNotInit) {
     /** You will not have access to the setter until initialized */
-    globalRGS[key] = { v: value, l: [], s: null, u: createSubcriber(key, fields) };
+    globalRGS[key] = { v: value, l: [], s: null };
     return;
   }
   /** setter function to set the state. */
@@ -122,8 +121,7 @@ export const initWithPlugins = <T>(
   if (rgs) {
     rgs.v = value;
     rgs.s = setterWithPlugins;
-  } else
-    globalRGS[key] = { v: value, l: [], s: setterWithPlugins, u: createSubcriber(key, fields) };
+  } else globalRGS[key] = { v: value, l: [], s: setterWithPlugins };
   initPlugins(key, plugins);
 };
 
