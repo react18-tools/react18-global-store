@@ -1,6 +1,6 @@
 {
   "name": "@repo/shared",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "private": true,
   "sideEffects": false,
   "main": "./dist/index.js",
@@ -28,6 +28,7 @@
     "@vitest/coverage-v8": "^2.1.8",
     "esbuild-plugin-react18": "^0.2.5",
     "esbuild-plugin-react18-css": "^0.0.4",
+    "esraw": "^0.1.0",
     "jsdom": "^25.0.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -44,15 +45,5 @@
     "r18gs": "workspace:*",
     "react-live": "^4.1.8",
     "react18-loaders": "^1.1.4"
-  },
-  "peerDependencies": {
-    "@types/react": "16.8 - 19",
-    "next": "10 - 14",
-    "react": "16.8 - 19"
-  },
-  "peerDependenciesMeta": {
-    "next": {
-      "optional": true
-    }
   }
 }

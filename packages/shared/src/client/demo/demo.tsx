@@ -1,59 +1,48 @@
 "use client";
 
-import { CounterController, CounterDisplay } from "./counter";
+import { BasicExample } from "./basic-example";
 import styles from "./demo.module.scss";
-import { Editor } from "react-live";
+import basicExampleCode from "./basic-example/basic-example.tsx?raw";
+import counterCode from "./basic-example/counter.tsx?raw";
+import { CodeDisplay } from "./code-display";
+import { WithSelector } from "./with-selectors";
+import withSelectorCode from "./with-selectors/with-selectors.tsx?raw";
+import storeCode from "./with-selectors/store.ts?raw";
+import couter2Code from "./with-selectors/counter.tsx?raw";
+import counterWithoutSelectorscode from "./with-selectors/counter-without-selectors.tsx?raw";
+import headerCode from "./with-selectors/header.tsx?raw";
+import userDataCode from "./with-selectors/user-data.tsx?raw";
 
-const code = `import { useRGS } from "r18gs";
+const basicExCode = [
+  { filename: "counter.tsx", code: counterCode },
+  { filename: "basic-example.tsx", code: basicExampleCode },
+];
 
-const MY_KEY = "counter";
-
-export const CounterController = () => {
-  const [counter, setCounter] = useRGS(MY_KEY, 0);
-  return (
-    <input
-      type="number"
-      value={counter}
-      onChange={e =>
-        setCounter(Number(e.target.value))
-      }
-    />
-  );
-};
-
-export const CounterDisplay = () => {
-  const [counter] = useRGS(MY_KEY, 0);
-  return <div>{counter}</div>;
-};`;
+const withSelectorExCode = [
+  { filename: "store.ts", code: storeCode },
+  { filename: "header.tsx", code: headerCode },
+  { filename: "counter.tsx", code: couter2Code },
+  { filename: "counter-without-selectors.tsx", code: counterWithoutSelectorscode },
+  { filename: "user-data.tsx", code: userDataCode },
+  { filename: "with-selectors.tsx", code: withSelectorCode },
+];
 
 /** React live demo */
 export function Demo() {
   return (
-    <div className={styles.demo}>
-      <Editor className={styles.code} code={code} language="tsx" />
-      <div className={styles.preview}>
-        <p>All components below share the same state without any wrapper.</p>
-        <p>
-          <img src="https://img.shields.io/bundlephobia/minzip/r18gs" alt="NPM Bundle Size" />
-        </p>
-        <div className={styles.center}>
-          <h2>Counter Controller 1</h2>
-          <CounterController />
-        </div>
-        <div className={styles.center}>
-          <h2>Counter Display 1</h2>
-          <CounterDisplay />
-        </div>
-        <br />
-        <div className={styles.center}>
-          <h2>Counter Controller 2</h2>
-          <CounterController />
-        </div>
-        <div className={styles.center}>
-          <h2>Counter Display 2</h2>
-          <CounterDisplay />
-        </div>
+    <>
+      <div className={styles.demo}>
+        <h2 className={styles.preview}>A tiny yet powerful store for modern react libraries.</h2>
+        <img src="https://img.shields.io/bundlephobia/minzip/r18gs" alt="NPM Bundle Size" />
       </div>
-    </div>
+      <div className={styles.demo}>
+        <BasicExample />
+        <CodeDisplay code={basicExCode} />
+      </div>
+      <div className={styles.demo}>
+        <WithSelector />
+        <CodeDisplay code={withSelectorExCode} />
+      </div>
+    </>
   );
 }

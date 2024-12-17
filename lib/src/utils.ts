@@ -1,7 +1,8 @@
 import { useSyncExternalStore } from "react";
 
+export type Selector = string | number | Symbol;
 type Listener = () => void;
-type Subscriber = (l: Listener) => () => void;
+type ListenerWithSelectors = { l: Listener; s: Selector[] };
 
 export type SetterArgType<T> = T | ((prevState: T) => T);
 export type SetStateAction<T> = (value: SetterArgType<T>) => void;
@@ -10,7 +11,11 @@ export type ValueType<T> = T | (() => T);
 /**
  * This is a hack to reduce lib size + readability + not encouraging direct access to globalThis
  */
-type RGS = { v: unknown; l: Listener[]; s: SetStateAction<unknown> | null; u: Subscriber };
+export type RGS = {
+  v: unknown;
+  l: ListenerWithSelectors[];
+  s: SetStateAction<unknown> | null;
+};
 
 declare global {
   // eslint-disable-next-line no-var -- var required for global declaration.
@@ -23,34 +28,30 @@ if (!globalThisForBetterMinification.rgs) globalThisForBetterMinification.rgs = 
 export const globalRGS = globalThisForBetterMinification.rgs;
 
 /** trigger all listeners */
-const triggerListeners = (rgs: RGS) => rgs.l.forEach(listener => listener());
-
-/** craete subscriber function to subscribe to the store. */
-export const createSubcriber = (key: string): Subscriber => {
-  return listener => {
-    const rgs = globalRGS[key] as RGS;
-    (rgs.l as Listener[]).push(listener);
-    return () => {
-      rgs.l = (rgs.l as Listener[]).filter(l => l !== listener);
-    };
-  };
-};
-
-/** setter function to set the state. */
-export const createSetter = <T>(key: string): SetStateAction<unknown> => {
-  return val => {
-    const rgs = globalRGS[key] as RGS;
-    rgs.v = typeof val === "function" ? val(rgs.v as T) : val;
-    (rgs.l as Listener[]).forEach(listener => listener());
-  };
+export const triggerListeners = <T>(rgs: RGS, oldV: T, newV: T) => {
+  const updatedFiels: Selector[] = [];
+  // no need to test this --- it will automatically fail
+  // if (typeof oldV === "object" && typeof rgs.v === "object")
+  for (const key in oldV) if (oldV[key] !== newV[key]) updatedFiels.push(key);
+  rgs.l.forEach(({ l, s }) => (!s.length || s.some(filed => updatedFiels.includes(filed))) && l());
 };
 
 /** Extract coomon create hook logic to utils */
-export const createHook = <T>(key: string): [T, SetStateAction<T>] => {
+export const createHook = <T>(key: string, fields: (keyof T)[]): [T, SetStateAction<T>] => {
   const rgs = globalRGS[key] as RGS;
   /** This function is called by react to get the current stored value. */
   const getSnapshot = () => rgs.v as T;
-  const val = useSyncExternalStore<T>(rgs.u as Subscriber, getSnapshot, getSnapshot);
+  const val = useSyncExternalStore<T>(
+    listener => {
+      const listenerWithSelectors = { l: listener, s: fields };
+      rgs.l.push(listenerWithSelectors);
+      return () => {
+        rgs.l = rgs.l.filter(l => l !== listenerWithSelectors);
+      };
+    },
+    getSnapshot,
+    getSnapshot,
+  );
   return [val, rgs.s as SetStateAction<T>];
 };
 
@@ -67,8 +68,9 @@ const initPlugins = async <T>(key: string, plugins: Plugin<T>[]) => {
   const rgs = globalRGS[key] as RGS;
   /** Mutate function to update the value */
   const mutate: Mutate<T> = newValue => {
+    const oldValue = rgs.v as T;
     rgs.v = newValue;
-    triggerListeners(rgs);
+    triggerListeners(rgs, oldValue, newValue);
   };
   for (const plugin of plugins) {
     /** Next plugins initializer will get the new value if updated by previous one */
@@ -87,7 +89,7 @@ export const initWithPlugins = <T>(
   value = value instanceof Function ? value() : value;
   if (doNotInit) {
     /** You will not have access to the setter until initialized */
-    globalRGS[key] = { v: value, l: [], s: null, u: createSubcriber(key) };
+    globalRGS[key] = { v: value, l: [], s: null };
     return;
   }
   /** setter function to set the state. */
@@ -95,8 +97,9 @@ export const initWithPlugins = <T>(
     /** Do not allow mutating the store before all extentions are initialized */
     if (!allExtentionsInitialized) return;
     const rgs = globalRGS[key] as RGS;
-    rgs.v = val instanceof Function ? val(rgs.v as T) : val;
-    triggerListeners(rgs);
+    const oldValue = rgs.v;
+    rgs.v = val instanceof Function ? val(oldValue) : val;
+    triggerListeners(rgs, oldValue, rgs.v);
     plugins.forEach(plugin => plugin.onChange?.(key, rgs.v as T));
   };
 
@@ -104,7 +107,7 @@ export const initWithPlugins = <T>(
   if (rgs) {
     rgs.v = value;
     rgs.s = setterWithPlugins;
-  } else globalRGS[key] = { v: value, l: [], s: setterWithPlugins, u: createSubcriber(key) };
+  } else globalRGS[key] = { v: value, l: [], s: setterWithPlugins };
   initPlugins(key, plugins);
 };
 
@@ -130,7 +133,8 @@ export const useRGSWithPlugins = <T>(
   value?: ValueType<T>,
   plugins?: Plugin<T>[],
   doNotInit = false,
+  ...fields: (keyof T)[]
 ): [T, SetStateAction<T>] => {
   if (!globalRGS[key]?.s) initWithPlugins(key, value, plugins, doNotInit);
-  return createHook<T>(key);
+  return createHook<T>(key, fields);
 };
