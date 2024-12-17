@@ -1,3 +1,45 @@
+.codeDisplay {
+    padding: 10px;
+    .hide {
+      display: none;
+    }
+    summary {
+      cursor: pointer;
+    }
+    &[open] {
+      .show {
+        display: none;
+      }
+      .hide {
+        display: inline;
+      }
+    }
+    .tabs {
+      margin-bottom: -10px;
+      text-wrap: nowrap;
+      overflow: auto;
+      button {
+        all: unset;
+        cursor: pointer;
+        padding: 10px 20px;
+        &.active {
+          background: #2465;
+        }
+        &:hover {
+          background: #2495;
+        }
+      }
+    }
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
 .demo {
   width: var(--max-width);
   max-width: 95vw;
@@ -6,15 +48,28 @@
   margin-bottom: 3rem;
   border-radius: 1rem;
   overflow: hidden;
-  flex-direction: column-reverse;
+  flex-direction: column;
   box-shadow: 0 0 8px -2px var(--text-color);
   & > * {
     flex-grow: 1;
   }
+  
+  img {
+    display: block;
+    max-width: 500px;
+    width: 80%;
+    flex-grow: 0;
+    margin: auto;
+    margin-bottom: 30px;
+  }
+  h2 {
+    text-align: center;
+  }
 }
 
 .preview {
-  padding: 10px;
+  padding: 0 30px;
+  padding-bottom: 30px;
 }
 
 .center {
@@ -32,13 +87,9 @@
 
 .code {
   font-family: var(--font-mono);
+  max-height: 80vh;
+  overflow: auto;
   pre {
     padding: 20px;
-  }
-}
-
-@media screen and (min-width: 800px) {
-  .demo {
-    flex-direction: row;
   }
 }
