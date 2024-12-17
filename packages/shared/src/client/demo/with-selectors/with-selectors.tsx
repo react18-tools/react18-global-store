@@ -7,8 +7,8 @@ import { UserData } from "./user-data";
 export function WithSelector() {
   return (
     <div className={styles.preview}>
-      {/* <Header /> */}
-      {/* <Counter /> */}
+      <Header />
+      <Counter />
       <CounterWithoutSelectors />
       <UserData />
     </div>

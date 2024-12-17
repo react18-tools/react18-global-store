@@ -60,11 +60,12 @@ export const createSetter = <T>(key: string): SetStateAction<unknown> => {
 };
 
 /** Extract coomon create hook logic to utils */
-export const createHook = <T>(key: string): [T, SetStateAction<T>] => {
+export const createHook = <T>(key: string, fields: (keyof T)[]): [T, SetStateAction<T>] => {
   const rgs = globalRGS[key] as RGS;
   /** This function is called by react to get the current stored value. */
   const getSnapshot = () => rgs.v as T;
-  const val = useSyncExternalStore<T>(rgs.u as Subscriber, getSnapshot, getSnapshot);
+  const u = createSubcriber(key, fields);
+  const val = useSyncExternalStore<T>(u, getSnapshot, getSnapshot);
   return [val, rgs.s as SetStateAction<T>];
 };
 
@@ -148,7 +149,8 @@ export const useRGSWithPlugins = <T>(
   value?: ValueType<T>,
   plugins?: Plugin<T>[],
   doNotInit = false,
+  ...fields: (keyof T)[]
 ): [T, SetStateAction<T>] => {
   if (!globalRGS[key]?.s) initWithPlugins(key, value, plugins, doNotInit);
-  return createHook<T>(key);
+  return createHook<T>(key, fields);
 };

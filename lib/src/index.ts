@@ -34,7 +34,7 @@ const useRGS = <T>(
       u: createSubcriber(key, fields),
     };
 
-  return createHook<T>(key);
+  return createHook<T>(key, fields);
 };
 
 export { useRGS };
