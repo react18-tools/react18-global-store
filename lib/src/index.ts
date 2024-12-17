@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/non-nullable-type-assertion-style -- as ! operator is forbidden by eslint*/
-import { createHook, createSetter, createSubcriber, globalRGS } from "./utils";
+import { createHook, globalRGS, triggerListeners } from "./utils";
 
-import type { SetStateAction, ValueType } from "./utils";
+import type { RGS, SetStateAction, ValueType } from "./utils";
 
 export type { SetterArgType, SetStateAction, Plugin } from "./utils";
 
@@ -30,7 +30,12 @@ const useRGS = <T>(
     globalRGS[key] = {
       v: value instanceof Function ? value() : value,
       l: [],
-      s: createSetter(key),
+      s: val => {
+        const rgs = globalRGS[key] as RGS;
+        const oldV = rgs.v as T;
+        rgs.v = val instanceof Function ? val(oldV) : val;
+        triggerListeners(rgs, oldV, rgs.v);
+      },
     };
 
   return createHook<T>(key, fields);

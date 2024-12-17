@@ -2,7 +2,6 @@ import { useSyncExternalStore } from "react";
 
 export type Selector = string | number | Symbol;
 type Listener = () => void;
-type Subscriber = (l: Listener) => () => void;
 type ListenerWithSelectors = { l: Listener; s: Selector[] };
 
 export type SetterArgType<T> = T | ((prevState: T) => T);
@@ -12,7 +11,7 @@ export type ValueType<T> = T | (() => T);
 /**
  * This is a hack to reduce lib size + readability + not encouraging direct access to globalThis
  */
-type RGS = {
+export type RGS = {
   v: unknown;
   l: ListenerWithSelectors[];
   s: SetStateAction<unknown> | null;
@@ -29,33 +28,12 @@ if (!globalThisForBetterMinification.rgs) globalThisForBetterMinification.rgs = 
 export const globalRGS = globalThisForBetterMinification.rgs;
 
 /** trigger all listeners */
-const triggerListeners = <T>(rgs: RGS, oldV: T, newV: T) => {
+export const triggerListeners = <T>(rgs: RGS, oldV: T, newV: T) => {
   const updatedFiels: Selector[] = [];
   // no need to test this --- it will automatically fail
   // if (typeof oldV === "object" && typeof rgs.v === "object")
   for (const key in oldV) if (oldV[key] !== newV[key]) updatedFiels.push(key);
   rgs.l.forEach(({ l, s }) => (!s.length || s.some(filed => updatedFiels.includes(filed))) && l());
-};
-/** craete subscriber function to subscribe to the store. */
-export const createSubcriber = (key: string, fields: Selector[]): Subscriber => {
-  return listener => {
-    const rgs = globalRGS[key] as RGS;
-    const listenerWithSelectors = { l: listener, s: fields };
-    (rgs.l as ListenerWithSelectors[]).push(listenerWithSelectors);
-    return () => {
-      rgs.l = (rgs.l as ListenerWithSelectors[]).filter(l => l !== listenerWithSelectors);
-    };
-  };
-};
-
-/** setter function to set the state. */
-export const createSetter = <T>(key: string): SetStateAction<unknown> => {
-  return val => {
-    const rgs = globalRGS[key] as RGS;
-    const oldV = rgs.v as T;
-    const newV = (rgs.v = (val instanceof Function ? val(oldV) : val) as T);
-    triggerListeners(rgs, oldV, newV);
-  };
 };
 
 /** Extract coomon create hook logic to utils */
@@ -63,8 +41,17 @@ export const createHook = <T>(key: string, fields: (keyof T)[]): [T, SetStateAct
   const rgs = globalRGS[key] as RGS;
   /** This function is called by react to get the current stored value. */
   const getSnapshot = () => rgs.v as T;
-  const u = createSubcriber(key, fields);
-  const val = useSyncExternalStore<T>(u, getSnapshot, getSnapshot);
+  const val = useSyncExternalStore<T>(
+    listener => {
+      const listenerWithSelectors = { l: listener, s: fields };
+      rgs.l.push(listenerWithSelectors);
+      return () => {
+        rgs.l = rgs.l.filter(l => l !== listenerWithSelectors);
+      };
+    },
+    getSnapshot,
+    getSnapshot,
+  );
   return [val, rgs.s as SetStateAction<T>];
 };
 
