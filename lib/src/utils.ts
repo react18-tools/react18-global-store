@@ -85,7 +85,6 @@ export const initWithPlugins = <T>(
   value?: ValueType<T>,
   plugins: Plugin<T>[] = [],
   doNotInit = false,
-  ...fields: string[]
 ) => {
   value = value instanceof Function ? value() : value;
   if (doNotInit) {
