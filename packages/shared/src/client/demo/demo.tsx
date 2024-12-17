@@ -5,10 +5,20 @@ import styles from "./demo.module.scss";
 import basicExampleCode from "./basic-example/basic-example.tsx?raw";
 import counterCode from "./basic-example/counter.tsx?raw";
 import { CodeDisplay } from "./code-display";
+import { WithSelector } from "./with-selectors";
+import withSelectorCode from "./with-selectors/with-selectors.tsx?raw";
+import storeCode from "./with-selectors/store.ts?raw";
+import couter2Code from "./with-selectors/counter.tsx?raw";
 
-const code = [
-  { filename: "basic-example.tsx", code: basicExampleCode },
+const basicExCode = [
   { filename: "counter.tsx", code: counterCode },
+  { filename: "basic-example.tsx", code: basicExampleCode },
+];
+
+const withSelectorExCode = [
+  { filename: "store.ts", code: storeCode },
+  { filename: "counter.tsx", code: couter2Code },
+  { filename: "with-selectors.tsx", code: withSelectorCode },
 ];
 
 /** React live demo */
@@ -21,7 +31,11 @@ export function Demo() {
       </div>
       <div className={styles.demo}>
         <BasicExample />
-        <CodeDisplay code={code} />
+        <CodeDisplay code={basicExCode} />
+      </div>
+      <div className={styles.demo}>
+        <WithSelector />
+        <CodeDisplay code={withSelectorExCode} />
       </div>
     </>
   );
