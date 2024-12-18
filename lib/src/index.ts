@@ -23,7 +23,8 @@ export type { SetterArgType, SetStateAction, Plugin } from "./utils";
 const useRGS = <T>(
   key: string,
   value?: ValueType<T>,
-  ...fields: (keyof T)[]
+  includeRegExp?: RegExp | null,
+  excludeRegExp?: RegExp,
 ): [T, SetStateAction<T>] => {
   /** Initialize the named store when invoked for the first time. */
   if (!globalRGS[key])
@@ -38,7 +39,7 @@ const useRGS = <T>(
       },
     };
 
-  return createHook<T>(key, fields);
+  return createHook<T>(key, includeRegExp, excludeRegExp);
 };
 
 export { useRGS };

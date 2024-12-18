@@ -1,8 +1,10 @@
 import { useSyncExternalStore } from "react";
 
-export type Selector = string | number | Symbol;
 type Listener = () => void;
-type ListenerWithSelectors = { l: Listener; s: Selector[] };
+type ListenerWithSelectors = {
+  l: Listener;
+  s: [includeRegExp?: RegExp | null, excludeRegExp?: RegExp];
+};
 
 export type SetterArgType<T> = T | ((prevState: T) => T);
 export type SetStateAction<T> = (value: SetterArgType<T>) => void;
@@ -29,21 +31,35 @@ export const globalRGS = globalThisForBetterMinification.rgs;
 
 /** trigger all listeners */
 export const triggerListeners = <T>(rgs: RGS, oldV: T, newV: T) => {
-  const updatedFiels: Selector[] = [];
+  const updatedFiels: string[] = [];
   // no need to test this --- it will automatically fail
   // if (typeof oldV === "object" && typeof rgs.v === "object")
   for (const key in oldV) if (oldV[key] !== newV[key]) updatedFiels.push(key);
-  rgs.l.forEach(({ l, s }) => (!s.length || s.some(filed => updatedFiels.includes(filed))) && l());
+  // const testStr = updatedFiels.join("; ");
+  rgs.l.forEach(
+    ({ l, s: [includeRegExp, excludeRegExp] }) =>
+      updatedFiels.filter(
+        s =>
+          (!includeRegExp || includeRegExp.test(s)) && (!excludeRegExp || !excludeRegExp.test(s)),
+      ).length && l(),
+  );
 };
 
 /** Extract coomon create hook logic to utils */
-export const createHook = <T>(key: string, fields: (keyof T)[]): [T, SetStateAction<T>] => {
+export const createHook = <T>(
+  key: string,
+  includeRegExp?: RegExp | null,
+  excludeRegExp?: RegExp,
+): [T, SetStateAction<T>] => {
   const rgs = globalRGS[key] as RGS;
   /** This function is called by react to get the current stored value. */
   const getSnapshot = () => rgs.v as T;
   const val = useSyncExternalStore<T>(
     listener => {
-      const listenerWithSelectors = { l: listener, s: fields };
+      const listenerWithSelectors = {
+        l: listener,
+        s: [includeRegExp, excludeRegExp],
+      } as ListenerWithSelectors;
       rgs.l.push(listenerWithSelectors);
       return () => {
         rgs.l = rgs.l.filter(l => l !== listenerWithSelectors);
@@ -133,8 +149,9 @@ export const useRGSWithPlugins = <T>(
   value?: ValueType<T>,
   plugins?: Plugin<T>[],
   doNotInit = false,
-  ...fields: (keyof T)[]
+  includeRegExp?: RegExp | null,
+  excludeRegExp?: RegExp,
 ): [T, SetStateAction<T>] => {
   if (!globalRGS[key]?.s) initWithPlugins(key, value, plugins, doNotInit);
-  return createHook<T>(key, fields);
+  return createHook<T>(key, includeRegExp, excludeRegExp);
 };
