@@ -38,10 +38,12 @@ export const triggerListeners = <T>(rgs: RGS, oldV: T, newV: T) => {
   // const testStr = updatedFiels.join("; ");
   rgs.l.forEach(
     ({ l, s: [includeRegExp, excludeRegExp] }) =>
-      updatedFiels.filter(
-        s =>
-          (!includeRegExp || includeRegExp.test(s)) && (!excludeRegExp || !excludeRegExp.test(s)),
-      ).length && l(),
+      (!(newV instanceof Object) ||
+        updatedFiels.filter(
+          s =>
+            (!includeRegExp || includeRegExp.test(s)) && (!excludeRegExp || !excludeRegExp.test(s)),
+        ).length) &&
+      l(),
   );
 };
 
