@@ -10,6 +10,9 @@
 
 > 🌐 **Live Demo with Code**: [https://r18gs.vercel.app/](https://r18gs.vercel.app/)
 
+> **Important Note:**  
+> There are no breaking changes when upgrading from version 2.0.\* to version 3.\*. However, we released a major version because version 2.1.0 introduced new APIs. To improve those APIs, we made some breaking changes, which will only affect you if you are using the new features introduced in version 2.1.0.
+
 ## Motivation
 
 While developing libraries utilizing React 18 features with Zustand, I encountered issues with tree-shaking when importing from specific folders. This caused the creation of multiple Zustand stores, resulting in bugs and unnecessary JavaScript code execution.
