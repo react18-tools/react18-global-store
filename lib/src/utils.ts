@@ -158,6 +158,11 @@ export const useRGSWithPlugins = <T>(
   return createHook<T>(key, includeRegExp, excludeRegExp);
 };
 
+/**
+ * Converts a list of selectors into a regular expression.
+ * @param list - An array of strings representing the fields to match.
+ * @returns A regular expression that matches any field from the provided list.
+ */
 export const listToRegExp = (list: string[]) => {
   const escapedList = list.map(s => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
   return new RegExp(`^(${escapedList.join("|")})$`);
