@@ -1,5 +1,12 @@
 # @repo/shared
 
+## 0.0.7
+
+### Patch Changes
+
+- Updated dependencies [005e935]
+  - r18gs@3.0.1
+
 ## 0.0.6
 
 ### Patch Changes
