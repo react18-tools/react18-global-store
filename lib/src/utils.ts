@@ -48,7 +48,7 @@ export const triggerListeners = <T>(rgs: RGS, oldV: T, newV: T) => {
 /** Extract coomon create hook logic to utils */
 export const createHook = <T>(
   key: string,
-  includeRegExp?: RegExp | null,
+  includeRegExp?: RegExp | null | 0,
   excludeRegExp?: RegExp,
 ): [T, SetStateAction<T>] => {
   const rgs = globalRGS[key] as RGS;
@@ -149,7 +149,7 @@ export const useRGSWithPlugins = <T>(
   value?: ValueType<T>,
   plugins?: Plugin<T>[],
   doNotInit = false,
-  includeRegExp?: RegExp | null,
+  includeRegExp?: RegExp | null | 0,
   excludeRegExp?: RegExp,
 ): [T, SetStateAction<T>] => {
   if (!globalRGS[key]?.s) initWithPlugins(key, value, plugins, doNotInit);

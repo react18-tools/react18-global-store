@@ -9,7 +9,7 @@ interface MyStore {
   };
 }
 
-export const useStore = (...selectors: (keyof MyStore)[]) =>
+export const useStore = (includeRegExp?: RegExp | null | 0, excludeRegExp?: RegExp) =>
   useRGS<MyStore>(
     "my-store-with-selectors",
     {
@@ -20,5 +20,6 @@ export const useStore = (...selectors: (keyof MyStore)[]) =>
         age: 30,
       },
     },
-    ...selectors,
+    includeRegExp,
+    excludeRegExp,
   );

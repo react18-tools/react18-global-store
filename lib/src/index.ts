@@ -23,7 +23,7 @@ export type { SetterArgType, SetStateAction, Plugin } from "./utils";
 const useRGS = <T>(
   key: string,
   value?: ValueType<T>,
-  includeRegExp?: RegExp | null,
+  includeRegExp?: RegExp | null | 0,
   excludeRegExp?: RegExp,
 ): [T, SetStateAction<T>] => {
   /** Initialize the named store when invoked for the first time. */
