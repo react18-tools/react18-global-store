@@ -35,7 +35,7 @@ const useRGS = <T>(
       l: [],
       s: val => {
         const rgs = globalRGS[key] as RGS;
-        const oldV = rgs.v as T;
+        const oldV = rgs.v ?? {};
         rgs.v = val instanceof Function ? val(oldV) : val;
         triggerListeners(rgs, oldV, rgs.v);
       },

@@ -34,7 +34,8 @@ export const triggerListeners = <T>(rgs: RGS, oldV: T, newV: T) => {
   const updatedFiels: string[] = [];
   // no need to test this --- it will automatically fail
   // if (typeof oldV === "object" && typeof rgs.v === "object")
-  for (const key in oldV) if (oldV[key] !== newV[key]) updatedFiels.push(key);
+  for (const obj of [oldV, newV])
+    for (const key in obj) if (oldV[key] !== newV[key]) updatedFiels.push(key);
   // const testStr = updatedFiels.join("; ");
   rgs.l.forEach(
     ({ l, s: [includeRegExp, excludeRegExp] }) =>
