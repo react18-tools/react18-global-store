@@ -6,9 +6,9 @@ We provide support for the latest minor version. Pull requests aimed at fixing s
 
 | Version | Support Status     |
 | ------- | ------------------ |
-| 2.1.x   | :white_check_mark: |
-| 2.0.x   | :warning:          |
-| < 2.0   | :x:                |
+| 3.0.x   | :white_check_mark: |
+| 2.1.x   | :warning:          |
+| < 2.1   | :x:                |
 
 ## Patching Long-Term Support (LTS) Versions
 
