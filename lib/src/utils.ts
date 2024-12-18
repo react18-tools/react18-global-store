@@ -155,3 +155,8 @@ export const useRGSWithPlugins = <T>(
   if (!globalRGS[key]?.s) initWithPlugins(key, value, plugins, doNotInit);
   return createHook<T>(key, includeRegExp, excludeRegExp);
 };
+
+export const listToRegExp = (list: string[]) => {
+  const escapedList = list.map(s => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+  return new RegExp(`^(${escapedList.join("|")})$`);
+};
