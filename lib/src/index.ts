@@ -6,27 +6,30 @@ import type { RGS, SetStateAction, ValueType } from "./utils";
 export type { SetterArgType, SetStateAction, Plugin } from "./utils";
 
 /**
- * Use this hook similar to `useState` hook.
- * The difference is that you need to pass a
- * unique key - unique across the app to make
- * this state accessible to all client components.
+ * A React hook for managing shared global state, similar to the `useState` hook.
+ * This hook requires a unique key, which identifies the global store and allows state sharing across all client components.
  *
  * @example
  * ```tsx
  * const [state, setState] = useRGS<number>("counter", 1);
  * ```
  *
- * @param key - Unique key to identify the store.
- * @param value - Initial value of the store.
- * @returns - A tuple (Ordered sequance of values) containing the state and a function to set the state.
+ * @param key - A unique key to identify the global store.
+ * @param value - The initial value of the global state. Can be a value or a function returning a value.
+ * @param includeRegExp - (Optional) A regular expression to specify which fields trigger updates.
+ * @param excludeRegExp - (Optional) A regular expression to specify which fields should be excluded from updates.
+ * @returns A tuple containing the current state and a function to update the state.
+ *
+ * @see [Learn More](https://r18gs.vercel.app/)
  */
 const useRGS = <T>(
   key: string,
   value?: ValueType<T>,
-  ...fields: (keyof T)[]
+  includeRegExp?: RegExp | null | 0,
+  excludeRegExp?: RegExp,
 ): [T, SetStateAction<T>] => {
   /** Initialize the named store when invoked for the first time. */
-  if (!globalRGS[key])
+  if (!globalRGS[key]) {
     globalRGS[key] = {
       v: value instanceof Function ? value() : value,
       l: [],
@@ -37,8 +40,9 @@ const useRGS = <T>(
         triggerListeners(rgs, oldV, rgs.v);
       },
     };
+  }
 
-  return createHook<T>(key, fields);
+  return createHook<T>(key, includeRegExp, excludeRegExp);
 };
 
 export { useRGS };

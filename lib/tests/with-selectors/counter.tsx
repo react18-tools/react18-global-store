@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { useStore } from "./store";
 
 export function Counter() {
-  const [{ count }, setState] = useStore("count");
+  const [{ count }, setState] = useStore(/^count$/);
   const renderCount = useRef(0);
   renderCount.current++;
   return (

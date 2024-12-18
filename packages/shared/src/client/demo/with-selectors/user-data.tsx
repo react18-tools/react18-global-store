@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { useStore } from "./store";
 
 export function UserData() {
-  const [{ user }, setState] = useStore("user");
+  const [{ user }, setState] = useStore(/^user$/);
   const renderCount = useRef(0);
   renderCount.current++;
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {

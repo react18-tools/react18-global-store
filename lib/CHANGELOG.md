@@ -1,5 +1,11 @@
 # r18gs
 
+## 3.0.0
+
+### Major Changes
+
+- 935e8f8: Selectors are now replaced by includeRegExp and excludeRegExp
+
 ## 2.1.0
 
 ### Minor Changes
