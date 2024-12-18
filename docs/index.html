@@ -8,6 +8,10 @@
 <blockquote>
 <p>🌐 <strong>Live Demo with Code</strong>: <a href="https://r18gs.vercel.app/">https://r18gs.vercel.app/</a></p>
 </blockquote>
+<blockquote>
+<p><strong>Important Note:</strong><br>
+There are no breaking changes when upgrading from version 2.0.* to version 3.*. However, we released a major version because version 2.1.0 introduced new APIs. To improve those APIs, we made some breaking changes, which will only affect you if you are using the new features introduced in version 2.1.0.</p>
+</blockquote>
 <a id="motivation" class="tsd-anchor"></a><h2 class="tsd-anchor-link">Motivation<a href="#motivation" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>While developing libraries utilizing React 18 features with Zustand, I encountered issues with tree-shaking when importing from specific folders. This caused the creation of multiple Zustand stores, resulting in bugs and unnecessary JavaScript code execution.</p>
 <p>To address this, I created a lightweight, minimalistic store designed for shared states that optimizes tree-shaking and supports component imports from separate files.</p>
 <a id="features" class="tsd-anchor"></a><h2 class="tsd-anchor-link">Features<a href="#features" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>✅ <strong>Full TypeScript Support</strong><br>
