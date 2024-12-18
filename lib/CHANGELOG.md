@@ -1,5 +1,11 @@
 # r18gs
 
+## 3.0.1
+
+### Patch Changes
+
+- 005e935: Fix #37: Edgecase when the old and new state have different shape
+
 ## 3.0.0
 
 ### Major Changes
