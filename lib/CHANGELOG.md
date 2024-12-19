@@ -1,5 +1,11 @@
 # r18gs
 
+## 2.0.2
+
+### Patch Changes
+
+- dd2cc95: Make compatible with version 3.0
+
 ## 2.0.1
 
 ### Patch Changes
