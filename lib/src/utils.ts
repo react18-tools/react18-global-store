@@ -1,7 +1,6 @@
 import { useSyncExternalStore } from "react";
 
 type Listener = () => void;
-type Subscriber = (l: Listener) => () => void;
 
 export type SetterArgType<T> = T | ((prevState: T) => T);
 export type SetStateAction<T> = (value: SetterArgType<T>) => void;
@@ -10,7 +9,7 @@ export type ValueType<T> = T | (() => T);
 /**
  * This is a hack to reduce lib size + readability + not encouraging direct access to globalThis
  */
-type RGS = { v: unknown; l: Listener[]; s: SetStateAction<unknown> | null; u: Subscriber };
+type RGS = { v: unknown; l: Listener[]; s: SetStateAction<unknown> | null };
 
 declare global {
   // eslint-disable-next-line no-var -- var required for global declaration.
@@ -24,17 +23,6 @@ export const globalRGS = globalThisForBetterMinification.rgs;
 
 /** trigger all listeners */
 const triggerListeners = (rgs: RGS) => rgs.l.forEach(listener => listener());
-
-/** craete subscriber function to subscribe to the store. */
-export const createSubcriber = (key: string): Subscriber => {
-  return listener => {
-    const rgs = globalRGS[key] as RGS;
-    (rgs.l as Listener[]).push(listener);
-    return () => {
-      rgs.l = (rgs.l as Listener[]).filter(l => l !== listener);
-    };
-  };
-};
 
 /** setter function to set the state. */
 export const createSetter = <T>(key: string): SetStateAction<unknown> => {
@@ -50,7 +38,16 @@ export const createHook = <T>(key: string): [T, SetStateAction<T>] => {
   const rgs = globalRGS[key] as RGS;
   /** This function is called by react to get the current stored value. */
   const getSnapshot = () => rgs.v as T;
-  const val = useSyncExternalStore<T>(rgs.u as Subscriber, getSnapshot, getSnapshot);
+  const val = useSyncExternalStore<T>(
+    listener => {
+      rgs.l.push(listener);
+      return () => {
+        rgs.l = rgs.l.filter(l => l !== listener);
+      };
+    },
+    getSnapshot,
+    getSnapshot,
+  );
   return [val, rgs.s as SetStateAction<T>];
 };
 
@@ -87,7 +84,7 @@ export const initWithPlugins = <T>(
   value = value instanceof Function ? value() : value;
   if (doNotInit) {
     /** You will not have access to the setter until initialized */
-    globalRGS[key] = { v: value, l: [], s: null, u: createSubcriber(key) };
+    globalRGS[key] = { v: value, l: [], s: null };
     return;
   }
   /** setter function to set the state. */
@@ -104,7 +101,7 @@ export const initWithPlugins = <T>(
   if (rgs) {
     rgs.v = value;
     rgs.s = setterWithPlugins;
-  } else globalRGS[key] = { v: value, l: [], s: setterWithPlugins, u: createSubcriber(key) };
+  } else globalRGS[key] = { v: value, l: [], s: setterWithPlugins };
   initPlugins(key, plugins);
 };
 

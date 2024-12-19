@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/non-nullable-type-assertion-style -- as ! operator is forbidden by eslint*/
-import { createHook, createSetter, createSubcriber, globalRGS } from "./utils";
+import { createHook, createSetter, globalRGS } from "./utils";
 
 import type { SetStateAction, ValueType } from "./utils";
 
@@ -28,7 +28,6 @@ const useRGS = <T>(key: string, value?: ValueType<T>): [T, SetStateAction<T>] =>
       v: typeof value === "function" ? value() : value,
       l: [],
       s: createSetter(key),
-      u: createSubcriber(key),
     };
 
   return createHook<T>(key);
