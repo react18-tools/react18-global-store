@@ -40,8 +40,8 @@
   "dependencies": {
     "@mayank1513/fork-me": "^2.1.3",
     "@repo/scripts": "workspace:*",
-    "nextjs-darkmode": "^1.0.7",
-    "nextjs-themes": "^4.0.4",
+    "nextjs-darkmode": "^1.0.9",
+    "nextjs-themes": "^4.0.5",
     "r18gs": "workspace:*",
     "react-live": "^4.1.8",
     "react18-loaders": "^1.1.4"
