@@ -12,7 +12,7 @@
     "preinstall": "node scripts/update-pm.js"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.29.3",
+    "@changesets/cli": "^2.29.4",
     "@repo/typescript-config": "workspace:*",
     "@types/node": "^22.15.17",
     "enquirer": "^2.4.1",
