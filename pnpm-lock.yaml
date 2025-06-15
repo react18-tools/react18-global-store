@@ -48,8 +48,8 @@ importers:
         specifier: ^0.7.3
         version: 0.7.3(typedoc@0.28.5(typescript@5.8.3))
       typedoc-plugin-zod:
-        specifier: ^1.4.1
-        version: 1.4.1(typedoc@0.28.5(typescript@5.8.3))
+        specifier: ^1.4.2
+        version: 1.4.2(typedoc@0.28.5(typescript@5.8.3))
 
   examples/nextjs:
     dependencies:
@@ -6610,8 +6610,8 @@ packages:
     peerDependencies:
       typedoc: '>=0.22.x <0.29.x'
 
-  typedoc-plugin-zod@1.4.1:
-    resolution: {integrity: sha512-D7+uhPFCyKMcKnUSZip/BldE08Jo/yykvbxlIcY11fI8dKyCe23/igOiZ7rPW2mXD5N9kHEA2he9LkCoU+6HtA==}
+  typedoc-plugin-zod@1.4.2:
+    resolution: {integrity: sha512-DERrqbKyW1DAWgs+L3sgCTxrVJQuHg4whj0FZcXWIVdwtoYYSnxK2XSS9gepBwyRwlojjVux1ZjSPwDsWz9ulg==}
     peerDependencies:
       typedoc: 0.23.x || 0.24.x || 0.25.x || 0.26.x || 0.27.x || 0.28.x
 
@@ -14707,7 +14707,7 @@ snapshots:
       camelcase: 8.0.0
       typedoc: 0.28.5(typescript@5.8.3)
 
-  typedoc-plugin-zod@1.4.1(typedoc@0.28.5(typescript@5.8.3)):
+  typedoc-plugin-zod@1.4.2(typedoc@0.28.5(typescript@5.8.3)):
     dependencies:
       typedoc: 0.28.5(typescript@5.8.3)
 
