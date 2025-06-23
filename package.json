@@ -17,7 +17,7 @@
     "@types/node": "^24.0.3",
     "enquirer": "^2.4.1",
     "plop": "^4.0.1",
-    "prettier": "^3.5.3",
+    "prettier": "^3.6.0",
     "turbo": "^2.5.4",
     "typedoc": "^0.28.5",
     "typedoc-plugin-extras": "^4.0.0",
