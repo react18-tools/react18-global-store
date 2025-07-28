@@ -58,31 +58,31 @@ importers:
         version: link:../../packages/shared
       next:
         specifier: ^15.4.4
-        version: 15.4.4(@babel/core@7.28.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.89.2)
+        version: 15.4.4(@babel/core@7.28.0)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(sass@1.89.2)
       nextjs-darkmode:
         specifier: ^1.0.10
-        version: 1.0.10(@types/react@19.1.8)(react@19.1.0)
+        version: 1.0.10(@types/react@19.1.8)(react@19.1.1)
       nextjs-darkmode-lite:
         specifier: ^1.0.10
-        version: 1.0.10(@types/react@19.1.8)(r18gs@lib)(react@19.1.0)
+        version: 1.0.10(@types/react@19.1.8)(r18gs@lib)(react@19.1.1)
       nextjs-themes:
         specifier: ^4.0.6
-        version: 4.0.6(@types/react@19.1.8)(next@15.4.4(@babel/core@7.28.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.89.2))(react@19.1.0)
+        version: 4.0.6(@types/react@19.1.8)(next@15.4.4(@babel/core@7.28.0)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(sass@1.89.2))(react@19.1.1)
       r18gs:
         specifier: workspace:*
         version: link:../../lib
       react:
-        specifier: ^19.1.0
-        version: 19.1.0
+        specifier: ^19.1.1
+        version: 19.1.1
       react-dom:
-        specifier: ^19.1.0
-        version: 19.1.0(react@19.1.0)
+        specifier: ^19.1.1
+        version: 19.1.1(react@19.1.1)
       react-webgl-trails:
         specifier: 0.0.5
-        version: 0.0.5(@types/react@19.1.8)(react@19.1.0)
+        version: 0.0.5(@types/react@19.1.8)(react@19.1.1)
       react18-loaders:
         specifier: ^1.1.4
-        version: 1.1.4(@types/react@19.1.8)(next@15.4.4(@babel/core@7.28.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.89.2))(react@19.1.0)
+        version: 1.1.4(@types/react@19.1.8)(next@15.4.4(@babel/core@7.28.0)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(sass@1.89.2))(react@19.1.1)
     devDependencies:
       '@next/eslint-plugin-next':
         specifier: ^15.4.4
@@ -113,7 +113,7 @@ importers:
         version: 2.17.0(typescript@5.8.3)
       '@remix-run/react':
         specifier: ^2.17.0
-        version: 2.17.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.8.3)
+        version: 2.17.0(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(typescript@5.8.3)
       '@remix-run/serve':
         specifier: ^2.17.0
         version: 2.17.0(typescript@5.8.3)
@@ -125,32 +125,32 @@ importers:
         version: link:../../packages/shared
       '@vercel/analytics':
         specifier: ^1.5.0
-        version: 1.5.0(@remix-run/react@2.17.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.8.3))(next@15.4.4(@babel/core@7.28.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.89.2))(react@19.1.0)
+        version: 1.5.0(@remix-run/react@2.17.0(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(typescript@5.8.3))(next@15.4.4(@babel/core@7.28.0)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(sass@1.89.2))(react@19.1.1)
       '@vercel/remix-entry-server':
         specifier: ^0.1.1
-        version: 0.1.1(react@19.1.0)
+        version: 0.1.1(react@19.1.1)
       nextjs-darkmode:
         specifier: ^1.0.10
-        version: 1.0.10(@types/react@19.1.8)(react@19.1.0)
+        version: 1.0.10(@types/react@19.1.8)(react@19.1.1)
       r18gs:
         specifier: workspace:*
         version: link:../../lib
       react:
-        specifier: ^19.1.0
-        version: 19.1.0
+        specifier: ^19.1.1
+        version: 19.1.1
       react-dom:
-        specifier: ^19.1.0
-        version: 19.1.0(react@19.1.0)
+        specifier: ^19.1.1
+        version: 19.1.1(react@19.1.1)
       react18-loaders:
         specifier: ^1.1.4
-        version: 1.1.4(@types/react@19.1.8)(next@15.4.4(@babel/core@7.28.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.89.2))(react@19.1.0)
+        version: 1.1.4(@types/react@19.1.8)(next@15.4.4(@babel/core@7.28.0)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(sass@1.89.2))(react@19.1.1)
       react18-themes:
         specifier: ^3.2.0
-        version: 3.2.0(@types/react@19.1.8)(next@15.4.4(@babel/core@7.28.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.89.2))(react@19.1.0)
+        version: 3.2.0(@types/react@19.1.8)(next@15.4.4(@babel/core@7.28.0)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(sass@1.89.2))(react@19.1.1)
     devDependencies:
       '@remix-run/dev':
         specifier: ^2.17.0
-        version: 2.17.0(@remix-run/react@2.17.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.8.3))(@remix-run/serve@2.17.0(typescript@5.8.3))(@types/node@24.1.0)(sass@1.89.2)(typescript@5.8.3)(vite@6.3.5(@types/node@24.1.0)(sass@1.89.2)(yaml@2.8.0))(yaml@2.8.0)
+        version: 2.17.0(@remix-run/react@2.17.0(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(typescript@5.8.3))(@remix-run/serve@2.17.0(typescript@5.8.3))(@types/node@24.1.0)(sass@1.89.2)(typescript@5.8.3)(vite@6.3.5(@types/node@24.1.0)(sass@1.89.2)(yaml@2.8.0))(yaml@2.8.0)
       '@repo/eslint-config':
         specifier: workspace:*
         version: link:../../packages/config-eslint
@@ -174,22 +174,22 @@ importers:
         version: link:../../packages/shared
       nextjs-darkmode:
         specifier: ^1.0.10
-        version: 1.0.10(@types/react@19.1.8)(react@19.1.0)
+        version: 1.0.10(@types/react@19.1.8)(react@19.1.1)
       r18gs:
         specifier: workspace:*
         version: link:../../lib
       react:
-        specifier: ^19.1.0
-        version: 19.1.0
+        specifier: ^19.1.1
+        version: 19.1.1
       react-dom:
-        specifier: ^19.1.0
-        version: 19.1.0(react@19.1.0)
+        specifier: ^19.1.1
+        version: 19.1.1(react@19.1.1)
       react18-loaders:
         specifier: ^1.1.4
-        version: 1.1.4(@types/react@19.1.8)(next@15.4.4(@babel/core@7.28.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.89.2))(react@19.1.0)
+        version: 1.1.4(@types/react@19.1.8)(next@15.4.4(@babel/core@7.28.0)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(sass@1.89.2))(react@19.1.1)
       react18-themes:
         specifier: ^3.2.0
-        version: 3.2.0(@types/react@19.1.8)(next@15.4.4(@babel/core@7.28.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.89.2))(react@19.1.0)
+        version: 3.2.0(@types/react@19.1.8)(next@15.4.4(@babel/core@7.28.0)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(sass@1.89.2))(react@19.1.1)
     devDependencies:
       '@repo/eslint-config':
         specifier: workspace:*
@@ -223,7 +223,7 @@ importers:
         version: link:../packages/config-typescript
       '@testing-library/react':
         specifier: ^16.3.0
-        version: 16.3.0(@testing-library/dom@10.4.0)(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+        version: 16.3.0(@testing-library/dom@10.4.0)(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@types/node':
         specifier: ^24.1.0
         version: 24.1.0
@@ -249,11 +249,11 @@ importers:
         specifier: ^26.1.0
         version: 26.1.0
       react:
-        specifier: ^19.1.0
-        version: 19.1.0
+        specifier: ^19.1.1
+        version: 19.1.1
       react-dom:
-        specifier: ^19.1.0
-        version: 19.1.0(react@19.1.0)
+        specifier: ^19.1.1
+        version: 19.1.1(react@19.1.1)
       tsup:
         specifier: ^8.5.0
         version: 8.5.0(postcss@8.5.6)(typescript@5.8.3)(yaml@2.8.0)
@@ -291,25 +291,25 @@ importers:
     dependencies:
       '@mayank1513/fork-me':
         specifier: ^2.1.3
-        version: 2.1.3(@types/react@19.1.8)(next@15.4.4(@babel/core@7.28.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.89.2))(react@19.1.0)
+        version: 2.1.3(@types/react@19.1.8)(next@15.4.4(@babel/core@7.28.0)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(sass@1.89.2))(react@19.1.1)
       '@repo/scripts':
         specifier: workspace:*
         version: link:../../scripts
       nextjs-darkmode:
         specifier: ^1.0.10
-        version: 1.0.10(@types/react@19.1.8)(react@19.1.0)
+        version: 1.0.10(@types/react@19.1.8)(react@19.1.1)
       nextjs-themes:
         specifier: ^4.0.6
-        version: 4.0.6(@types/react@19.1.8)(next@15.4.4(@babel/core@7.28.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.89.2))(react@19.1.0)
+        version: 4.0.6(@types/react@19.1.8)(next@15.4.4(@babel/core@7.28.0)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(sass@1.89.2))(react@19.1.1)
       r18gs:
         specifier: workspace:*
         version: link:../../lib
       react-live:
         specifier: ^4.1.8
-        version: 4.1.8(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+        version: 4.1.8(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       react18-loaders:
         specifier: ^1.1.4
-        version: 1.1.4(@types/react@19.1.8)(next@15.4.4(@babel/core@7.28.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.89.2))(react@19.1.0)
+        version: 1.1.4(@types/react@19.1.8)(next@15.4.4(@babel/core@7.28.0)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(sass@1.89.2))(react@19.1.1)
     devDependencies:
       '@repo/eslint-config':
         specifier: workspace:*
@@ -319,7 +319,7 @@ importers:
         version: link:../config-typescript
       '@testing-library/react':
         specifier: ^16.3.0
-        version: 16.3.0(@testing-library/dom@10.4.0)(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+        version: 16.3.0(@testing-library/dom@10.4.0)(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@types/node':
         specifier: ^24.1.0
         version: 24.1.0
@@ -348,11 +348,11 @@ importers:
         specifier: ^26.1.0
         version: 26.1.0
       react:
-        specifier: ^19.1.0
-        version: 19.1.0
+        specifier: ^19.1.1
+        version: 19.1.1
       react-dom:
-        specifier: ^19.1.0
-        version: 19.1.0(react@19.1.0)
+        specifier: ^19.1.1
+        version: 19.1.1(react@19.1.1)
       tsup:
         specifier: ^8.5.0
         version: 8.5.0(postcss@8.5.6)(typescript@5.8.3)(yaml@2.8.0)
@@ -2600,10 +2600,10 @@ packages:
     resolution: {integrity: sha512-ESAc/RJvGTFEzRwOTT4+lNDk/GNHMkKbNzsvT0qKRfDyyYTskxB5rnU2njIDYVxXCBHHEI1c0YwHob3WaYujOg==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
 
-  babel-preset-current-node-syntax@1.1.0:
-    resolution: {integrity: sha512-ldYss8SbBlWva1bs28q78Ju5Zq1F+8BrqBZZ0VFhLBvhh6lCpC2o3gDJi/5DRLs9FgYZCnmPYIVFU4lRXCkyUw==}
+  babel-preset-current-node-syntax@1.1.1:
+    resolution: {integrity: sha512-23fWKohMTvS5s0wwJKycOe0dBdCwQ6+iiLaNR9zy8P13mtFRFM9qLLX6HJX5DL2pi/FNDf3fCQHM4FIMoHH/7w==}
     peerDependencies:
-      '@babel/core': ^7.0.0
+      '@babel/core': ^7.0.0 || ^8.0.0-0
 
   babel-preset-jest@29.6.3:
     resolution: {integrity: sha512-0B3bhxR6snWXJZtR/RliHTDPRgn1sNHOR0yVtq/IiQFyuOVjFS+wuio/R4gSNkyYmKmJB4wGZv2NZanmKmTnNA==}
@@ -5711,10 +5711,10 @@ packages:
     peerDependencies:
       react: ^18.2.0
 
-  react-dom@19.1.0:
-    resolution: {integrity: sha512-Xs1hdnE+DyKgeHJeJznQmYMIBG3TKIHJJT95Q58nHLSrElKlGQqDTR2HQ9fx5CN/Gk6Vh/kupBTDLU11/nDk/g==}
+  react-dom@19.1.1:
+    resolution: {integrity: sha512-Dlq/5LAZgF0Gaz6yiqZCf6VCcZs1ghAJyrsu84Q/GT0gV+mCxbfmKNoGRKBYMJ8IEdGPqu49YWXD02GCknEDkw==}
     peerDependencies:
-      react: ^19.1.0
+      react: ^19.1.1
 
   react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
@@ -5779,8 +5779,8 @@ packages:
       next:
         optional: true
 
-  react@19.1.0:
-    resolution: {integrity: sha512-FS+XFBNvn3GTAWq26joslQgWNoFu08F4kl0J4CgdNKADkdSGXQyTCnKteIAJy96Br6YbpEU1LSzV5dYtjMkMDg==}
+  react@19.1.1:
+    resolution: {integrity: sha512-w8nqGImo45dmMIfljjMwOGtbmC/mk4CMYhWIicdSflH91J9TyCyczcPFXJzrZ/ZXcgGRFeP6BU0BEJTw6tZdfQ==}
     engines: {node: '>=0.10.0'}
 
   read-package-json-fast@3.0.2:
@@ -8246,12 +8246,12 @@ snapshots:
       globby: 11.1.0
       read-yaml-file: 1.1.0
 
-  '@mayank1513/fork-me@2.1.3(@types/react@19.1.8)(next@15.4.4(@babel/core@7.28.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.89.2))(react@19.1.0)':
+  '@mayank1513/fork-me@2.1.3(@types/react@19.1.8)(next@15.4.4(@babel/core@7.28.0)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(sass@1.89.2))(react@19.1.1)':
     dependencies:
       '@types/react': 19.1.8
-      react: 19.1.0
+      react: 19.1.1
     optionalDependencies:
-      next: 15.4.4(@babel/core@7.28.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.89.2)
+      next: 15.4.4(@babel/core@7.28.0)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(sass@1.89.2)
 
   '@mdx-js/mdx@2.3.0':
     dependencies:
@@ -8495,7 +8495,7 @@ snapshots:
 
   '@pkgr/core@0.2.9': {}
 
-  '@remix-run/dev@2.17.0(@remix-run/react@2.17.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.8.3))(@remix-run/serve@2.17.0(typescript@5.8.3))(@types/node@24.1.0)(sass@1.89.2)(typescript@5.8.3)(vite@6.3.5(@types/node@24.1.0)(sass@1.89.2)(yaml@2.8.0))(yaml@2.8.0)':
+  '@remix-run/dev@2.17.0(@remix-run/react@2.17.0(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(typescript@5.8.3))(@remix-run/serve@2.17.0(typescript@5.8.3))(@types/node@24.1.0)(sass@1.89.2)(typescript@5.8.3)(vite@6.3.5(@types/node@24.1.0)(sass@1.89.2)(yaml@2.8.0))(yaml@2.8.0)':
     dependencies:
       '@babel/core': 7.28.0
       '@babel/generator': 7.28.0
@@ -8508,7 +8508,7 @@ snapshots:
       '@mdx-js/mdx': 2.3.0
       '@npmcli/package-json': 4.0.1
       '@remix-run/node': 2.17.0(typescript@5.8.3)
-      '@remix-run/react': 2.17.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.8.3)
+      '@remix-run/react': 2.17.0(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(typescript@5.8.3)
       '@remix-run/router': 1.23.0
       '@remix-run/server-runtime': 2.17.0(typescript@5.8.3)
       '@types/mdx': 2.0.13
@@ -8608,14 +8608,14 @@ snapshots:
     optionalDependencies:
       typescript: 5.8.3
 
-  '@remix-run/react@2.17.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.8.3)':
+  '@remix-run/react@2.17.0(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(typescript@5.8.3)':
     dependencies:
       '@remix-run/router': 1.23.0
       '@remix-run/server-runtime': 2.17.0(typescript@5.8.3)
-      react: 19.1.0
-      react-dom: 19.1.0(react@19.1.0)
-      react-router: 6.30.0(react@19.1.0)
-      react-router-dom: 6.30.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      react: 19.1.1
+      react-dom: 19.1.1(react@19.1.1)
+      react-router: 6.30.0(react@19.1.1)
+      react-router-dom: 6.30.0(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       turbo-stream: 2.4.1
     optionalDependencies:
       typescript: 5.8.3
@@ -8814,12 +8814,12 @@ snapshots:
       picocolors: 1.1.1
       redent: 3.0.0
 
-  '@testing-library/react@16.3.0(@testing-library/dom@10.4.0)(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
+  '@testing-library/react@16.3.0(@testing-library/dom@10.4.0)(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)':
     dependencies:
       '@babel/runtime': 7.28.2
       '@testing-library/dom': 10.4.0
-      react: 19.1.0
-      react-dom: 19.1.0(react@19.1.0)
+      react: 19.1.1
+      react-dom: 19.1.1(react@19.1.1)
     optionalDependencies:
       '@types/react': 19.1.8
       '@types/react-dom': 19.1.6(@types/react@19.1.8)
@@ -9277,18 +9277,18 @@ snapshots:
 
   '@vanilla-extract/private@1.0.9': {}
 
-  '@vercel/analytics@1.5.0(@remix-run/react@2.17.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.8.3))(next@15.4.4(@babel/core@7.28.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.89.2))(react@19.1.0)':
+  '@vercel/analytics@1.5.0(@remix-run/react@2.17.0(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(typescript@5.8.3))(next@15.4.4(@babel/core@7.28.0)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(sass@1.89.2))(react@19.1.1)':
     optionalDependencies:
-      '@remix-run/react': 2.17.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.8.3)
-      next: 15.4.4(@babel/core@7.28.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.89.2)
-      react: 19.1.0
+      '@remix-run/react': 2.17.0(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(typescript@5.8.3)
+      next: 15.4.4(@babel/core@7.28.0)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(sass@1.89.2)
+      react: 19.1.1
 
-  '@vercel/remix-entry-server@0.1.1(react@19.1.0)':
+  '@vercel/remix-entry-server@0.1.1(react@19.1.1)':
     dependencies:
       '@remix-run/node': 1.12.0
       isbot: 3.6.5
-      react: 19.1.0
-      react-dom: 18.2.0(react@19.1.0)
+      react: 19.1.1
+      react-dom: 18.2.0(react@19.1.1)
 
   '@vercel/style-guide@6.0.0(@next/eslint-plugin-next@14.2.15)(eslint@9.12.0)(jest@29.7.0(@types/node@24.1.0))(prettier@3.6.2)(typescript@5.8.3)(vitest@3.2.4(@types/debug@4.1.12)(@types/node@24.1.0)(jsdom@26.1.0)(sass@1.89.2)(yaml@2.8.0))':
     dependencies:
@@ -9642,7 +9642,7 @@ snapshots:
       '@types/babel__traverse': 7.20.7
     optional: true
 
-  babel-preset-current-node-syntax@1.1.0(@babel/core@7.28.0):
+  babel-preset-current-node-syntax@1.1.1(@babel/core@7.28.0):
     dependencies:
       '@babel/core': 7.28.0
       '@babel/plugin-syntax-async-generators': 7.8.4(@babel/core@7.28.0)
@@ -9666,7 +9666,7 @@ snapshots:
     dependencies:
       '@babel/core': 7.28.0
       babel-plugin-jest-hoist: 29.6.3
-      babel-preset-current-node-syntax: 1.1.0(@babel/core@7.28.0)
+      babel-preset-current-node-syntax: 1.1.1(@babel/core@7.28.0)
     optional: true
 
   bail@2.0.2: {}
@@ -11968,7 +11968,7 @@ snapshots:
       '@jest/expect-utils': 29.7.0
       '@jest/transform': 29.7.0
       '@jest/types': 29.6.3
-      babel-preset-current-node-syntax: 1.1.0(@babel/core@7.28.0)
+      babel-preset-current-node-syntax: 1.1.1(@babel/core@7.28.0)
       chalk: 4.1.2
       expect: 29.7.0
       graceful-fs: 4.2.11
@@ -13015,15 +13015,15 @@ snapshots:
 
   neo-async@2.6.2: {}
 
-  next@15.4.4(@babel/core@7.28.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.89.2):
+  next@15.4.4(@babel/core@7.28.0)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(sass@1.89.2):
     dependencies:
       '@next/env': 15.4.4
       '@swc/helpers': 0.5.15
       caniuse-lite: 1.0.30001727
       postcss: 8.4.31
-      react: 19.1.0
-      react-dom: 19.1.0(react@19.1.0)
-      styled-jsx: 5.1.6(@babel/core@7.28.0)(react@19.1.0)
+      react: 19.1.1
+      react-dom: 19.1.1(react@19.1.1)
+      styled-jsx: 5.1.6(@babel/core@7.28.0)(react@19.1.1)
     optionalDependencies:
       '@next/swc-darwin-arm64': 15.4.4
       '@next/swc-darwin-x64': 15.4.4
@@ -13039,25 +13039,25 @@ snapshots:
       - '@babel/core'
       - babel-plugin-macros
 
-  nextjs-darkmode-lite@1.0.10(@types/react@19.1.8)(r18gs@lib)(react@19.1.0):
+  nextjs-darkmode-lite@1.0.10(@types/react@19.1.8)(r18gs@lib)(react@19.1.1):
     dependencies:
       '@types/react': 19.1.8
       r18gs: link:lib
-      react: 19.1.0
+      react: 19.1.1
 
-  nextjs-darkmode@1.0.10(@types/react@19.1.8)(react@19.1.0):
+  nextjs-darkmode@1.0.10(@types/react@19.1.8)(react@19.1.1):
     dependencies:
       '@types/react': 19.1.8
-      r18gs: 3.0.1(@types/react@19.1.8)(react@19.1.0)
-      react: 19.1.0
+      r18gs: 3.0.1(@types/react@19.1.8)(react@19.1.1)
+      react: 19.1.1
 
-  nextjs-themes@4.0.6(@types/react@19.1.8)(next@15.4.4(@babel/core@7.28.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.89.2))(react@19.1.0):
+  nextjs-themes@4.0.6(@types/react@19.1.8)(next@15.4.4(@babel/core@7.28.0)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(sass@1.89.2))(react@19.1.1):
     dependencies:
       '@types/react': 19.1.8
-      r18gs: 3.0.1(@types/react@19.1.8)(react@19.1.0)
-      react: 19.1.0
+      r18gs: 3.0.1(@types/react@19.1.8)(react@19.1.1)
+      react: 19.1.1
     optionalDependencies:
-      next: 15.4.4(@babel/core@7.28.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.89.2)
+      next: 15.4.4(@babel/core@7.28.0)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(sass@1.89.2)
 
   no-case@3.0.4:
     dependencies:
@@ -13572,11 +13572,11 @@ snapshots:
     dependencies:
       parse-ms: 2.1.0
 
-  prism-react-renderer@2.4.1(react@19.1.0):
+  prism-react-renderer@2.4.1(react@19.1.1):
     dependencies:
       '@types/prismjs': 1.26.5
       clsx: 2.1.1
-      react: 19.1.0
+      react: 19.1.1
 
   proc-log@3.0.0: {}
 
@@ -13641,22 +13641,22 @@ snapshots:
 
   queue-microtask@1.2.3: {}
 
-  r18gs@1.1.3(@types/react@19.1.8)(next@15.4.4(@babel/core@7.28.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.89.2))(react@19.1.0):
+  r18gs@1.1.3(@types/react@19.1.8)(next@15.4.4(@babel/core@7.28.0)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(sass@1.89.2))(react@19.1.1):
     dependencies:
       '@types/react': 19.1.8
-      react: 19.1.0
+      react: 19.1.1
     optionalDependencies:
-      next: 15.4.4(@babel/core@7.28.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.89.2)
+      next: 15.4.4(@babel/core@7.28.0)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(sass@1.89.2)
 
-  r18gs@2.1.0(@types/react@19.1.8)(react@19.1.0):
+  r18gs@2.1.0(@types/react@19.1.8)(react@19.1.1):
     dependencies:
       '@types/react': 19.1.8
-      react: 19.1.0
+      react: 19.1.1
 
-  r18gs@3.0.1(@types/react@19.1.8)(react@19.1.0):
+  r18gs@3.0.1(@types/react@19.1.8)(react@19.1.1):
     dependencies:
       '@types/react': 19.1.8
-      react: 19.1.0
+      react: 19.1.1
 
   range-parser@1.2.1: {}
 
@@ -13667,15 +13667,15 @@ snapshots:
       iconv-lite: 0.4.24
       unpipe: 1.0.0
 
-  react-dom@18.2.0(react@19.1.0):
+  react-dom@18.2.0(react@19.1.1):
     dependencies:
       loose-envify: 1.4.0
-      react: 19.1.0
+      react: 19.1.1
       scheduler: 0.23.2
 
-  react-dom@19.1.0(react@19.1.0):
+  react-dom@19.1.1(react@19.1.1):
     dependencies:
-      react: 19.1.0
+      react: 19.1.1
       scheduler: 0.26.0
 
   react-is@16.13.1: {}
@@ -13685,52 +13685,52 @@ snapshots:
   react-is@18.3.1:
     optional: true
 
-  react-live@4.1.8(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
+  react-live@4.1.8(react-dom@19.1.1(react@19.1.1))(react@19.1.1):
     dependencies:
-      prism-react-renderer: 2.4.1(react@19.1.0)
-      react: 19.1.0
-      react-dom: 19.1.0(react@19.1.0)
+      prism-react-renderer: 2.4.1(react@19.1.1)
+      react: 19.1.1
+      react-dom: 19.1.1(react@19.1.1)
       sucrase: 3.35.0
-      use-editable: 2.3.3(react@19.1.0)
+      use-editable: 2.3.3(react@19.1.1)
 
   react-refresh@0.14.2: {}
 
   react-refresh@0.17.0: {}
 
-  react-router-dom@6.30.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
+  react-router-dom@6.30.0(react-dom@19.1.1(react@19.1.1))(react@19.1.1):
     dependencies:
       '@remix-run/router': 1.23.0
-      react: 19.1.0
-      react-dom: 19.1.0(react@19.1.0)
-      react-router: 6.30.0(react@19.1.0)
+      react: 19.1.1
+      react-dom: 19.1.1(react@19.1.1)
+      react-router: 6.30.0(react@19.1.1)
 
-  react-router@6.30.0(react@19.1.0):
+  react-router@6.30.0(react@19.1.1):
     dependencies:
       '@remix-run/router': 1.23.0
-      react: 19.1.0
+      react: 19.1.1
 
-  react-webgl-trails@0.0.5(@types/react@19.1.8)(react@19.1.0):
+  react-webgl-trails@0.0.5(@types/react@19.1.8)(react@19.1.1):
     dependencies:
       '@types/react': 19.1.8
-      react: 19.1.0
+      react: 19.1.1
 
-  react18-loaders@1.1.4(@types/react@19.1.8)(next@15.4.4(@babel/core@7.28.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.89.2))(react@19.1.0):
+  react18-loaders@1.1.4(@types/react@19.1.8)(next@15.4.4(@babel/core@7.28.0)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(sass@1.89.2))(react@19.1.1):
     dependencies:
       '@types/react': 19.1.8
-      r18gs: 2.1.0(@types/react@19.1.8)(react@19.1.0)
-      react: 19.1.0
+      r18gs: 2.1.0(@types/react@19.1.8)(react@19.1.1)
+      react: 19.1.1
     optionalDependencies:
-      next: 15.4.4(@babel/core@7.28.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.89.2)
+      next: 15.4.4(@babel/core@7.28.0)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(sass@1.89.2)
 
-  react18-themes@3.2.0(@types/react@19.1.8)(next@15.4.4(@babel/core@7.28.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.89.2))(react@19.1.0):
+  react18-themes@3.2.0(@types/react@19.1.8)(next@15.4.4(@babel/core@7.28.0)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(sass@1.89.2))(react@19.1.1):
     dependencies:
       '@types/react': 19.1.8
-      r18gs: 1.1.3(@types/react@19.1.8)(next@15.4.4(@babel/core@7.28.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.89.2))(react@19.1.0)
-      react: 19.1.0
+      r18gs: 1.1.3(@types/react@19.1.8)(next@15.4.4(@babel/core@7.28.0)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(sass@1.89.2))(react@19.1.1)
+      react: 19.1.1
     optionalDependencies:
-      next: 15.4.4(@babel/core@7.28.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.89.2)
+      next: 15.4.4(@babel/core@7.28.0)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(sass@1.89.2)
 
-  react@19.1.0: {}
+  react@19.1.1: {}
 
   read-package-json-fast@3.0.2:
     dependencies:
@@ -14404,10 +14404,10 @@ snapshots:
     dependencies:
       inline-style-parser: 0.1.1
 
-  styled-jsx@5.1.6(@babel/core@7.28.0)(react@19.1.0):
+  styled-jsx@5.1.6(@babel/core@7.28.0)(react@19.1.1):
     dependencies:
       client-only: 0.0.1
-      react: 19.1.0
+      react: 19.1.1
     optionalDependencies:
       '@babel/core': 7.28.0
 
@@ -14928,9 +14928,9 @@ snapshots:
     dependencies:
       punycode: 2.3.1
 
-  use-editable@2.3.3(react@19.1.0):
+  use-editable@2.3.3(react@19.1.1):
     dependencies:
-      react: 19.1.0
+      react: 19.1.1
 
   util-deprecate@1.0.2: {}
 
