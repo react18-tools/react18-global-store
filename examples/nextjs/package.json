@@ -20,7 +20,7 @@
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-webgl-trails": "0.0.5",
-    "react18-loaders": "^1.1.4"
+    "react18-loaders": "^1.1.7"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^15.4.5",
